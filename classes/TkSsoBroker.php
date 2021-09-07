@@ -235,7 +235,7 @@ class TkSsoBroker
      */
     protected function cacheAuthenticationDataIfNotAlreadyCached($authenticationData)
     {
-        if (!$this->tkSsoFrontEndCache->isauthenticationDataCached()) $this->tkSsoFrontEndCache->cacheAuthenticationData($authenticationData);
+        if (!$this->tkSsoFrontEndCache->isAuthenticationDataCached()) $this->tkSsoFrontEndCache->cacheAuthenticationData($authenticationData);
     }
 
 }
