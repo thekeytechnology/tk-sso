@@ -1,8 +1,7 @@
 <?php
 
 
-class TkSsoBroker
-{
+class TkSsoBroker {
     /**
      * Url of SSO server
      * @var string
@@ -27,8 +26,7 @@ class TkSsoBroker
      *
      * @param int $cookie_lifetime
      */
-    public function __construct($cookie_lifetime = 3600)
-    {
+    public function __construct($cookie_lifetime = 3600) {
         $this->url = get_option('tkt_sso_server_url');
         $this->cookie_lifetime = $cookie_lifetime;
         $this->tkSsoFrontEndCache = new TkSsoFrontEndCache();
@@ -39,9 +37,12 @@ class TkSsoBroker
      * Get the cookie name.
      * @return string
      */
-    protected function getCookieName(): string
-    {
+    public function getCookieName(): string {
         return 'tk_sso_token';
+    }
+
+    public function getToken(): string {
+        return $_COOKIE[$this->getCookieName()];
     }
 
 
@@ -52,8 +53,7 @@ class TkSsoBroker
      * @param array|string $data Query or post parameters
      * @return array|object
      */
-    protected function request(string $method, string $command, $data = null)
-    {
+    protected function request(string $method, string $command, $data = null) {
         $url = $this->url;
         $data['command'] = $command;
         $response = wp_remote_post($url, array(
@@ -73,9 +73,7 @@ class TkSsoBroker
          */
         if ($response['response']['code'] !== 200) {
             return ['error' => 'Fehler: ' . $response['response']['code'] . '. Leider gibt es aktuell technische Probleme. Wir arbeiten bereits an einer Lösung.'];
-        }
-
-        /**
+        } /**
          *  No request errors
          */
         else {
@@ -90,12 +88,11 @@ class TkSsoBroker
      * @param $password
      * @return array
      */
-    public function login($name, $password): array
-    {
+    public function login($name, $password): array {
         if (!empty($name) && !empty($password)) {
             $response = $this->request('POST', 'login', ['name' => $name, 'password' => $password]);
 
-            if(isset($response['error'])) {
+            if (isset($response['error'])) {
                 return ['error' => $response['error']];
             }
 
@@ -105,17 +102,13 @@ class TkSsoBroker
             if ($response['authenticated'] == 1 && !empty($response['token'])) {
                 $this->successfullyAuthenticated($response['token']);
                 return ['authenticated' => true];
-            }
-
-            /**
+            } /**
              * authentication error
              */
             else {
                 return ['error' => 'Authentifizierungsfehler'];
             }
-        }
-
-        /**
+        } /**
          *  username or password is empty
          */
         else {
@@ -126,8 +119,7 @@ class TkSsoBroker
     /**
      * Returns true if user is logged in
      */
-    public function isUserLoggedIn(): bool
-    {
+    public function isUserLoggedIn(): bool {
         if (isset($_COOKIE[$this->getCookieName()])) {
             return true;
         } else return false;
@@ -138,8 +130,7 @@ class TkSsoBroker
      * @param $token
      * Logs the user out of the browser and the server
      */
-    public function logout($token)
-    {
+    public function logout($token) {
         if (isset($_COOKIE[$this->getCookieName()])) {
             $this->setCookieSameSite($this->getCookieName(), '', time() - 3600, '/');
         }
@@ -150,18 +141,20 @@ class TkSsoBroker
     /**
      * @param $token
      */
-    private function successfullyAuthenticated($token)
-    {
+    private function successfullyAuthenticated($token) {
         $this->setCookieSameSite($this->getCookieName(), $token, time() + 3600, '/');
     }
 
 
     /**
      * @param string $userVar
-     * @return array|mixed|object|string[]
+     * @param string $token
+     * @return array|mixed|object|string|string[]
      */
-    public function authenticate($token, $userVar = '')
-    {
+    public function authenticate($userVar = '', $token = '') {
+
+        $token = !empty($token) ? $token : $this->getToken();
+
         /**
          * cannot authenticate users who are not logged in
          */
@@ -205,8 +198,8 @@ class TkSsoBroker
 
     public function getAllBrokers() {
         $response = $this->request('GET', 'gatAllBrokers');
-        if( !empty($response) && !isset($response['error'])) {
-           return $response;
+        if (!empty($response) && !isset($response['error'])) {
+            return $response;
         }
     }
 
@@ -214,8 +207,7 @@ class TkSsoBroker
         string $name, string $value,
         int $expire, string $path = "", string $domain = "",
         bool $secure = true, bool $httponly = false, string $samesite = 'None'
-    )
-    {
+    ) {
         if (PHP_VERSION_ID < 70300) {
             setcookie($name, $value, $expire, $path . '; samesite=' . $samesite, $domain, $secure, $httponly);
             return;
@@ -233,8 +225,7 @@ class TkSsoBroker
     /**
      * @param $authenticationData
      */
-    protected function cacheAuthenticationDataIfNotAlreadyCached($authenticationData)
-    {
+    protected function cacheAuthenticationDataIfNotAlreadyCached($authenticationData) {
         if (!$this->tkSsoFrontEndCache->isAuthenticationDataCached()) $this->tkSsoFrontEndCache->cacheAuthenticationData($authenticationData);
     }
 

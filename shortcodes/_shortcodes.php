@@ -4,7 +4,8 @@ add_shortcode('tk-sso-simple-login-form', 'tkSsoSimpleLoginForm');
 
 function tkSsoSimpleLoginForm()
 {
-    if (isset($_COOKIE['tk_sso_token'])) return '';
+    global $tkSsoUser;
+    if ($tkSsoUser->isLoggedIn()) return '';
     return '
         <div class="wrapper fadeInDown">
           <div id="formContent">

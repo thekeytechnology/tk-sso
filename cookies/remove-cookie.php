@@ -1,14 +1,18 @@
 <?php
 
+include_once("../classes/TkSsoBroker.php");
+
 /**
  *  Remove Sso cookie
  */
 function removeTkSsoTokenCookie() {
-    if(!isset($_GET['tk_sso_token'])) return;
+    global $tkSsoBroker;
+
+    if (!isset($_GET[$tkSsoBroker->getCookieName()])) return;
 
     require_once "functions.php";
     $tkSsoTokenValue = '';
-    setCookieSameSite('tk_sso_token', $tkSsoTokenValue, time() - 3600, '/');
+    setCookieSameSite($tkSsoBroker->getCookieName(), $tkSsoTokenValue, time() - 3600, '/');
 }
 removeTkSsoTokenCookie();
 ?>

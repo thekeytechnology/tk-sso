@@ -62,13 +62,13 @@ function tkAddRestrictionControls($element)
 
 function tkRestrictWidget($content, $widget)
 {
-    global $tkSsoBroker;
-    $currentUserRole = isset($_COOKIE['tk_sso_token']) ? $tkSsoBroker->authenticate($_COOKIE['tk_sso_token'], 'role') : 'not_logged_in';
+    global $tkSsoUser;
+    $currentUserRole = $tkSsoUser->getRole();
     if (is_admin()) return $content;
     $settings = $widget->get_settings_for_display();
     if (isset($settings['tk_enable_restriction']) && $settings['tk_enable_restriction'] == 'yes') {
-        if (! empty($settings['tk_show_content_to_roles'])) {
-            if(! in_array($currentUserRole, $settings['tk_show_content_to_roles'])) {
+        if (!empty($settings['tk_show_content_to_roles'])) {
+            if (!in_array($currentUserRole, $settings['tk_show_content_to_roles'])) {
                 return '';
             }
         }
@@ -77,15 +77,14 @@ function tkRestrictWidget($content, $widget)
 }
 
 
-function tkRestrictContainer($should_render, $object)
-{
-    global $tkSsoBroker;
-    $currentUserRole = isset($_COOKIE['tk_sso_token']) ? $tkSsoBroker->authenticate($_COOKIE['tk_sso_token'], 'role') : 'not_logged_in';
+function tkRestrictContainer($should_render, $object) {
+    global $tkSsoUser;
+    $currentUserRole = $tkSsoUser->getRole();
     if (is_admin()) return $should_render;
     $settings = $object->get_settings_for_display();
     if (isset($settings['tk_enable_restriction']) && $settings['tk_enable_restriction'] == 'yes') {
-        if (! empty($settings['tk_show_content_to_roles'])) {
-            if(! in_array($currentUserRole, $settings['tk_show_content_to_roles'])) {
+        if (!empty($settings['tk_show_content_to_roles'])) {
+            if (!in_array($currentUserRole, $settings['tk_show_content_to_roles'])) {
                 return false;
             }
         }

@@ -1,13 +1,18 @@
 <?php
+include_once("../classes/TkSsoBroker.php");
 
 /**
  * set Sso cookie
  */
 function setTkSsoTokenCookie() {
-    if(!isset($_GET['tk_sso_token'])) return;
+
+    global $tkSsoBroker;
+    $cookieName = $tkSsoBroker->getCookieName();
+
+    if (!isset($_GET[$cookieName])) return;
     require_once "functions.php";
-    $tkSsoTokenValue = $_GET['tk_sso_token'];
-    setCookieSameSite('tk_sso_token', $tkSsoTokenValue, time() + 3600, '/');
+    $tkSsoTokenValue = $_GET[$cookieName];
+    setCookieSameSite($cookieName, $tkSsoTokenValue, time() + 3600, '/');
 }
 setTkSsoTokenCookie();
 ?>

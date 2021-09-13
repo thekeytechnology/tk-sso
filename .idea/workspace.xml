@@ -2,117 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/tk-sso.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4/Factory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Autoloader.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/DebugBar/Extension.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/DebugBar/Panel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/DebugBar/PluginExtension.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/DebugBar/PluginPanel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/DebugBar/ThemePanel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Factory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/InstalledPackage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Metadata.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/OAuthSignature.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Plugin/Info.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Plugin/Package.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Plugin/Ui.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Plugin/Update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Plugin/UpdateChecker.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Scheduler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/StateStore.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Theme/Package.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Theme/Update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Theme/UpdateChecker.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/UpdateChecker.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/UpgraderStatus.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Utils.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Vcs/Api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Vcs/BaseChecker.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Vcs/BitBucketApi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Vcs/GitHubApi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Vcs/GitLabApi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Vcs/PluginUpdateChecker.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Vcs/Reference.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/Puc/v4p11/Vcs/ThemeUpdateChecker.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/css/puc-debug-bar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/examples/plugin.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/examples/theme.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/js/debug-bar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-ca.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-ca.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-cs_CZ.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-cs_CZ.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-da_DK.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-da_DK.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-de_DE.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-de_DE.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_AR.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_AR.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_CL.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_CL.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_CO.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_CO.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_CR.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_CR.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_DO.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_DO.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_ES.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_ES.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_GT.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_GT.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_HN.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_HN.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_MX.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_MX.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_PE.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_PE.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_PR.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_PR.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_UY.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_UY.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_VE.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-es_VE.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-fa_IR.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-fa_IR.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-fr_CA.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-fr_CA.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-fr_FR.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-fr_FR.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-hu_HU.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-hu_HU.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-it_IT.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-it_IT.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-ja.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-ja.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-nl_BE.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-nl_BE.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-nl_NL.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-nl_NL.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-pt_BR.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-pt_BR.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-sl_SI.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-sl_SI.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-sv_SE.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-sv_SE.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-zh_CN.mo" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker-zh_CN.po" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/languages/plugin-update-checker.pot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/license.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/load-v4p11.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/plugin-update-checker.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/vendor/Parsedown.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/vendor/ParsedownLegacy.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/vendor/ParsedownModern.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plugin-update-checker-4.11/vendor/PucReadmeParser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tkt-sso.php" beforeDir="false" afterPath="$PROJECT_DIR$/tkt-sso.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classes/TkSsoUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/user-bar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/user-bar.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ajax/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/attach-cookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/attach-cookies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/TkSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoBroker.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cookies/remove-cookie.php" beforeDir="false" afterPath="$PROJECT_DIR$/cookies/remove-cookie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cookies/set-cookie.php" beforeDir="false" afterPath="$PROJECT_DIR$/cookies/set-cookie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elementor-add-on/conditionally-restrict-content.php" beforeDir="false" afterPath="$PROJECT_DIR$/elementor-add-on/conditionally-restrict-content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shortcodes/_shortcodes.php" beforeDir="false" afterPath="$PROJECT_DIR$/shortcodes/_shortcodes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,10 +27,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1xlvMEZDqtGbXE19XFDTNpIIfVI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -160,7 +70,7 @@
       <updated>1630942440099</updated>
       <workItem from="1630942442292" duration="320000" />
       <workItem from="1631004865510" duration="40000" />
-      <workItem from="1631526106486" duration="321000" />
+      <workItem from="1631526106486" duration="5397000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -169,10 +79,31 @@
       <option name="project" value="LOCAL" />
       <updated>1631526433003</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added update logic">
+      <created>1631526482377</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1631526482377</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Version Bump">
+      <created>1631526533974</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1631526533974</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="added update logic" />
+    <MESSAGE value="Version Bump" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version Bump" />
   </component>
 </project>

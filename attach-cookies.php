@@ -8,14 +8,16 @@ function tkAttachCookiesToAllBrokers()
     if (!is_admin() && (isset($_GET['loggedIn']) || isset($_GET['loggedOut']))) {
         global $tkSsoBroker;
         $brokers = $tkSsoBroker->getAllBrokers();
+        $token = $tkSsoBroker->getToken();
+        $cookieName = $tkSsoBroker->getCookieName();
         $html = '';
         if (!empty($brokers) && is_array($brokers)) {
             foreach ($brokers as $broker) {
                 if (get_home_url() != $broker) {
                     if (isset($_GET['loggedIn'])) {
-                        $html .= '<img style="display: none; width:0px; opacity: 0;" src="' . $broker . '/wp-content/plugins/tkt-sso/cookies/set-cookie.php/?tk_sso_token=' . $_COOKIE["tk_sso_token"] . '">';
+                        $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker/wp-content/plugins/tkt-sso/cookies/set-cookie.php/?$cookieName=$token'>";
                     } else {
-                        $html .= '<img style="display: none; width:0px; opacity: 0;" src="' . $broker . '/wp-content/plugins/tkt-sso/cookies/remove-cookie.php/?tk_sso_token==-1">';
+                        $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker/wp-content/plugins/tkt-sso/cookies/remove-cookie.php/?$cookieName=-1'>";
                     }
                 }
             }

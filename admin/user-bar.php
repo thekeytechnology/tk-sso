@@ -3,15 +3,15 @@
 // Add user bar if user is logged in
 
 function tkSsoUserBar($content) {
-    global $tkSsoBroker;
+    global $tkSsoUser;
 
-    if( !isset($_COOKIE['tk_sso_token'])) return $content;
+    if (!$tkSsoUser->isLoggedIn()) return $content;
 
-    $userName = $tkSsoBroker->authenticate($_COOKIE['tk_sso_token'], 'fullname');
-        $userbar = '
+    $userName = $tkSsoUser->getData('fullname');
+    $userbar = '
         <div class="tk-userbar">
             <div class="tk-d-flex tk-justify-content-between">
-            <h4>Hallo '. $userName .'</h4>
+            <h4>Hallo ' . $userName . '</h4>
             <a id="tkSsoLogOut">Log out</a>
             </div>
         </div>
