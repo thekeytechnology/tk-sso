@@ -23,7 +23,7 @@ if(! is_admin()) {
 
 require 'plugin-update-checker-4.11/plugin-update-checker.php';
 $updateChecker = Puc_v4_Factory::buildUpdateChecker(
-    'https://github.com/thekeytechnology/tk-sso.git',
+    'https://github.com/thekeytechnology/tk-sso',
     __FILE__,
     'tk-sso'
 );
