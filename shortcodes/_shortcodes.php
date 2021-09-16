@@ -21,7 +21,7 @@ function tkSsoSimpleLoginForm()
             <!-- Login Form -->
             <form>
                <div class="tkSSoSpinner"> 
-                    <img src="'. get_home_url() . '/wp-content/plugins/tkt-sso/assets/images/tk-sso-spinner.gif' . '">
+                    <img src="' . get_home_url() . '/wp-content/plugins/tk-sso/assets/images/tk-sso-spinner.gif' . '">
                </div>
               <input type="text" id="userName" class="fadeIn second" name="login" placeholder="login">
               <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">

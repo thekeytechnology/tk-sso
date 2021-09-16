@@ -2,16 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/classes/TkSsoUser.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/admin/TkSsoSettingsPage.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/admin-style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restrict-access/TkSsoRoleManager.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restrict-access/_restrict-access.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restrict-access/post-widget/TkSsoRestrictToRolesMetaBox.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restrict-access/post-widget/_post-widgets.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/restrict-access/post-widget/restrict-posts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/user-bar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/user-bar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/_admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/_admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/settings-page.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/enqueue-assets.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/enqueue-assets.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/sytle.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/attach-cookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/attach-cookies.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/TkSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoBroker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookies/remove-cookie.php" beforeDir="false" afterPath="$PROJECT_DIR$/cookies/remove-cookie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookies/set-cookie.php" beforeDir="false" afterPath="$PROJECT_DIR$/cookies/set-cookie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elementor-add-on/conditionally-restrict-content.php" beforeDir="false" afterPath="$PROJECT_DIR$/elementor-add-on/conditionally-restrict-content.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/TkSsoUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/_classes.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/_classes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elementor-add-on/_elementor-add-on.php" beforeDir="false" afterPath="$PROJECT_DIR$/restrict-access/elementor-add-on/_elementor-add-on.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/elementor-add-on/conditionally-restrict-content.php" beforeDir="false" afterPath="$PROJECT_DIR$/restrict-access/elementor-add-on/conditionally-restrict-content.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shortcodes/_shortcodes.php" beforeDir="false" afterPath="$PROJECT_DIR$/shortcodes/_shortcodes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tkt-sso.php" beforeDir="false" afterPath="$PROJECT_DIR$/tkt-sso.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +33,7 @@
     <option name="done" value="true" />
   </component>
   <component name="ComposerSettings">
+    <pharConfigPath>$PROJECT_DIR$/plugin-update-checker-4.11/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
@@ -51,6 +63,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="11" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
@@ -58,6 +71,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/restrict-access" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -70,7 +86,8 @@
       <updated>1630942440099</updated>
       <workItem from="1630942442292" duration="320000" />
       <workItem from="1631004865510" duration="40000" />
-      <workItem from="1631526106486" duration="5397000" />
+      <workItem from="1631526106486" duration="8442000" />
+      <workItem from="1631795221404" duration="2844000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -93,17 +110,38 @@
       <option name="project" value="LOCAL" />
       <updated>1631526533974</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Added user class as an api for the page, refactored a lot so we don't repeat ourselves">
+      <created>1631540811417</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1631540811417</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="added update logic" />
     <MESSAGE value="Version Bump" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version Bump" />
+    <MESSAGE value="Added user class as an api for the page, refactored a lot so we don't repeat ourselves" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added user class as an api for the page, refactored a lot so we don't repeat ourselves" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

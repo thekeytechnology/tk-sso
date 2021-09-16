@@ -101,7 +101,7 @@ class TkSsoBroker {
              */
             if ($response['authenticated'] == 1 && !empty($response['token'])) {
                 $this->successfullyAuthenticated($response['token']);
-                return ['authenticated' => true];
+                return apply_filters("tk-sso-login-success-return-array", ['authenticated' => true]);
             } /**
              * authentication error
              */

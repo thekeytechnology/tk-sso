@@ -15,9 +15,9 @@ function tkAttachCookiesToAllBrokers()
             foreach ($brokers as $broker) {
                 if (get_home_url() != $broker) {
                     if (isset($_GET['loggedIn'])) {
-                        $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker/wp-content/plugins/tkt-sso/cookies/set-cookie.php/?$cookieName=$token'>";
+                        $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker/wp-content/plugins/tk-sso/cookies/set-cookie.php/?$cookieName=$token'>";
                     } else {
-                        $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker/wp-content/plugins/tkt-sso/cookies/remove-cookie.php/?$cookieName=-1'>";
+                        $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker/wp-content/plugins/tk-sso/cookies/remove-cookie.php/?$cookieName=-1'>";
                     }
                 }
             }

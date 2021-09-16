@@ -15,8 +15,7 @@ add_filter('elementor/frontend/column/should_render', 'tkRestrictContainer', 10,
 
 
 // Functions
-function tkAddRestrictionControls($element)
-{
+function tkAddRestrictionControls($element) {
     $element->start_controls_section(
         'tk_control_section',
         [
@@ -27,26 +26,24 @@ function tkAddRestrictionControls($element)
     $element->add_control(
         'tk_enable_restriction',
         [
-            'label' => __('Einschränkung aktivieren', 'tkt-sso'),
+            'label' => __('Einschränkung aktivieren', 'tk-sso'),
             'type' => \Elementor\Controls_Manager::SWITCHER,
             'default' => '',
-            'label_on' => __('Yes', 'tkt-sso'),
-            'label_off' => __('No', 'tkt-sso'),
+            'label_on' => __('Yes', 'tk-sso'),
+            'label_off' => __('No', 'tk-sso'),
             'return_value' => 'yes',
         ]
     );
+    $roleManager = new TkSsoRoleManager();
+    $options = $roleManager->getRolesForRestriction();
 
     $element->add_control(
         'tk_show_content_to_roles',
         [
             'type' => \Elementor\Controls_Manager::SELECT2,
-            'label' => __('Inhalte für folgende Benutzerrollen zeigen', 'tkt-sso'),
-            'description' => __('', 'tkt-sso'),
-            'options' => [
-                'doctor' => __('Arzt', 'tkt-sso'),
-                'pharmacist' => __('Apotheker', 'tkt-sso'),
-                'not_logged_in' => __('Nicht eingeloggt', 'tkt-sso-sso')
-            ],
+            'label' => __('Inhalte für folgende Benutzerrollen zeigen', 'tk-sso'),
+            'description' => __('', 'tk-sso'),
+            'options' => $options,
             'separator' => 'before',
             'multiple' => true,
             'label_block' => true,
@@ -60,15 +57,15 @@ function tkAddRestrictionControls($element)
 }
 
 
-function tkRestrictWidget($content, $widget)
-{
-    global $tkSsoUser;
-    $currentUserRole = $tkSsoUser->getRole();
+function tkRestrictWidget($content, $widget) {
     if (is_admin()) return $content;
+
     $settings = $widget->get_settings_for_display();
     if (isset($settings['tk_enable_restriction']) && $settings['tk_enable_restriction'] == 'yes') {
         if (!empty($settings['tk_show_content_to_roles'])) {
-            if (!in_array($currentUserRole, $settings['tk_show_content_to_roles'])) {
+            $roleManager = new TkSsoRoleManager();
+            $allowedRoles = $settings['tk_show_content_to_roles'];
+            if (!$roleManager->userHasRole($allowedRoles)) {
                 return '';
             }
         }
@@ -78,13 +75,14 @@ function tkRestrictWidget($content, $widget)
 
 
 function tkRestrictContainer($should_render, $object) {
-    global $tkSsoUser;
-    $currentUserRole = $tkSsoUser->getRole();
     if (is_admin()) return $should_render;
+
     $settings = $object->get_settings_for_display();
     if (isset($settings['tk_enable_restriction']) && $settings['tk_enable_restriction'] == 'yes') {
         if (!empty($settings['tk_show_content_to_roles'])) {
-            if (!in_array($currentUserRole, $settings['tk_show_content_to_roles'])) {
+            $roleManager = new TkSsoRoleManager();
+            $allowedRoles = $settings['tk_show_content_to_roles'];
+            if (!$roleManager->userHasRole($allowedRoles)) {
                 return false;
             }
         }

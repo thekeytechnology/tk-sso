@@ -5,7 +5,7 @@ class TkSsoUser {
     private $loggedIn = false;
 
     public function getRole(): string {
-        return $this->isLoggedIn() ? $this->getData('role') : 'not_logged_in';
+        return $this->isLoggedIn() ? $this->getData('role') : TkSsoRoleManager::$ROLE_NOT_LOGGED_IN;
     }
 
     public function isLoggedIn(): bool {

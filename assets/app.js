@@ -9,7 +9,7 @@ jQuery(function ($) {
             if ($('#userName').val() != '' && $('#password').val() != '') {
                 $.ajax(
                     {
-                        url: "/wp-content/plugins/tkt-sso/ajax/login.php",
+                        url: "/wp-content/plugins/tk-sso/ajax/login.php",
                         type: 'GET',
                         async: false,
                         data: {
@@ -19,7 +19,7 @@ jQuery(function ($) {
                         success: function (result) {
                             result = jQuery.parseJSON(result);
 
-                            if(result == '') {
+                            if (result == '') {
                                 tkSsoErrorMessage('Leider gibt es aktuell technische Probleme. Wir arbeiten bereits an einer Lösung.')
                                 console.log('Error: Server sent empty response')
                             }
@@ -30,7 +30,14 @@ jQuery(function ($) {
                             }
 
                             else {
-                                window.location.href = window.location.href.split('?')[0] + "?loggedIn=true";
+                                const urlSearchParams = new URLSearchParams(window.location.search);
+
+                                const redirectTo = urlSearchParams.get("redirectTo");
+                                if (redirectTo) {
+                                    window.location.href = decodeURI(redirectTo);
+                                } else {
+                                    window.location.href = window.location.href.split('?')[0] + "?loggedIn=true";
+                                }
                             }
                         },
                     }
@@ -46,13 +53,12 @@ jQuery(function ($) {
     $('#tkSsoLogOut').click(function () {
         $.ajax(
             {
-                url: "/wp-content/plugins/tkt-sso/ajax/logout.php",
+                url: "/wp-content/plugins/tk-sso/ajax/logout.php",
                 type: 'GET',
                 async: false,
                 success: function (result) {
                     $('.tkSSoSpinner').removeClass('active');
                     window.location.href = window.location.href.split('?')[0] + "?loggedOut=true";
-
                 },
             }
         );
