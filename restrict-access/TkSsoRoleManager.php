@@ -14,6 +14,8 @@ class TkSsoRoleManager {
         $roles[] = $this::$ROLE_NOT_LOGGED_IN;
         $roles[] = $this::$ROLE_DOCCHECK;
 
+        $roles = array_combine($roles, $roles);
+
         return apply_filters($this::$FILTER_ROLES, $roles);
     }
 

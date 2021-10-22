@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/admin/TkSsoSettingsPage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/admin-style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restrict-access/TkSsoRoleManager.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restrict-access/_restrict-access.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restrict-access/post-widget/TkSsoRestrictToRolesMetaBox.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restrict-access/post-widget/_post-widgets.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/restrict-access/post-widget/restrict-posts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/_admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/_admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/settings-page.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/enqueue-assets.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/enqueue-assets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/sytle.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/attach-cookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/attach-cookies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/TkSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoBroker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/TkSsoUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/_classes.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/_classes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elementor-add-on/_elementor-add-on.php" beforeDir="false" afterPath="$PROJECT_DIR$/restrict-access/elementor-add-on/_elementor-add-on.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/elementor-add-on/conditionally-restrict-content.php" beforeDir="false" afterPath="$PROJECT_DIR$/restrict-access/elementor-add-on/conditionally-restrict-content.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shortcodes/_shortcodes.php" beforeDir="false" afterPath="$PROJECT_DIR$/shortcodes/_shortcodes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tkt-sso.php" beforeDir="false" afterPath="$PROJECT_DIR$/tkt-sso.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/restrict-access/post-widget/TkSsoRestrictToRolesMetaBox.php" beforeDir="false" afterPath="$PROJECT_DIR$/restrict-access/post-widget/TkSsoRestrictToRolesMetaBox.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +68,7 @@
       <workItem from="1630942442292" duration="320000" />
       <workItem from="1631004865510" duration="40000" />
       <workItem from="1631526106486" duration="8442000" />
-      <workItem from="1631795221404" duration="2844000" />
+      <workItem from="1631795221404" duration="3711000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -117,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631540811417</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added meta box to restrict access to posts by role, refactored some stuff">
+      <created>1631826995109</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1631826995109</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,7 +127,8 @@
     <MESSAGE value="added update logic" />
     <MESSAGE value="Version Bump" />
     <MESSAGE value="Added user class as an api for the page, refactored a lot so we don't repeat ourselves" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added user class as an api for the page, refactored a lot so we don't repeat ourselves" />
+    <MESSAGE value="Added meta box to restrict access to posts by role, refactored some stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added meta box to restrict access to posts by role, refactored some stuff" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

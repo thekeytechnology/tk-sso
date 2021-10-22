@@ -62,8 +62,8 @@ class TkSsoBroker {
                 'redirection' => 5,
                 'httpversion' => '1.0',
                 'blocking' => true,
-                'headers' => array(),
-                'body' => $data,
+                'headers' => array('Content-Type' => 'application/json; charset=utf-8'),
+                'body' => json_encode($data),
                 'cookies' => array()
             )
         );
