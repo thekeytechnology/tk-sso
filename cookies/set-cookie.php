@@ -1,4 +1,5 @@
 <?php
+include_once("../../../../wp-load.php");
 include_once("../classes/TkSsoBroker.php");
 
 /**
