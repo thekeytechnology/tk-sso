@@ -13,7 +13,10 @@ class TkSsoUser {
             return true;
         } else {
             global $tkSsoBroker;
-            $this->loggedIn = $tkSsoBroker->isUserLoggedIn();
+
+            $acceptWordpressLogin = get_option(TkSsoSettingsPage::$OPTION_ACCEPT_WORDPRESS_LOGIN);
+
+            $this->loggedIn = $tkSsoBroker->isUserLoggedIn() || ($acceptWordpressLogin == "1" && is_user_logged_in());
             return $this->loggedIn;
         }
 

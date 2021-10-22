@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/TkSsoSettingsPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/TkSsoSettingsPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/TkSsoUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoUser.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +69,7 @@
       <workItem from="1631526106486" duration="8442000" />
       <workItem from="1631795221404" duration="3711000" />
       <workItem from="1634905660094" duration="1354000" />
-      <workItem from="1634911911032" duration="652000" />
+      <workItem from="1634911911032" duration="1006000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -128,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634908017690</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added new setting">
+      <created>1634913387893</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1634913387893</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,7 +158,8 @@
     <MESSAGE value="Added meta box to restrict access to posts by role, refactored some stuff" />
     <MESSAGE value="Updated Plugin to work with Drupal Api" />
     <MESSAGE value="Version Bump" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version Bump" />
+    <MESSAGE value="added new setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="added new setting" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
