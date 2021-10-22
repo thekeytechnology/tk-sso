@@ -43,7 +43,7 @@ class TkSsoBroker {
     }
 
     public function getToken(): string {
-        return $_COOKIE[$this->getCookieName()];
+        return $_COOKIE[$this->getCookieName()] ?? "";
     }
 
 
