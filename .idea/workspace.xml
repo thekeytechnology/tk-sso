@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doccheck/doccheck-util.php" beforeDir="false" afterPath="$PROJECT_DIR$/doccheck/doccheck-util.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/restrict-access/TkSsoRoleManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/restrict-access/TkSsoRoleManager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tkt-sso.php" beforeDir="false" afterPath="$PROJECT_DIR$/tkt-sso.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +74,7 @@
       <workItem from="1634905660094" duration="1354000" />
       <workItem from="1634911911032" duration="2674000" />
       <workItem from="1636368041250" duration="1009000" />
+      <workItem from="1636412399533" duration="647000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -157,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634916283953</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="added doccheck support">
+      <created>1636412468388</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1636412468389</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +194,8 @@
     <MESSAGE value="added new setting" />
     <MESSAGE value="version bump" />
     <MESSAGE value="bugfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="bugfix" />
+    <MESSAGE value="added doccheck support" />
+    <option name="LAST_COMMIT_MESSAGE" value="added doccheck support" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

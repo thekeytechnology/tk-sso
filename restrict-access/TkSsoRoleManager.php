@@ -50,7 +50,7 @@ class TkSsoRoleManager {
         return false;
     }
 
-    private function getSystemRolesForCurrentUser() {
+    public function getSystemRolesForCurrentUser() {
         global $tkSsoUser;
 
         $roles = [];
