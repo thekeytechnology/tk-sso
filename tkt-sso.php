@@ -16,7 +16,9 @@ require_once "classes/_classes.php";
 require_once "functions.php";
 require_once "restrict-access/_restrict-access.php";
 require_once "shortcodes/_shortcodes.php";
-if(! is_admin()) {
+require_once("doccheck/_doccheck.php");
+
+if (!is_admin()) {
     require_once "attach-cookies.php";
 }
 

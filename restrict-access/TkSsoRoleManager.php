@@ -4,19 +4,24 @@ class TkSsoRoleManager {
 
     public static $ROLE_LOGGED_IN = "Logged In";
     public static $ROLE_NOT_LOGGED_IN = "Not Logged In";
-    public static $ROLE_DOCCHECK = "DocCheck";
-    public static $FILTER_ROLES = "tk_sso_roles_for_restriction";
+    public static $ROLE_WP_LOGGED_IN = "Wordpress Logged In";
+    public static $ROLE_WP_NOT_LOGGED_IN = "Wordpress Not Logged In";
+    public static $ROLE_DOCCHECK_LOGGED_IN = "DocCheck Logged In";
+    public static $ROLE_DOCCHECK_NOT_LOGGED_IN = "DocCheck Not Logged In";
+    public static $FILTER_ROLES_FOR_RESTRICTION = "tk_sso_roles_for_restriction";
+    public static $FILTER_SYSTEM_ROLES_FOR_CURRENT_USER = "tk_sso_system_roles_for_current_user";
 
     public function getRolesForRestriction() {
         $roles = [];
 
         $roles[] = $this::$ROLE_LOGGED_IN;
         $roles[] = $this::$ROLE_NOT_LOGGED_IN;
-        $roles[] = $this::$ROLE_DOCCHECK;
+        $roles[] = $this::$ROLE_WP_LOGGED_IN;
+        $roles[] = $this::$ROLE_WP_NOT_LOGGED_IN;
 
-        $roles = array_combine($roles, $roles);
+        $roles = apply_filters($this::$FILTER_ROLES_FOR_RESTRICTION, $roles);
 
-        return apply_filters($this::$FILTER_ROLES, $roles);
+        return array_combine($roles, $roles);
     }
 
     /**
@@ -30,18 +35,38 @@ class TkSsoRoleManager {
         }
 
         global $tkSsoUser;
+
+        $systemRoles = $this->getSystemRolesForCurrentUser();
+
         $userRole = $tkSsoUser->getRole();
 
-        if ($tkSsoUser->isLoggedIn()) {
-            if (in_array($this::$ROLE_LOGGED_IN, $roles)) {
-                return true;
-            }
-        } else {
-            if (in_array($this::$ROLE_NOT_LOGGED_IN, $roles)) {
+        $combinedRoles = array_merge($systemRoles, [$userRole]);
+        foreach ($combinedRoles as $role) {
+            if (in_array($role, $roles)) {
                 return true;
             }
         }
 
-        return in_array($userRole, $roles);
+        return false;
+    }
+
+    private function getSystemRolesForCurrentUser() {
+        global $tkSsoUser;
+
+        $roles = [];
+
+        if ($tkSsoUser->isLoggedIn()) {
+            $roles[] = $this::$ROLE_LOGGED_IN;
+        } else {
+            $roles[] = $this::$ROLE_NOT_LOGGED_IN;
+        }
+
+        if (is_user_logged_in()) {
+            $roles[] = $this::$ROLE_WP_LOGGED_IN;
+        } else {
+            $roles[] = $this::$ROLE_WP_NOT_LOGGED_IN;
+        }
+
+        return apply_filters($this::$FILTER_SYSTEM_ROLES_FOR_CURRENT_USER, $roles);
     }
 }
