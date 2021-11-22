@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doccheck/doccheck-util.php" beforeDir="false" afterPath="$PROJECT_DIR$/doccheck/doccheck-util.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restrict-access/TkSsoRoleManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/restrict-access/TkSsoRoleManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tkt-sso.php" beforeDir="false" afterPath="$PROJECT_DIR$/tkt-sso.php" afterDir="false" />
-    </list>
+    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,6 +70,7 @@
       <workItem from="1634911911032" duration="2674000" />
       <workItem from="1636368041250" duration="1009000" />
       <workItem from="1636412399533" duration="647000" />
+      <workItem from="1637592805859" duration="879000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -167,7 +163,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636412468389</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="removed most css as it applied to the entire page&#10;moved session start to plugin level to prevent warnings&#10;content restriction no longer applies when the user is logged in as admin or administrator">
+      <created>1637593101972</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1637593101972</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +198,8 @@
     <MESSAGE value="version bump" />
     <MESSAGE value="bugfix" />
     <MESSAGE value="added doccheck support" />
-    <option name="LAST_COMMIT_MESSAGE" value="added doccheck support" />
+    <MESSAGE value="removed most css as it applied to the entire page&#10;moved session start to plugin level to prevent warnings&#10;content restriction no longer applies when the user is logged in as admin or administrator" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed most css as it applied to the entire page&#10;moved session start to plugin level to prevent warnings&#10;content restriction no longer applies when the user is logged in as admin or administrator" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
