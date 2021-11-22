@@ -75,7 +75,7 @@ function tkRestrictWidget($content, $widget) {
 
 
 function tkRestrictContainer($should_render, $object) {
-    if (is_admin()) return $should_render;
+    if (is_admin() || current_user_can('editor') || current_user_can('administrator')) return $should_render;
 
     $settings = $object->get_settings_for_display();
     if (isset($settings['tk_enable_restriction']) && $settings['tk_enable_restriction'] == 'yes') {

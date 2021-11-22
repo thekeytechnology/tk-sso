@@ -2,13 +2,15 @@
 /*
 Plugin Name: TKT SSO
 Plugin URI:  https://www.thekey.technology
-Version:     12
+Version:     13
 Author:      the key technology
 Author URI:  https://www.thekey.technology
 License:     proprietary
 Text Domain: tkt
 */
-
+if (!session_id()) {
+    session_start();
+}
 
 require_once "assets/enqueue-assets.php";
 require_once "admin/_admin.php";

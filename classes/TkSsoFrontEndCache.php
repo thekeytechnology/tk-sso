@@ -10,9 +10,6 @@ class TkSsoFrontEndCache
 
     public function __construct()
     {
-        if (!session_id()) {
-            session_start();
-        }
 
         $this->sessionIndex = 'TkSsoAuthenticationData';
         $this->expiration = 300; //  5 Minutes

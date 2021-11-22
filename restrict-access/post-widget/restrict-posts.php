@@ -3,7 +3,7 @@
 add_action("template_redirect", function () {
     $post = get_queried_object();
 
-    if ($post instanceof WP_Post) {
+    if ($post instanceof WP_Post && (!current_user_can('editor') || current_user_can('administrator'))) {
         $restrictToRoles = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY, true);
         $roleManager = new TkSsoRoleManager();
 
