@@ -9,7 +9,7 @@ add_action('elementor/element/common/_section_style/before_section_start', 'tkAd
 add_action('elementor/element/column/layout/after_section_end', 'tkAddRestrictionControls', 10, 1);
 add_action('elementor/element/section/section_typo/after_section_end', 'tkAddRestrictionControls', 10, 1);
 
-add_filter('elementor/widget/render_content', 'tkRestrictWidget', 10, 2);
+add_filter('elementor/frontend/widget/should_render', 'tkRestrictContainer', 10, 2);
 add_filter('elementor/frontend/section/should_render', 'tkRestrictContainer', 10, 2);
 add_filter('elementor/frontend/column/should_render', 'tkRestrictContainer', 10, 2);
 
@@ -56,26 +56,8 @@ function tkAddRestrictionControls($element) {
     $element->end_controls_section();
 }
 
-
-function tkRestrictWidget($content, $widget) {
-    if (is_admin()) return $content;
-
-    $settings = $widget->get_settings_for_display();
-    if (isset($settings['tk_enable_restriction']) && $settings['tk_enable_restriction'] == 'yes') {
-        if (!empty($settings['tk_show_content_to_roles'])) {
-            $roleManager = new TkSsoRoleManager();
-            $allowedRoles = $settings['tk_show_content_to_roles'];
-            if (!$roleManager->userHasRole($allowedRoles)) {
-                return '';
-            }
-        }
-    }
-    return $content;
-}
-
-
 function tkRestrictContainer($should_render, $object) {
-    if (!tkSsoShouldRestrict()) return $should_render;
+    if (is_admin() || current_user_can('editor') || current_user_can('administrator')) return $should_render;
 
     $settings = $object->get_settings_for_display();
     if (isset($settings['tk_enable_restriction']) && $settings['tk_enable_restriction'] == 'yes') {
@@ -83,9 +65,10 @@ function tkRestrictContainer($should_render, $object) {
             $roleManager = new TkSsoRoleManager();
             $allowedRoles = $settings['tk_show_content_to_roles'];
             if (!$roleManager->userHasRole($allowedRoles)) {
-                return false;
+                $should_render = false;
             }
         }
+        return apply_filters("tk-sso-restrict-content-elementor-should-render", $should_render, $object);
     }
     return $should_render;
 }

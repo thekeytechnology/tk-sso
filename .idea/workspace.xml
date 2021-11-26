@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restrict-access/_restrict-access.php" beforeDir="false" afterPath="$PROJECT_DIR$/restrict-access/_restrict-access.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restrict-access/elementor-add-on/conditionally-restrict-content.php" beforeDir="false" afterPath="$PROJECT_DIR$/restrict-access/elementor-add-on/conditionally-restrict-content.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/restrict-access/post-widget/restrict-posts.php" beforeDir="false" afterPath="$PROJECT_DIR$/restrict-access/post-widget/restrict-posts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tkt-sso.php" beforeDir="false" afterPath="$PROJECT_DIR$/tkt-sso.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +72,8 @@
       <workItem from="1634911911032" duration="2674000" />
       <workItem from="1636368041250" duration="1009000" />
       <workItem from="1636412399533" duration="647000" />
-      <workItem from="1637592805859" duration="1733000" />
+      <workItem from="1637592805859" duration="3328000" />
+      <workItem from="1637850812424" duration="598000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -183,7 +180,21 @@
       <option name="project" value="LOCAL" />
       <updated>1637593821632</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="bigfix">
+      <created>1637594578922</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1637594578922</updated>
+    </task>
+    <task id="LOCAL-00017" summary="bigfix">
+      <created>1637594643978</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1637594643978</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
