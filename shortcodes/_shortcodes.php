@@ -2,8 +2,7 @@
 
 add_shortcode('tk-sso-simple-login-form', 'tkSsoSimpleLoginForm');
 
-function tkSsoSimpleLoginForm()
-{
+function tkSsoSimpleLoginForm() {
     global $tkSsoUser;
     if ($tkSsoUser->isLoggedIn()) return '';
     return '
@@ -38,3 +37,16 @@ function tkSsoSimpleLoginForm()
         </div>
     ';
 }
+
+function tkSsoGetUserDataShortcode($atts = []) {
+    $key = $atts['key'] ?? "";
+
+    if ($key) {
+        global $tkSsoUser;
+        $tkSsoUser->getData($key);
+    }
+
+    return "";
+}
+
+add_shortcode("tk-sso-user-data", "tkSsoGetUserDataShortcode");
