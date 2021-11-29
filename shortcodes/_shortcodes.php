@@ -43,7 +43,7 @@ function tkSsoGetUserDataShortcode($atts = []) {
 
     if ($key) {
         global $tkSsoUser;
-        $tkSsoUser->getData($key);
+        return $tkSsoUser->getData($key);
     }
 
     return "";
