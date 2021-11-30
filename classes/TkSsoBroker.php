@@ -198,7 +198,7 @@ class TkSsoBroker {
     }
 
     public function getAllBrokers() {
-        $response = $this->request('GET', 'gatAllBrokers');
+        $response = $this->request('GET', 'getAllBrokers');
         if (!empty($response) && !isset($response['error'])) {
             return $response;
         }
