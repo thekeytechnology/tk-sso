@@ -10,8 +10,6 @@ function tkAttachCookiesToAllBrokers() {
         $token = $tkSsoBroker->getToken();
         $cookieName = $tkSsoBroker->getCookieName();
         $html = '';
-        $html .= "<h1>TEST DANIEL</h1>";
-        $html .= "<pre>" . print_r($brokers, true) . "</pre>";
         if (!empty($brokers) && is_array($brokers)) {
             foreach ($brokers as $broker) {
                 if (get_home_url() != $broker) {
