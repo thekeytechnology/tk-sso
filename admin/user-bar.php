@@ -12,7 +12,7 @@ function tkSsoUserBar($content) {
         <div class="tk-userbar">
             <div class="tk-d-flex tk-justify-content-between">
             <h4>Hallo ' . $userName . '</h4>
-            <a id="tkSsoLogOut">Log out</a>
+            <a id="tkSsoLogOut" class="tk-sso-logout-link">Log out</a>
             </div>
         </div>
         ';

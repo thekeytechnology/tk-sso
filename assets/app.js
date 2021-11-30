@@ -1,5 +1,5 @@
 jQuery(function ($) {
-    $('#tkSsoLogIn').click(function () {
+    $('.tk-sso-login-submit').click(function () {
 
         setTimeout(function () {
             $('.tkSSoSpinner').addClass('active');
@@ -50,7 +50,7 @@ jQuery(function ($) {
 
     })
 
-    $('#tkSsoLogOut').click(function () {
+    $('.tk-sso-logout-link').click(function () {
         $.ajax(
             {
                 url: "/wp-content/plugins/tk-sso/ajax/logout.php",
