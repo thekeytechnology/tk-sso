@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/attach-cookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/attach-cookies.php" afterDir="false" />
-    </list>
+    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +71,7 @@
       <workItem from="1636368041250" duration="1009000" />
       <workItem from="1636412399533" duration="647000" />
       <workItem from="1637592805859" duration="3328000" />
-      <workItem from="1637850812424" duration="7106000" />
+      <workItem from="1637850812424" duration="7505000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -216,7 +213,21 @@
       <option name="project" value="LOCAL" />
       <updated>1638157584644</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Bugfix">
+      <created>1638299734848</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1638299734848</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Bugfix">
+      <created>1638299792953</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1638299792953</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +241,17 @@
         <option value="Default.Date" />
         <option value="Default.Subject" />
       </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
@@ -247,7 +269,8 @@
     <MESSAGE value="removed most css as it applied to the entire page&#10;moved session start to plugin level to prevent warnings&#10;content restriction no longer applies when the user is logged in as admin or administrator" />
     <MESSAGE value="bigfix" />
     <MESSAGE value="apply should_render filter to widget instead of removing the widget content, added filter to should_render function to allow for further refining" />
-    <option name="LAST_COMMIT_MESSAGE" value="apply should_render filter to widget instead of removing the widget content, added filter to should_render function to allow for further refining" />
+    <MESSAGE value="Bugfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfix" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
