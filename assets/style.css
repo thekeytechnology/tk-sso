@@ -33,6 +33,11 @@
 .tkSSoSpinner.active {
     display: flex;
 }
+
 .tkSSoSpinner img {
     width: 50px;
+}
+
+.tk-sso-logout-link:hover {
+    cursor: pointer;
 }
