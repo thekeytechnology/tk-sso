@@ -1,6 +1,8 @@
 jQuery(function ($) {
-    $('.tk-sso-login-submit').click(function () {
 
+    const tkSsoForm = $(".tk-sso-login-form");
+
+    const tkSsoFormSubmit = () => {
         setTimeout(function () {
             $('.tkSSoSpinner').addClass('active');
         }, 100);
@@ -27,9 +29,7 @@ jQuery(function ($) {
                             if ('error' in result) {
                                 $('.tkSSoSpinner').removeClass('active');
                                 tkSsoErrorMessage(result.error);
-                            }
-
-                            else {
+                            } else {
                                 const urlSearchParams = new URLSearchParams(window.location.search);
 
                                 const redirectTo = urlSearchParams.get("redirectTo");
@@ -47,8 +47,21 @@ jQuery(function ($) {
                 $('.tkSSoSpinner').removeClass('active');
             }
         }, 400)
-
+    }
+    $(tkSsoForm).find('.tk-sso-login-submit').click(function () {
+        tkSsoFormSubmit();
     })
+
+    const tkSsoInputFields = $(tkSsoForm).find('input');
+
+    tkSsoInputFields.bind("enterKey", function (e) {
+        tkSsoFormSubmit();
+    });
+    tkSsoInputFields.keyup(function (e) {
+        if (e.keyCode == 13) {
+            $(this).trigger("enterKey");
+        }
+    });
 
     $('.tk-sso-logout-link').click(function () {
         $.ajax(
@@ -65,7 +78,7 @@ jQuery(function ($) {
     })
 
     $("input").keyup(function () {
-        $('#tkSsoError').removeClass('active');
+        ('#tkSsoError').removeClass('active');
     })
 
     function tkSsoErrorMessage(message) {
@@ -73,6 +86,7 @@ jQuery(function ($) {
         $('#tkSsoError').html(message);
         $('#tkSsoError').addClass('active');
     }
+
 
 })
 
