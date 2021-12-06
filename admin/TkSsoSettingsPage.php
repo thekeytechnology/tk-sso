@@ -4,6 +4,7 @@ class TkSsoSettingsPage {
 
     public static $OPTION_SERVER_URL = "tkt_sso_server_url";
     public static $OPTION_LOGIN_URL = "tkt_sso_login_url";
+    public static $OPTION_LOGIN_REDIRECT_URL = "tkt_sso_login_redirect_url";
     public static $OPTION_ACCEPT_WORDPRESS_LOGIN = "tkt_sso_accept_wordpress_login";
 
     public function init() {
@@ -14,6 +15,7 @@ class TkSsoSettingsPage {
     public function registerSettings() {
         $this->registerSetting($this::$OPTION_SERVER_URL, "https://www.mypersonaltrainer.de/wp-content/themes/tkt/sso-server/api.php");
         $this->registerSetting($this::$OPTION_LOGIN_URL, "");
+        $this->registerSetting($this::$OPTION_LOGIN_REDIRECT_URL, "/");
         $this->registerSetting($this::$OPTION_ACCEPT_WORDPRESS_LOGIN, "0", ["description" => "0 = Nur der Login via Login Formular kann geschützte Inhalte freigeben. 1 = Wer im Wordpress angemeldet ist, wird behandelt, als wäre er via Drupal angemeldet."]);
     }
 
@@ -56,6 +58,18 @@ class TkSsoSettingsPage {
                             <input name="<?php echo $this::$OPTION_LOGIN_URL ?>" type="text"
                                    id="<?php echo $this::$OPTION_LOGIN_URL ?>"
                                    value="<?php echo get_option($this::$OPTION_LOGIN_URL); ?>"
+                                   class="regular-text code">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="<?php echo $this::$OPTION_LOGIN_REDIRECT_URL ?>">SSO Login Standard Redirect
+                                Url</label>
+                        </th>
+                        <td>
+                            <input name="<?php echo $this::$OPTION_LOGIN_REDIRECT_URL ?>" type="text"
+                                   id="<?php echo $this::$OPTION_LOGIN_REDIRECT_URL ?>"
+                                   value="<?php echo get_option($this::$OPTION_LOGIN_REDIRECT_URL); ?>"
                                    class="regular-text code">
                         </td>
                     </tr>

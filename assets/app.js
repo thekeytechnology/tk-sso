@@ -32,9 +32,18 @@ jQuery(function ($) {
                             } else {
                                 const urlSearchParams = new URLSearchParams(window.location.search);
 
-                                const redirectTo = urlSearchParams.get("redirectTo");
+                                let redirectTo = urlSearchParams.get("redirectTo");
                                 if (redirectTo) {
-                                    window.location.href = decodeURI(redirectTo);
+                                    redirectTo = decodeURI(redirectTo)
+                                } else {
+                                    redirectTo = tkSsoSettings.redirectUrl
+                                }
+
+                                if (redirectTo) {
+                                    const url = new URL(redirectTo, window.location.protocol + "//" + window.location.host);
+                                    const params = new URLSearchParams(url.search);
+                                    params.append("loggedIn", "true");
+                                    window.location.href = redirectTo + "?" + params.toString();
                                 } else {
                                     window.location.href = window.location.href.split('?')[0] + "?loggedIn=true";
                                 }
@@ -86,7 +95,5 @@ jQuery(function ($) {
         $('#tkSsoError').html(message);
         $('#tkSsoError').addClass('active');
     }
-
-
 })
 
