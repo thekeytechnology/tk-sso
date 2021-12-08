@@ -16,7 +16,7 @@ function tkAttachCookiesToAllBrokers() {
                     if (isset($_GET['loggedIn'])) {
                         $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker?$cookieName=$token'>";
                     } else {
-                        $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker?$cookieName=-1'>";
+                        $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker?$cookieName='>";
                     }
                 }
             }

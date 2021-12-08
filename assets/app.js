@@ -87,7 +87,7 @@ jQuery(function ($) {
     })
 
     $("input").keyup(function () {
-        ('#tkSsoError').removeClass('active');
+        $('#tkSsoError').removeClass('active');
     })
 
     function tkSsoErrorMessage(message) {
