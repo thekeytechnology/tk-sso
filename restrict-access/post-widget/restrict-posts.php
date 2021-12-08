@@ -1,20 +1,64 @@
 <?php
 
-add_action("template_redirect", function () {
-    $post = get_queried_object();
+class TkSsoRestrictToRolesMetaBox {
 
-    if ($post instanceof WP_Post && tkSsoShouldRestrict()) {
-        $restrictToRoles = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY, true);
-        $roleManager = new TkSsoRoleManager();
+    public static $META_KEY = "tk-sso-restrict-to-roles";
+    public static $META_KEY_REDIRECT = "tk-sso-restrict-to-roles-redirect";
+    public static $STRING_REPLACE_URL = "{{url}}";
 
-        if (!($roleManager->userHasRole($restrictToRoles))) {
-            global $wp;
-            $currentUrl = home_url($wp->request);
-            $loginUrl = get_option(TkSsoSettingsPage::$OPTION_LOGIN_URL);
+    private static $META_BOX_ID = "tkSsoRestrictAccessMetaBox";
+    private static $POST_PARAM_NAME = "tkSsoRestrictToRoles";
+    private static $POST_PARAM_NAME_REDIRECT = "tkSsoRestrictToRolesRedirect";
 
-            $loginWithRedirect = $loginUrl . "?redirectTo=" . urlencode($currentUrl);
-
-            wp_redirect($loginWithRedirect);
-        }
+    public function init() {
+        add_action('add_meta_boxes', [$this, 'addMetaBox'], 10, 2);
+        add_action('save_post', [$this, 'saveMetaBox'], 10, 1);
     }
-});
+
+    public function renderMetaBox($post) {
+
+        $roleManager = new TkSsoRoleManager();
+        $roles = $roleManager->getRolesForRestriction();
+        $selectedValues = get_post_meta($post->ID, $this::$META_KEY, true);
+        $redirect = get_post_meta($post->ID, $this::$META_KEY_REDIRECT, true);
+
+        ?>
+        <div class="tk-meta-box-multiselect">
+            <!--            <input type="hidden" name="--><?php //echo $this::$POST_PARAM_NAME ?><!--" value="0">-->
+            <ul id="tkSso-restrict-access-roles-list" class="categorychecklist form-no-clear">
+                <?php foreach ($roles as $role) {
+                    $checked = in_array($role, $selectedValues) ? "checked='checked'" : "";
+                    echo "<li id='$role'><label class='selectit'><input value='$role' type='checkbox'
+                                                                      name='{$this::$POST_PARAM_NAME}[]'
+                                                                      id='$role' $checked> $role</label></li>";
+                } ?>
+            </ul>
+            <input type="text" name="<?php echo $this::$POST_PARAM_NAME_REDIRECT ?>" value="<?php echo $redirect ?>"/>
+            <div>
+                <small>Custom Redirect wenn Nutzer nicht die entsprechenden Rollen hat. {{url}} entspricht der aktuellen
+                    Url. Beispiel: /login/?redirectTo={{url}}</small>
+            </div>
+        </div>
+        <?php
+    }
+
+    public function addMetaBox($postType, $post) {
+        add_meta_box(
+            $this::$META_BOX_ID,
+            'Zugriff beschränken',
+            [$this, 'renderMetaBox'],
+            $postType,
+            'side',
+            'default'
+        );
+    }
+
+
+    public function saveMetaBox($postId) {
+        $selectedValues = $_POST[$this::$POST_PARAM_NAME] ?? [];
+        update_post_meta($postId, $this::$META_KEY, $selectedValues);
+
+        $redirect = $_POST[$this::$POST_PARAM_NAME_REDIRECT] ?? [];
+        update_post_meta($postId, $this::$META_KEY_REDIRECT, $redirect);
+    }
+}
