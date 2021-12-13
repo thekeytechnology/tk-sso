@@ -20,7 +20,10 @@ class TkSsoRestrictToRolesMetaBox {
         $roleManager = new TkSsoRoleManager();
         $roles = $roleManager->getRolesForRestriction();
         $selectedValues = get_post_meta($post->ID, $this::$META_KEY, true);
-        $redirect = get_post_meta($post->ID, $this::$META_KEY_REDIRECT, true);
+        $redirect = get_post_meta($post->ID, $this::$META_KEY_REDIRECT)[0] ?? "";
+        if (is_array($redirect)) {
+            $redirect = $redirect[0] ?? "";
+        }
 
         ?>
         <div class="tk-meta-box-multiselect">
