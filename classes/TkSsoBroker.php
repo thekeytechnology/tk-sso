@@ -57,6 +57,7 @@ class TkSsoBroker {
     protected function request(string $method, string $command, $data = null) {
         $url = $this->url;
         $data['command'] = $command;
+        add_filter('https_ssl_verify', '__return_false');
         $response = wp_remote_post($url, array(
                 'method' => $method,
                 'timeout' => 45,
@@ -102,7 +103,11 @@ class TkSsoBroker {
              */
             if ($response['authenticated'] == 1 && !empty($response['token'])) {
                 $this->successfullyAuthenticated($response['token']);
-                return apply_filters("tk-sso-login-success-return-array", ['authenticated' => true]);
+                $brokers = $this->getAllBrokers();
+                return apply_filters("tk-sso-login-success-return-array", [
+                    'authenticated' => true,
+                    'brokers' => $brokers
+                ]);
             } /**
              * authentication error
              */
@@ -137,6 +142,7 @@ class TkSsoBroker {
         }
         $this->request('POST', 'logout', ['token' => $token]);
         $this->tkSsoFrontEndCache->unsetAuthenticationData();
+        unset($_COOKIE[$this->getCookieName()]);
     }
 
     /**
@@ -177,7 +183,7 @@ class TkSsoBroker {
         /**
          * authentication error
          */
-        if (!$response['authenticated']) {
+        if (!is_array($response) || !$response['authenticated']) {
             return ['error' => 'Bitte melden Sie sich erneut an'];
         }
 

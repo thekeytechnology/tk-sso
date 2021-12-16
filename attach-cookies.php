@@ -24,3 +24,11 @@ function tkAttachCookiesToAllBrokers() {
         echo $html;
     }
 }
+
+add_action("wp_loaded", function () {
+    if (isset($_GET['loggedOut'])) {
+        global $tkSsoBroker;
+        $token = $tkSsoBroker->getToken();
+        $tkSsoBroker->logout($token);
+    }
+});

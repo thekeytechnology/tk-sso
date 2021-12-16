@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/tk-sso-spinner.gif" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/tk-sso-spinner.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/attach-cookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/attach-cookies.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/TkSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoBroker.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +30,12 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/restrict-access/post-widget/restrict-posts.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/restrict-access/post-widget/_post-widgets.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tkt-sso.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/restrict-access/post-widget/TkSsoRestrictToRolesMetaBox.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -75,7 +85,8 @@
       <workItem from="1637592805859" duration="3328000" />
       <workItem from="1637850812424" duration="7505000" />
       <workItem from="1638300399199" duration="5138000" />
-      <workItem from="1638774517281" duration="5300000" />
+      <workItem from="1638774517281" duration="5925000" />
+      <workItem from="1639666643740" duration="571000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -301,7 +312,21 @@
       <option name="project" value="LOCAL" />
       <updated>1639019595533</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="bugfix">
+      <created>1639365539562</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1639365539562</updated>
+    </task>
+    <task id="LOCAL-00034" summary="bugfix">
+      <created>1639365548534</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1639365548534</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,14 +364,14 @@
     <MESSAGE value="Version Bump" />
     <MESSAGE value="added new setting" />
     <MESSAGE value="version bump" />
-    <MESSAGE value="bugfix" />
     <MESSAGE value="added doccheck support" />
     <MESSAGE value="removed most css as it applied to the entire page&#10;moved session start to plugin level to prevent warnings&#10;content restriction no longer applies when the user is logged in as admin or administrator" />
     <MESSAGE value="bigfix" />
     <MESSAGE value="apply should_render filter to widget instead of removing the widget content, added filter to should_render function to allow for further refining" />
     <MESSAGE value="Bugfix" />
     <MESSAGE value="Added custom redirect to Meta Box" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added custom redirect to Meta Box" />
+    <MESSAGE value="bugfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="bugfix" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

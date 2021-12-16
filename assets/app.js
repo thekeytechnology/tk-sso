@@ -30,22 +30,11 @@ jQuery(function ($) {
                                 $('.tkSSoSpinner').removeClass('active');
                                 tkSsoErrorMessage(result.error);
                             } else {
-                                const urlSearchParams = new URLSearchParams(window.location.search);
-
-                                let redirectTo = urlSearchParams.get("redirectTo");
-                                if (redirectTo) {
-                                    redirectTo = decodeURI(redirectTo)
+                                const redirect = getRedirectUrlParam();
+                                if (redirect) {
+                                    window.location.href = window.location.href.split('?')[0] + "?loggedIn=true&redirectTo=" + redirect
                                 } else {
-                                    redirectTo = tkSsoSettings.redirectUrl
-                                }
-
-                                if (redirectTo) {
-                                    const url = new URL(redirectTo, window.location.protocol + "//" + window.location.host);
-                                    const params = new URLSearchParams(url.search);
-                                    params.append("loggedIn", "true");
-                                    window.location.href = redirectTo + "?" + params.toString();
-                                } else {
-                                    window.location.href = window.location.href.split('?')[0] + "?loggedIn=true";
+                                    window.location.href = window.location.href.split('?')[0] + "?loggedIn=true"
                                 }
                             }
                         },
@@ -57,6 +46,7 @@ jQuery(function ($) {
             }
         }, 400)
     }
+
     $(tkSsoForm).find('.tk-sso-login-submit').click(function () {
         tkSsoFormSubmit();
     })
@@ -95,5 +85,33 @@ jQuery(function ($) {
         $('#tkSsoError').html(message);
         $('#tkSsoError').addClass('active');
     }
+
+    const getRedirectUrlParam = () => {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+
+        let redirectTo = urlSearchParams.get("redirectTo");
+        if (redirectTo) {
+            redirectTo = decodeURI(redirectTo)
+        } else {
+            redirectTo = tkSsoSettings.redirectUrl
+        }
+
+        return redirectTo;
+    }
+
+    const redirectAfterLogin = () => {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        if ((params.loggedIn === "true") && params.redirectTo) {
+            const redirectTo = getRedirectUrlParam();
+            if (redirectTo) {
+                window.location.href = redirectTo;
+            } else {
+                window.location.href = window.location.href.split('?')[0];
+            }
+        }
+    }
+    redirectAfterLogin();
+
 })
 
