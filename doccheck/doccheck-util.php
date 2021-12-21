@@ -14,6 +14,25 @@ function tkSsoGetDocCheckClient(): \DCL\Client\DCL_Client {
     return new DCL\Client\DCL_Client("dc-login", "1.1.0");
 }
 
+function tkSsoIsDocCheckLogin(): bool {
+    return isset($_GET['dc']) && $_GET['dc'] == 1 && isset($_GET['dc_timestamp']);
+}
+
+add_action("wp_loaded", function () {
+    if (tkSsoIsDocCheckLogin()) {
+        tkSsoGetDocCheckClient()->dcl_do_login();
+    }
+});
+
+add_filter("wp_redirect", function ($location) {
+    if ($location == false && tkSsoIsDocCheckLogin()) {
+        return "/";
+    }
+
+    return $location;
+});
+
+
 add_shortcode('tk-sso-status', function () {
 
     $client = tkSsoGetDocCheckClient();

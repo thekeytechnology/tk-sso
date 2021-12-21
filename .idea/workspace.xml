@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/tk-sso-spinner.gif" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/tk-sso-spinner.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/attach-cookies.php" beforeDir="false" afterPath="$PROJECT_DIR$/attach-cookies.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/TkSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoBroker.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doccheck/doccheck-util.php" beforeDir="false" afterPath="$PROJECT_DIR$/doccheck/doccheck-util.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,12 +51,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="11" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/doccheck" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/doccheck" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -86,7 +84,7 @@
       <workItem from="1637850812424" duration="7505000" />
       <workItem from="1638300399199" duration="5138000" />
       <workItem from="1638774517281" duration="5925000" />
-      <workItem from="1639666643740" duration="571000" />
+      <workItem from="1639666643740" duration="1863000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -326,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639365548534</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Updates to make it work with drupal">
+      <created>1639667327813</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1639667327813</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,7 +376,8 @@
     <MESSAGE value="Bugfix" />
     <MESSAGE value="Added custom redirect to Meta Box" />
     <MESSAGE value="bugfix" />
-    <option name="LAST_COMMIT_MESSAGE" value="bugfix" />
+    <MESSAGE value="Updates to make it work with drupal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates to make it work with drupal" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
