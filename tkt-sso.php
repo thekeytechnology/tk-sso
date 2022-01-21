@@ -2,7 +2,7 @@
 /*
 Plugin Name: TKT SSO
 Plugin URI:  https://www.thekey.technology
-Version:     31
+Version:     32
 Author:      the key technology
 Author URI:  https://www.thekey.technology
 License:     proprietary
@@ -24,6 +24,9 @@ if (!is_admin()) {
     require_once "attach-cookies.php";
 }
 
+if(get_option("tk-development-mode")){
+    require_once("demo/_demo.php");
+}
 
 require 'plugin-update-checker-4.11/plugin-update-checker.php';
 $updateChecker = Puc_v4_Factory::buildUpdateChecker(
