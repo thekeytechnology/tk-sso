@@ -7,7 +7,7 @@ function tkSsoSimpleLoginForm()
     global $tkSsoUser;
     if ($tkSsoUser->isLoggedIn()) return '';
     return '
-        <div class="wrapper fadeInDown">
+        <div id="tkSsoDemoLoginForm" class="wrapper fadeInDown" >
           <div id="formContent">
             <!-- Tabs Titles -->
             <h2 class="active"> Sign In </h2>

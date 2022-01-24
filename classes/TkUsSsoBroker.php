@@ -2,10 +2,12 @@
 
 class TkUsSsoBroker extends TkSsoBroker
 {
-    public static string $LOGIN_API = "https://staging.api.identity.infectopharm.com/api/sso/login";
-    public static string $LOGOUT_API = "https://staging.api.identity.infectopharm.com/api/sso/logout";
-    public static string $AUTHENTICATE_API = "https://staging.api.identity.infectopharm.com/api/sso/authenticate";
-    public static string $ALL_BROKERS_API = "https://staging.api.identity.infectopharm.com/api/sso/brokers ";
+    public static string $LOGIN_API = "/sso/login";
+    public static string $LOGOUT_API = "/sso/logout";
+    public static string $AUTHENTICATE_API = "/sso/authenticate";
+    public static string $ALL_BROKERS_API = "/sso/brokers";
+
+
 
     /**
      * @param $name
@@ -15,7 +17,7 @@ class TkUsSsoBroker extends TkSsoBroker
     public function login($name, $password)
     {
         if (!empty($name) && !empty($password)) {
-            $response = $this->request($this::$LOGIN_API, 'POST', 'login', ['name' => $name, 'password' => $password]);
+            $response = $this->request(get_option('tkt_sso_server_url') . $this::$LOGIN_API, 'POST', 'login', ['name' => $name, 'password' => $password]);
 
             if (isset($response['error'])) {
                 if ($response['error'] == 'unspecified-auth-exception') {
@@ -63,7 +65,7 @@ class TkUsSsoBroker extends TkSsoBroker
                 setcookie($this->getCookieName(), '', time() - 3600, '/');
             }
         }
-        $this->request($this::$LOGOUT_API, 'POST', 'logout', ['token' => $token]);
+        $this->request(get_option('tkt_sso_server_url') . $this::$LOGOUT_API, 'POST', 'logout', ['token' => $token]);
         $this->tkSsoFrontEndCache->unsetAuthenticationData();
         unset($_COOKIE[$this->getCookieName()]);
     }
@@ -93,7 +95,7 @@ class TkUsSsoBroker extends TkSsoBroker
             $response = $this->tkSsoFrontEndCache->getCachedAuthenticationData();
             $response['cached'] = 'cached';
         } else {
-            $response = $this->request($this::$AUTHENTICATE_API, 'POST', 'authenticate', ['token' => $token]);
+            $response = $this->request(get_option('tkt_sso_server_url') . $this::$AUTHENTICATE_API, 'POST', 'authenticate', ['token' => $token]);
         }
 
         /**
@@ -127,7 +129,7 @@ class TkUsSsoBroker extends TkSsoBroker
     public function getAllBrokers()
     {
         $token = $this->getToken();
-        $response = $this->request($this::$ALL_BROKERS_API, 'POST', 'getAllBrokers', ['token' => $token]);
+        $response = $this->request(get_option('tkt_sso_server_url') .$this::$ALL_BROKERS_API, 'POST', 'getAllBrokers', ['token' => $token]);
         if (!empty($response) && !isset($response['error'])) {
             return $response;
         }

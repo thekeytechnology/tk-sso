@@ -18,10 +18,12 @@ function tkSsoUserBar($content)
     if (!isset($_COOKIE['tk_sso_token'])) return $content;
     $userName = $tkSsoBroker->authenticate("firstname", $_COOKIE['tk_sso_token']);
     $userbar = '
-        <div class="tk-userbar">
-            <div class="tk-d-flex tk-justify-content-between">
-            <h4>Hallo ' . $userName . '</h4>
-            <a id="tkSsoLogOut">Log out</a>
+        <div id="tkSsoDemoLoginForm">
+            <div class="tk-userbar">
+                <div class="tk-d-flex tk-justify-content-between">
+                <h4>Hallo ' . $userName . '</h4>
+                <a id="tkSsoLogOut">Log out</a>
+                </div>
             </div>
         </div>
         ';
