@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doccheck/doccheck-util.php" beforeDir="false" afterPath="$PROJECT_DIR$/doccheck/doccheck-util.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +34,7 @@
     <setting file="file://$PROJECT_DIR$/restrict-access/post-widget/TkSsoRestrictToRolesMetaBox.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="1xlvMEZDqtGbXE19XFDTNpIIfVI" />
   <component name="ProjectLevelVcsManager">
@@ -84,7 +83,8 @@
       <workItem from="1637850812424" duration="7505000" />
       <workItem from="1638300399199" duration="5138000" />
       <workItem from="1638774517281" duration="5925000" />
-      <workItem from="1639666643740" duration="1863000" />
+      <workItem from="1639666643740" duration="2583000" />
+      <workItem from="1640130116153" duration="596000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -331,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639667327813</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Implemented DocCheck Login">
+      <created>1640047579259</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1640047579259</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,7 +384,8 @@
     <MESSAGE value="Added custom redirect to Meta Box" />
     <MESSAGE value="bugfix" />
     <MESSAGE value="Updates to make it work with drupal" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updates to make it work with drupal" />
+    <MESSAGE value="Implemented DocCheck Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented DocCheck Login" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
