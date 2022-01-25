@@ -9,10 +9,12 @@ function tkSsoUserBar($content) {
 
     $userName = $tkSsoUser->getData('fullname');
     $userbar = '
-        <div class="tk-userbar">
-            <div class="tk-d-flex tk-justify-content-between">
-            <h4>Hallo ' . $userName . '</h4>
-            <a id="tkSsoLogOut" class="tk-sso-logout-link">Log out</a>
+        <div id="tkSsoDemoLoginForm">
+            <div class="tk-userbar">
+                <div class="tk-d-flex tk-justify-content-between">
+                <h4>Hallo ' . $userName . '</h4>
+                <a id="tkSsoLogOut" class="tk-sso-logout-link">Log out</a>
+                </div>
             </div>
         </div>
         ';

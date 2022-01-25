@@ -8,7 +8,6 @@ function login()
         $loggedIn = $tkSsoBroker->login($_GET['name'], $_GET['password']);
         echo json_encode($loggedIn);
     }
-
 }
 
 login();

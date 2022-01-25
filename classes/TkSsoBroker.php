@@ -1,8 +1,9 @@
 <?php
+
 require_once("TkSsoFrontEndCache.php");
 
-
-class TkSsoBroker {
+abstract class TkSsoBroker
+{
     /**
      * Url of SSO server
      * @var string
@@ -27,7 +28,8 @@ class TkSsoBroker {
      *
      * @param int $cookie_lifetime
      */
-    public function __construct($cookie_lifetime = 3600) {
+    public function __construct($cookie_lifetime = 3600)
+    {
         $this->url = get_option('tkt_sso_server_url');
         $this->cookie_lifetime = $cookie_lifetime;
         $this->tkSsoFrontEndCache = new TkSsoFrontEndCache();
@@ -35,14 +37,42 @@ class TkSsoBroker {
 
 
     /**
+     * @param $name
+     * @param $password
+     * @return array
+     */
+    abstract public function login($name, $password);
+
+
+    /**
+     * @param $token
+     * Logs the user out of the browser and the server
+     */
+    abstract public function logout($token);
+
+
+    /**
+     * @param string $userVar
+     * @param string $token
+     * @return array|mixed|object|string|string[]
+     */
+    abstract public function authenticate($userVar, $token);
+
+
+    abstract public function getAllBrokers();
+
+
+    /**
      * Get the cookie name.
      * @return string
      */
-    public function getCookieName(): string {
+    public function getCookieName(): string
+    {
         return 'tk_sso_token';
     }
 
-    public function getToken(): string {
+    public function getToken(): string
+    {
         return $_COOKIE[$this->getCookieName()] ?? "";
     }
 
@@ -54,8 +84,9 @@ class TkSsoBroker {
      * @param array|string $data Query or post parameters
      * @return array|object
      */
-    protected function request(string $method, string $command, $data = null) {
-        $url = $this->url;
+    protected function request($endpoint, string $method, string $command, $data = null)
+    {
+        $url = !empty($endpoint) ? $endpoint : $this->url;
         $data['command'] = $command;
         add_filter('https_ssl_verify', '__return_false');
         $response = wp_remote_post($url, array(
@@ -73,6 +104,9 @@ class TkSsoBroker {
         /**
          * If the request has failed, show the error message
          */
+        if(is_wp_error($response) ) {
+            return ['error' => 'Fehler: ' . $response->get_error_message()];
+        }
         if ($response['response']['code'] !== 200) {
             return ['error' => 'Fehler: ' . $response['response']['code'] . '. Leider gibt es aktuell technische Probleme. Wir arbeiten bereits an einer Lösung.'];
         } /**
@@ -86,46 +120,10 @@ class TkSsoBroker {
 
 
     /**
-     * @param $name
-     * @param $password
-     * @return array
-     */
-    public function login($name, $password): array {
-        if (!empty($name) && !empty($password)) {
-            $response = $this->request('POST', 'login', ['name' => $name, 'password' => $password]);
-
-            if (isset($response['error'])) {
-                return ['error' => $response['error']];
-            }
-
-            /**
-             * successfully authenticated
-             */
-            if ($response['authenticated'] == 1 && !empty($response['token'])) {
-                $this->successfullyAuthenticated($response['token']);
-                $brokers = $this->getAllBrokers();
-                return apply_filters("tk-sso-login-success-return-array", [
-                    'authenticated' => true,
-                    'brokers' => $brokers
-                ]);
-            } /**
-             * authentication error
-             */
-            else {
-                return ['error' => 'Authentifizierungsfehler'];
-            }
-        } /**
-         *  username or password is empty
-         */
-        else {
-            return ['error' => 'Bitte überprüfen sie ihre Eingaben'];
-        }
-    }
-
-    /**
      * Returns true if user is logged in
      */
-    public function isUserLoggedIn(): bool {
+    public function isUserLoggedIn(): bool
+    {
         if (isset($_COOKIE[$this->getCookieName()])) {
             return true;
         } else return false;
@@ -134,88 +132,24 @@ class TkSsoBroker {
 
     /**
      * @param $token
-     * Logs the user out of the browser and the server
      */
-    public function logout($token) {
-        if (isset($_COOKIE[$this->getCookieName()])) {
-            $this->setCookieSameSite($this->getCookieName(), '', time() - 3600, '/');
-        }
-        $this->request('POST', 'logout', ['token' => $token]);
-        $this->tkSsoFrontEndCache->unsetAuthenticationData();
-        unset($_COOKIE[$this->getCookieName()]);
-    }
-
-    /**
-     * @param $token
-     */
-    private function successfullyAuthenticated($token) {
+    public function successfullyAuthenticated($token)
+    {
         $this->setCookieSameSite($this->getCookieName(), $token, time() + 3600, '/');
-    }
-
-
-    /**
-     * @param string $userVar
-     * @param string $token
-     * @return array|mixed|object|string|string[]
-     */
-    public function authenticate($userVar = '', $token = '') {
-
-        $token = !empty($token) ? $token : $this->getToken();
-
-        /**
-         * cannot authenticate users who are not logged in
-         */
-        if (!$this->isUserLoggedIn() || empty($token)) {
-            $this->tkSsoFrontEndCache->unsetAuthenticationData();
-            return ['error' => 'Bitte melden Sie sich erneut an'];
-        }
-
-        /**
-         * Use Cache if user data are cached else send Post request
-         */
-        if ($this->tkSsoFrontEndCache->isAuthenticationDataCached()) {
-            $response = $this->tkSsoFrontEndCache->getCachedAuthenticationData();
-            $response['cached'] = 'cached';
-        } else {
-            $response = $this->request('POST', 'authenticate', ['token' => $token]);
-        }
-
-        /**
-         * authentication error
-         */
-        if (!is_array($response) || !$response['authenticated']) {
-            return ['error' => 'Bitte melden Sie sich erneut an'];
-        }
-
-        /**
-         * if isset $userVar => return just the value of this var
-         * example: authenticate(token, userName) returns just the username that has this token
-         */
-        if (!empty($userVar) && array_key_exists($userVar, $response['user'])) {
-            $this->cacheAuthenticationDataIfNotAlreadyCached($response);
-            return $response['user'][$userVar];
-        }
-
-        /**
-         * Cache authentication data from the response if user data is not already cached
-         */
-        $this->cacheAuthenticationDataIfNotAlreadyCached($response);
-        return $response;
-    }
-
-    public function getAllBrokers() {
-        $token = $this->getToken();
-        $response = $this->request('POST', 'getAllBrokers', ['token' => $token]);
-        if (!empty($response) && !isset($response['error'])) {
-            return $response;
+        $developmentMode = get_option("tk-development-mode");
+        if($developmentMode) {
+            // $this->setCookieSameSite do not work locally with no SSL
+            setcookie($this->getCookieName(), $token, time() + 3600, '/');
         }
     }
 
-    private function setCookieSameSite(
+
+    public function setCookieSameSite(
         string $name, string $value,
-        int $expire, string $path = "", string $domain = "",
-        bool $secure = true, bool $httponly = false, string $samesite = 'None'
-    ) {
+        int    $expire, string $path = "", string $domain = "",
+        bool   $secure = true, bool $httponly = false, string $samesite = 'None'
+    )
+    {
         if (PHP_VERSION_ID < 70300) {
             setcookie($name, $value, $expire, $path . '; samesite=' . $samesite, $domain, $secure, $httponly);
             return;
@@ -233,12 +167,9 @@ class TkSsoBroker {
     /**
      * @param $authenticationData
      */
-    protected function cacheAuthenticationDataIfNotAlreadyCached($authenticationData) {
+    protected function cacheAuthenticationDataIfNotAlreadyCached($authenticationData)
+    {
         if (!$this->tkSsoFrontEndCache->isAuthenticationDataCached()) $this->tkSsoFrontEndCache->cacheAuthenticationData($authenticationData);
     }
 
 }
-
-global /** @var TkSsoBroker $tkSsoBroker */
-$tkSsoBroker;
-$tkSsoBroker = new TkSsoBroker();
