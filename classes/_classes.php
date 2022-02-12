@@ -4,6 +4,7 @@ require_once "TkSsoBroker.php";
 require_once "TkDrupalSsoBroker.php";
 require_once "TkUsSsoBroker.php";
 require_once "TkSsoUser.php";
+require_once "TkSsoRoleManager.php";
 
 global $tkSsoBroker;
 $tkUseSsoV2 = get_option("tkt_use_sso_v2");

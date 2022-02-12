@@ -45,6 +45,11 @@ class TkSsoUser {
 
         return "";
     }
+
+    public function hasRole(array $roles): bool {
+        $roleManager = new TkSsoRoleManager();
+        return $roleManager->userHasRole($roles);
+    }
 }
 
 global /** @var TkSsoUser $tkSsoUser */

@@ -65,15 +65,23 @@ function tkDoccheckLoginBtn($attr)
 {
     global $tkSsoBroker;
     if ($tkSsoBroker->isUserLoggedIn()) return '';
-    if(!get_option("tkt_use_sso_v2")) return '';
+    if (!get_option("tkt_use_sso_v2")) return '';
 
     $args = shortcode_atts(array(
         "btnValue" => "Login mit Doccheck",
         "classes" => "",
         "target" => "_blank",
-        "generalDoccheckUrl" => "https://identity.infectopharm.com/doccheck"
+        "generalDoccheckUrl" => get_option('tkt_sso_server_url') . "/doccheck"
     ), $attr);
-    $redirectBase64 = base64_encode(home_url($_SERVER['REQUEST_URI']));
+
+    $url = home_url($_SERVER['REQUEST_URI']);
+    if (function_exists("tk_parse_url") && function_exists("tk_build_url")) {
+        $parsed = tk_parse_url($url);
+        $parsed['query']['loggedIn'] = true;
+        $url = tk_build_url($parsed);
+    }
+
+    $redirectBase64 = base64_encode($url);
     $brandId = "Brand:" . get_option("tkt_broker_id");
     $doccheckLoginUrlForCurrentPage = $args["generalDoccheckUrl"] . "/$brandId/$redirectBase64";
     return '

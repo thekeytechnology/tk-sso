@@ -1,21 +1,21 @@
 <?php
 
-class TkUsSsoBroker extends TkSsoBroker
-{
+class TkUsSsoBroker extends TkSsoBroker {
     public static string $LOGIN_API = "/sso/login";
     public static string $LOGOUT_API = "/sso/logout";
     public static string $AUTHENTICATE_API = "/sso/authenticate";
     public static string $ALL_BROKERS_API = "/sso/brokers";
 
-
+    public function getToken(): string {
+        return $_COOKIE[$this->getCookieName()] ?? $_GET['dcToken'] ?? "";
+    }
 
     /**
      * @param $name
      * @param $password
      * @return array
      */
-    public function login($name, $password)
-    {
+    public function login($name, $password) {
         if (!empty($name) && !empty($password)) {
             $response = $this->request(get_option('tkt_sso_server_url') . $this::$LOGIN_API, 'POST', 'login', ['name' => $name, 'password' => $password]);
 

@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="Updates to make it work with drupal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/TkSsoSettingsPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/TkSsoSettingsPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/user-bar.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/user-bar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/_demo.php" beforeDir="false" afterPath="$PROJECT_DIR$/demo/_demo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/assets/css/demo-login-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/demo/assets/css/demo-login-page.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shortcodes/_shortcodes.php" beforeDir="false" afterPath="$PROJECT_DIR$/shortcodes/_shortcodes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,10 +30,10 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/tkt-sso.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/restrict-access/post-widget/TkSsoRestrictToRolesMetaBox.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/restrict-access/post-widget/_post-widgets.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/restrict-access/post-widget/restrict-posts.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/tkt-sso.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -367,6 +363,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
