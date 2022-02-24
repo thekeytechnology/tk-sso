@@ -22,15 +22,16 @@ abstract class TkSsoBroker
      * @var TkSsoFrontEndCache
      */
     protected TkSsoFrontEndCache $tkSsoFrontEndCache;
+    private $get_option;
 
     /**
      * Class constructor
      *
      * @param int $cookie_lifetime
      */
-    public function __construct($cookie_lifetime = 3600)
-    {
-        $this->url = get_option('tkt_sso_server_url');
+    public function __construct($cookie_lifetime = 3600) {
+        $this->get_option = TkSsoUtil::getApiUrl();
+        $this->url = $this->get_option;
         $this->cookie_lifetime = $cookie_lifetime;
         $this->tkSsoFrontEndCache = new TkSsoFrontEndCache();
     }
@@ -68,10 +69,6 @@ abstract class TkSsoBroker
      */
     public function getCookieName(): string {
         return 'tk_sso_token';
-    }
-
-    public function getVersion(): string {
-        return get_option("tkt_use_sso_v2") ? "2" : "1";
     }
 
     public function getToken(): string {

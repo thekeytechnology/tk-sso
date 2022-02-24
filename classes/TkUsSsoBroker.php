@@ -17,7 +17,7 @@ class TkUsSsoBroker extends TkSsoBroker {
      */
     public function login($name, $password) {
         if (!empty($name) && !empty($password)) {
-            $response = $this->request(get_option('tkt_sso_server_url') . $this::$LOGIN_API, 'POST', 'login', ['name' => $name, 'password' => $password]);
+            $response = $this->request(TkSsoUtil::getApiUrl() . $this::$LOGIN_API, 'POST', 'login', ['name' => $name, 'password' => $password]);
 
             if (isset($response['error'])) {
                 if ($response['error'] == 'unspecified-auth-exception') {
@@ -65,7 +65,7 @@ class TkUsSsoBroker extends TkSsoBroker {
                 setcookie($this->getCookieName(), '', time() - 3600, '/');
             }
         }
-        $this->request(get_option('tkt_sso_server_url') . $this::$LOGOUT_API, 'POST', 'logout', ['token' => $token]);
+        $this->request(TkSsoUtil::getApiUrl() . $this::$LOGOUT_API, 'POST', 'logout', ['token' => $token]);
         $this->tkSsoFrontEndCache->unsetAuthenticationData();
         unset($_COOKIE[$this->getCookieName()]);
     }
@@ -95,7 +95,7 @@ class TkUsSsoBroker extends TkSsoBroker {
             $response = $this->tkSsoFrontEndCache->getCachedAuthenticationData();
             $response['cached'] = 'cached';
         } else {
-            $response = $this->request(get_option('tkt_sso_server_url') . $this::$AUTHENTICATE_API, 'POST', 'authenticate', ['token' => $token]);
+            $response = $this->request(TkSsoUtil::getApiUrl() . $this::$AUTHENTICATE_API, 'POST', 'authenticate', ['token' => $token]);
         }
 
         /**
@@ -129,7 +129,7 @@ class TkUsSsoBroker extends TkSsoBroker {
     public function getAllBrokers()
     {
         $token = $this->getToken();
-        $response = $this->request(get_option('tkt_sso_server_url') .$this::$ALL_BROKERS_API, 'POST', 'getAllBrokers', ['token' => $token]);
+        $response = $this->request(TkSsoUtil::getApiUrl() . $this::$ALL_BROKERS_API, 'POST', 'getAllBrokers', ['token' => $token]);
         if (!empty($response) && !isset($response['error'])) {
             return $response;
         }

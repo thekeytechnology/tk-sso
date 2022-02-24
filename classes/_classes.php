@@ -7,5 +7,4 @@ require_once "TkSsoUser.php";
 require_once "TkSsoRoleManager.php";
 
 global $tkSsoBroker;
-$tkUseSsoV2 = get_option("tkt_use_sso_v2");
-$tkSsoBroker = $tkUseSsoV2 ? new TkUsSsoBroker() : new TkDrupalSsoBroker();
+$tkSsoBroker = TkSsoUtil::getApiVersion() == "2" ? new TkUsSsoBroker() : new TkDrupalSsoBroker();

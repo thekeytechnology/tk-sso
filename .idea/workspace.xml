@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/classes/TkSsoUtil.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/TkSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoBroker.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/_classes.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/_classes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +93,7 @@
       <workItem from="1642762583524" duration="2206000" />
       <workItem from="1642776323543" duration="8125000" />
       <workItem from="1644630044574" duration="927000" />
+      <workItem from="1645741688891" duration="793000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -343,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644630374651</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Added Version utility function to broker">
+      <created>1645741947507</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1645741947507</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +401,8 @@
     <MESSAGE value="bugfix" />
     <MESSAGE value="Updates to make it work with drupal" />
     <MESSAGE value="doccheck integration for v2&#10;wrapped the role manager into TkSsoUser.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="doccheck integration for v2&#10;wrapped the role manager into TkSsoUser.php" />
+    <MESSAGE value="Added Version utility function to broker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Version utility function to broker" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

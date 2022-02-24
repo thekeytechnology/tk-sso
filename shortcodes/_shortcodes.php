@@ -71,7 +71,7 @@ function tkDoccheckLoginBtn($attr)
         "btnValue" => "Login mit Doccheck",
         "classes" => "",
         "target" => "_blank",
-        "generalDoccheckUrl" => get_option('tkt_sso_server_url') . "/doccheck"
+        "generalDoccheckUrl" => TkSsoUtil::getApiUrl() . "/doccheck"
     ), $attr);
 
     $url = home_url($_SERVER['REQUEST_URI']);
