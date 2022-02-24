@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="Updates to make it work with drupal">
+    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shortcodes/_shortcodes.php" beforeDir="false" afterPath="$PROJECT_DIR$/shortcodes/_shortcodes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +49,6 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="11" />
@@ -65,6 +62,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/classes" />
       <recent name="$PROJECT_DIR$/restrict-access" />
     </key>
   </component>
@@ -91,6 +89,7 @@
       <workItem from="1639666643740" duration="1863000" />
       <workItem from="1642762583524" duration="2206000" />
       <workItem from="1642776323543" duration="8125000" />
+      <workItem from="1644630044574" duration="927000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -337,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639667327813</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="doccheck integration for v2&#10;wrapped the role manager into TkSsoUser.php">
+      <created>1644630374651</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1644630374651</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +389,8 @@
     <MESSAGE value="Added custom redirect to Meta Box" />
     <MESSAGE value="bugfix" />
     <MESSAGE value="Updates to make it work with drupal" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updates to make it work with drupal" />
+    <MESSAGE value="doccheck integration for v2&#10;wrapped the role manager into TkSsoUser.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="doccheck integration for v2&#10;wrapped the role manager into TkSsoUser.php" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

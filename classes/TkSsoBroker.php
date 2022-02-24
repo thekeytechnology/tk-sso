@@ -66,13 +66,15 @@ abstract class TkSsoBroker
      * Get the cookie name.
      * @return string
      */
-    public function getCookieName(): string
-    {
+    public function getCookieName(): string {
         return 'tk_sso_token';
     }
 
-    public function getToken(): string
-    {
+    public function getVersion(): string {
+        return get_option("tkt_use_sso_v2") ? "2" : "1";
+    }
+
+    public function getToken(): string {
         return $_COOKIE[$this->getCookieName()] ?? "";
     }
 
