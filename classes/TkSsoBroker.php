@@ -156,8 +156,8 @@ abstract class TkSsoBroker
         int    $expire, string $path = "", string $domain = "",
         bool   $secure = true, bool $httponly = false, string $samesite = 'None'
     ) {
-        $host = parse_url($_SERVER["HTTP_HOST"]);
-        $host = $host['host'];
+        $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        $host = $this->getDomain($fullUrl);
         $domain = $domain ?: $host;
         $_COOKIE[$this->getCookieName()] = $value;
         if (PHP_VERSION_ID < 70300) {
@@ -174,11 +174,18 @@ abstract class TkSsoBroker
         ]);
     }
 
+    // https://gist.github.com/Xeoncross/1561096
+    private function getDomain($url) {
+        $domain = parse_url((strpos($url, '://') === FALSE ? 'http://' : '') . trim($url), PHP_URL_HOST);
+        if (preg_match('/[a-z0-9][a-z0-9\-]{0,63}\.[a-z]{2,6}(\.[a-z]{1,2})?$/i', $domain, $match)) {
+            return $match[0];
+        }
+    }
+
     /**
      * @param $authenticationData
      */
-    protected function cacheAuthenticationDataIfNotAlreadyCached($authenticationData)
-    {
+    protected function cacheAuthenticationDataIfNotAlreadyCached($authenticationData) {
         if (!$this->tkSsoFrontEndCache->isAuthenticationDataCached()) $this->tkSsoFrontEndCache->cacheAuthenticationData($authenticationData);
     }
 
