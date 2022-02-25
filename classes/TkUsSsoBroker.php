@@ -21,7 +21,7 @@ class TkUsSsoBroker extends TkSsoBroker {
 
             if (isset($response['error'])) {
                 if ($response['error'] == 'unspecified-auth-exception') {
-                    return ['error' => 'Die angegebenen Zugangsdaten sind nicht korrekt.'];
+                    return ['error' => 'Die angegebenen Zugangsdaten sind nicht korrekt. Ab sofort wird Ihre E-Mail zur Anmeldung benötigt.'];
                 }
                 return ['error' => $response['error']];
             }
