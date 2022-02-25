@@ -179,7 +179,7 @@ class TkUsSsoBroker extends TkSsoBroker {
         if (is_array($array)) {
             $keyToLower = strtolower($key);
             $arrayToLower = array_change_key_case($array, CASE_LOWER);
-            if (isset($arrayToLower[$keyToLower]) && is_string($arrayToLower[$keyToLower])) {
+            if (isset($arrayToLower[$keyToLower])) {
                 return $arrayToLower[$keyToLower];
             }
             foreach ($arrayToLower as $subarray) {
