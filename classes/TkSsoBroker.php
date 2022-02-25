@@ -156,7 +156,9 @@ abstract class TkSsoBroker
         int    $expire, string $path = "", string $domain = "",
         bool   $secure = true, bool $httponly = false, string $samesite = 'None'
     ) {
-        $domain = $domain ?: $_SERVER["HTTP_HOST"];
+        $host = parse_url($_SERVER["HTTP_HOST"]);
+        $host = $host['host'];
+        $domain = $domain ?: $host;
         $_COOKIE[$this->getCookieName()] = $value;
         if (PHP_VERSION_ID < 70300) {
             setcookie($name, $value, $expire, $path . '; samesite=' . $samesite, $domain, $secure, $httponly);
