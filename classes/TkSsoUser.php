@@ -5,7 +5,8 @@ class TkSsoUser {
     private $loggedIn = false;
 
     public function getRole(): string {
-        return $this->isLoggedIn() ? $this->getData('role') : TkSsoRoleManager::$ROLE_NOT_LOGGED_IN;
+        $role = $this->getData('role');
+        return $role ?: TkSsoRoleManager::$ROLE_NOT_LOGGED_IN;
     }
 
     public function isLoggedIn(): bool {
@@ -33,17 +34,26 @@ class TkSsoUser {
             return $tkSsoBroker->authenticate();
         }
 
+        $value = "";
         if (key_exists($key, $this->data)) {
-            return $this->data[$key];
+            $value = $this->data[$key];
         } else {
             $value = $tkSsoBroker->authenticate($key);
             if (is_string($value)) {
                 $this->data[$key] = $value;
-                return $value;
+            } else {
+                $value = "";
             }
         }
 
-        return "";
+        if ($key == "salutation") {
+            $value = str_replace("Mr", "Herr", $value);
+            $value = str_replace("Mrs", "Frau", $value);
+        }
+
+        $value = str_replace("Unknown", "", $value);
+
+        return $value;
     }
 
     public function hasRole(array $roles): bool {

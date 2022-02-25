@@ -11,9 +11,9 @@ function setTkSsoTokenCookie() {
     $cookieName = $tkSsoBroker->getCookieName();
 
     if (!isset($_GET[$cookieName])) return;
-    require_once "functions.php";
+    require_once "./functions.php";
     $tkSsoTokenValue = $_GET[$cookieName];
-    setCookieSameSite($cookieName, $tkSsoTokenValue, time() + 3600, '/');
+    $tkSsoBroker->setCookie($tkSsoTokenValue);
 }
 setTkSsoTokenCookie();
 ?>

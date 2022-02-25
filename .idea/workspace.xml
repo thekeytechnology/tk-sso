@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/classes/TkSsoUtil.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/TkDrupalSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkDrupalSsoBroker.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/TkSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoBroker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/_classes.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/_classes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/TkSsoUtil.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoUtil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doccheck/doccheck-util.php" beforeDir="false" afterPath="$PROJECT_DIR$/doccheck/doccheck-util.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tkt-sso.php" beforeDir="false" afterPath="$PROJECT_DIR$/tkt-sso.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +58,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="11" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/classes" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/classes" />
       <recent name="$PROJECT_DIR$/doccheck" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -93,7 +97,7 @@
       <workItem from="1642762583524" duration="2206000" />
       <workItem from="1642776323543" duration="8125000" />
       <workItem from="1644630044574" duration="927000" />
-      <workItem from="1645741688891" duration="793000" />
+      <workItem from="1645741688891" duration="2937000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -354,7 +358,21 @@
       <option name="project" value="LOCAL" />
       <updated>1645741947507</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Added Util Class">
+      <created>1645742552201</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1645742552201</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Bugfix">
+      <created>1645742648244</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1645742648244</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,13 +414,14 @@
     <MESSAGE value="removed most css as it applied to the entire page&#10;moved session start to plugin level to prevent warnings&#10;content restriction no longer applies when the user is logged in as admin or administrator" />
     <MESSAGE value="bigfix" />
     <MESSAGE value="apply should_render filter to widget instead of removing the widget content, added filter to should_render function to allow for further refining" />
-    <MESSAGE value="Bugfix" />
     <MESSAGE value="Added custom redirect to Meta Box" />
     <MESSAGE value="bugfix" />
     <MESSAGE value="Updates to make it work with drupal" />
     <MESSAGE value="doccheck integration for v2&#10;wrapped the role manager into TkSsoUser.php" />
     <MESSAGE value="Added Version utility function to broker" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Version utility function to broker" />
+    <MESSAGE value="Added Util Class" />
+    <MESSAGE value="Bugfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfix" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

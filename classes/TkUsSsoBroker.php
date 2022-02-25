@@ -21,7 +21,7 @@ class TkUsSsoBroker extends TkSsoBroker {
 
             if (isset($response['error'])) {
                 if ($response['error'] == 'unspecified-auth-exception') {
-                    return ['error' => 'Authentifizierungsfehler'];
+                    return ['error' => 'Die angegebenen Zugangsdaten sind nicht korrekt.'];
                 }
                 return ['error' => $response['error']];
             }
@@ -50,40 +50,66 @@ class TkUsSsoBroker extends TkSsoBroker {
         }
     }
 
+    protected function request($endpoint, string $method, string $command, $data = null) {
+        $url = !empty($endpoint) ? $endpoint : $this->url;
+//        $data['command'] = $command;
+        $data = json_encode($data);
+        add_filter('https_ssl_verify', '__return_false');
+        $response = wp_remote_post($url, array(
+                'method' => $method,
+                'timeout' => 45,
+                'redirection' => 5,
+                'httpversion' => '1.0',
+                'blocking' => true,
+                'headers' => array('Content-Type' => 'application/json; charset=utf-8'),
+                'body' => $data,
+                'cookies' => array()
+            )
+        );
+
+        /**
+         * If the request has failed, show the error message
+         */
+        if (is_wp_error($response)) {
+            return ['error' => 'Fehler: ' . $response->get_error_message()];
+        }
+        if ($response['response']['code'] !== 200) {
+            return ['error' => 'Fehler: ' . $response['response']['code'] . '. Leider gibt es aktuell technische Probleme. Wir arbeiten bereits an einer Lösung.'];
+        } /**
+         *  No request errors
+         */
+        else {
+            return json_decode(wp_remote_retrieve_body($response), true);
+        }
+
+    }
+
 
     /**
      * @param $token
      * Logs the user out of the browser and the server
      */
-    public function logout($token)
-    {
+    public function logout($token) {
         if (isset($_COOKIE[$this->getCookieName()])) {
-            $this->setCookieSameSite($this->getCookieName(), '', time() - 3600, '/');
-            $developmentMode = get_option("tk-development-mode");
-            if ($developmentMode) {
-                // $this->setCookieSameSite do not work locally with no SSL
-                setcookie($this->getCookieName(), '', time() - 3600, '/');
-            }
+            $this->setCookie("");
         }
         $this->request(TkSsoUtil::getApiUrl() . $this::$LOGOUT_API, 'POST', 'logout', ['token' => $token]);
         $this->tkSsoFrontEndCache->unsetAuthenticationData();
         unset($_COOKIE[$this->getCookieName()]);
     }
 
-
     /**
      * @param $userVar
      * @param $token
      * @return array|mixed|object|string|string[]|void
      */
-    public function authenticate($userVar = "", $token = "")
-    {
+    public function authenticate($userVar = "", $token = "") {
         $token = !empty($token) ? $token : $this->getToken();
 
         /**
          * cannot authenticate users who are not logged in
          */
-        if (!$this->isUserLoggedIn() || empty($token)) {
+        if (empty($token)) {
             $this->tkSsoFrontEndCache->unsetAuthenticationData();
             return ['error' => 'Bitte melden Sie sich erneut an'];
         }
@@ -111,7 +137,17 @@ class TkUsSsoBroker extends TkSsoBroker {
          */
 
         if (!empty($userVar)) {
-            $userVal = $this->tkSearchArray($userVar, $response);
+            $userVal = "";
+            if ($userVar == "role") {
+                $roleProcesses = $response['roleApplicationProcesses'] ?? [];
+                foreach ($roleProcesses as $role) {
+                    if ($role['status'] == "Finished" && $role['userStatus'] == "Active") {
+                        $userVal = $role['targetRole'];
+                    }
+                }
+            } else {
+                $userVal = $this->tkSearchArray($userVar, $response);
+            }
             if ($userVal) {
                 $this->cacheAuthenticationDataIfNotAlreadyCached($response);
                 return $userVal;
@@ -126,10 +162,9 @@ class TkUsSsoBroker extends TkSsoBroker {
     }
 
 
-    public function getAllBrokers()
-    {
+    public function getAllBrokers() {
         $token = $this->getToken();
-        $response = $this->request(TkSsoUtil::getApiUrl() . $this::$ALL_BROKERS_API, 'POST', 'getAllBrokers', ['token' => $token]);
+        $response = $this->request(TkSsoUtil::getApiUrl() . $this::$ALL_BROKERS_API, 'GET', 'getAllBrokers', ['token' => $token]);
         if (!empty($response) && !isset($response['error'])) {
             return $response;
         }
@@ -140,8 +175,7 @@ class TkUsSsoBroker extends TkSsoBroker {
      * @param $array
      * @return string
      */
-    public function tkSearchArray($key, $array): string
-    {
+    public function tkSearchArray($key, $array): string {
         if (is_array($array)) {
             $keyToLower = strtolower($key);
             $arrayToLower = array_change_key_case($array, CASE_LOWER);
@@ -157,4 +191,14 @@ class TkUsSsoBroker extends TkSsoBroker {
         }
         return "";
     }
+
+    public function isUserLoggedIn(): bool {
+        $role = $this->authenticate('role');
+        if ($role == "Doccheck" || isset($role['error'])) {
+            return false;
+        }
+
+        return !!$role;
+    }
+
 }

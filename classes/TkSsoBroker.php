@@ -51,6 +51,14 @@ abstract class TkSsoBroker
      */
     abstract public function logout($token);
 
+    /**
+     * @param string $token
+     * Sets the cookie. Token should be retrieved automatically, if it is not passed
+     */
+    public function setCookie(string $token) {
+        $this->setCookieSameSite($this->getCookieName(), $token, time() + 3600, '/');
+    }
+
 
     /**
      * @param string $userVar
@@ -147,8 +155,9 @@ abstract class TkSsoBroker
         string $name, string $value,
         int    $expire, string $path = "", string $domain = "",
         bool   $secure = true, bool $httponly = false, string $samesite = 'None'
-    )
-    {
+    ) {
+        $domain = $domain ?: $_SERVER["HTTP_HOST"];
+        $_COOKIE[$this->getCookieName()] = $value;
         if (PHP_VERSION_ID < 70300) {
             setcookie($name, $value, $expire, $path . '; samesite=' . $samesite, $domain, $secure, $httponly);
             return;

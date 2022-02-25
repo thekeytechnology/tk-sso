@@ -18,9 +18,25 @@ function tkSsoIsDocCheckLogin(): bool {
     return isset($_GET['dc']) && $_GET['dc'] == 1 && isset($_GET['dc_timestamp']);
 }
 
+function tkSsoIsV2DocCheckLogin(): bool {
+    return isset($_GET['loggedIn']) && $_GET['loggedIn'] == "true" && isset($_GET['token']);
+}
+
+function tkSsoBase64UrlEncode($string) {
+    $string = str_replace("/", "_", $string);
+    $string = str_replace("+", "-", $string);
+    return $string;
+}
+
 add_action("wp_loaded", function () {
     if (tkSsoIsDocCheckLogin()) {
         tkSsoGetDocCheckClient()->dcl_do_login();
+    }
+
+    if (tkSsoIsV2DocCheckLogin()) {
+        global $tkSsoBroker;
+        $token = $_GET['token'];
+        $tkSsoBroker->setCookie($token);
     }
 });
 

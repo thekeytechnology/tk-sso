@@ -9,4 +9,8 @@ class TkSsoUtil {
     public static function getApiUrl(): string {
         return get_option('tkt_sso_server_url');
     }
+
+    public static function getBrandId(): string {
+        return get_option("tkt_broker_id");
+    }
 }

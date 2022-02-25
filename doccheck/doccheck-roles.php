@@ -18,15 +18,25 @@ add_filter(TkSsoRoleManager::$FILTER_ROLES_FOR_RESTRICTION, "tkSsoDocCheckAddRol
  * @return string[]
  */
 function tkSsoDocCheckAddSystemRolesForCurrentUser(array $roles): array {
-    if (tkSsoIsDocCheckInstalled()) {
-        $dclClient = tkSsoGetDocCheckClient();
-        if ($dclClient->dcl_has_logged_in_user()) {
+
+    if (TkSsoUtil::getApiVersion() == "2") {
+        global $tkSsoUser;
+        if ($tkSsoUser->getRole() == "Doccheck") {
             $roles[] = TkSsoRoleManager::$ROLE_DOCCHECK_LOGGED_IN;
         } else {
             $roles[] = TkSsoRoleManager::$ROLE_DOCCHECK_NOT_LOGGED_IN;
         }
     } else {
-        $roles[] = TkSsoRoleManager::$ROLE_DOCCHECK_NOT_LOGGED_IN;
+        if (tkSsoIsDocCheckInstalled()) {
+            $dclClient = tkSsoGetDocCheckClient();
+            if ($dclClient->dcl_has_logged_in_user()) {
+                $roles[] = TkSsoRoleManager::$ROLE_DOCCHECK_LOGGED_IN;
+            } else {
+                $roles[] = TkSsoRoleManager::$ROLE_DOCCHECK_NOT_LOGGED_IN;
+            }
+        } else {
+            $roles[] = TkSsoRoleManager::$ROLE_DOCCHECK_NOT_LOGGED_IN;
+        }
     }
 
     return $roles;

@@ -4,7 +4,7 @@ function logout()
 {
     require_once "../../../../wp-load.php";
     global $tkSsoBroker;
-    if ($tkSsoBroker->isUserLoggedIn()) {
+    if ($tkSsoBroker->getToken()) {
         $token = $tkSsoBroker->getToken();
         $tkSsoBroker->logout($token);
     }

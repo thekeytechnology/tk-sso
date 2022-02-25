@@ -47,9 +47,10 @@ class TkDrupalSsoBroker extends TkSsoBroker
     public function logout($token)
     {
         if (isset($_COOKIE[$this->getCookieName()])) {
-            $this->setCookieSameSite($this->getCookieName(), '', time() - 3600, '/');
+            $this->setCookie('');
+
             $developmentMode = get_option("tk-development-mode");
-            if($developmentMode) {
+            if ($developmentMode) {
                 // $this->setCookieSameSite do not work locally with no SSL
                 setcookie($this->getCookieName(), '', time() - 3600, '/');
             }
