@@ -182,10 +182,11 @@ class TkUsSsoBroker extends TkSsoBroker {
             if (isset($arrayToLower[$keyToLower])) {
                 return $arrayToLower[$keyToLower];
             }
+            $value = "";
             foreach ($arrayToLower as $subarray) {
-                $subarrayToLower = array_change_key_case($subarray, CASE_LOWER);
-                if (isset($subarrayToLower[$keyToLower]) && is_string($subarrayToLower[$keyToLower])) {
-                    return $subarrayToLower[$keyToLower];
+                $value .= $this->tkSearchArray($key, $subarray);
+                if ($value != "") {
+                    return $value;
                 }
             }
         }

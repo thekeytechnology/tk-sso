@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cookies/remove-cookie.php" beforeDir="false" afterPath="$PROJECT_DIR$/cookies/remove-cookie.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +87,7 @@
       <workItem from="1642762583524" duration="2206000" />
       <workItem from="1642776323543" duration="8125000" />
       <workItem from="1644630044574" duration="927000" />
-      <workItem from="1645741688891" duration="5932000" />
+      <workItem from="1645741688891" duration="7397000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -395,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645813166939</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="SSO V2 Fixes">
+      <created>1645814320191</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1645814320191</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -12,7 +12,7 @@ function removeTkSsoTokenCookie() {
 
     require_once "functions.php";
     $tkSsoTokenValue = '';
-    setCookieSameSite($tkSsoBroker->getCookieName(), $tkSsoTokenValue, time() - 3600, '/');
+    $tkSsoBroker->setCookie($tkSsoTokenValue);
 }
 removeTkSsoTokenCookie();
 ?>
