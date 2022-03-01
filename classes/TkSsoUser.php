@@ -47,8 +47,8 @@ class TkSsoUser {
         }
 
         if ($key == "salutation") {
-            $value = str_replace("Mr", "Herr", $value);
             $value = str_replace("Mrs", "Frau", $value);
+            $value = str_replace("Mr", "Herr", $value);
         }
 
         $value = str_replace("Unknown", "", $value);

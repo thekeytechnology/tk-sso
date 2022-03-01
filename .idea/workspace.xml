@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="Remove some pointless code">
+    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +85,7 @@
       <workItem from="1642762583524" duration="2206000" />
       <workItem from="1642776323543" duration="8125000" />
       <workItem from="1644630044574" duration="927000" />
-      <workItem from="1645741688891" duration="11021000" />
+      <workItem from="1645741688891" duration="15044000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -423,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646132056506</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Added Role check to login">
+      <created>1646134909608</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1646134909608</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -474,7 +481,8 @@
     <MESSAGE value="SSO V2 Fixes" />
     <MESSAGE value="Version Bump" />
     <MESSAGE value="Remove some pointless code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove some pointless code" />
+    <MESSAGE value="Added Role check to login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Role check to login" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
