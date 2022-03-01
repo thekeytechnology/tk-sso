@@ -84,7 +84,6 @@ class TkSsoSettingsPage
                                    class="regular-text code">
                         </td>
                     </tr>
-                    <?php if (!$useV2) : ?>
                     <tr>
                         <th scope="row">
                             <label for="<?php echo $this::$OPTION_LOGIN_URL ?>">SSO Login url</label>
@@ -97,7 +96,6 @@ class TkSsoSettingsPage
                         </td>
                     </tr>
                     <tr>
-                        <?php endif; ?>
                         <th scope="row">
                             <label for="<?php echo $this::$OPTION_LOGIN_REDIRECT_URL ?>">SSO Login Standard Redirect
                                 Url</label>

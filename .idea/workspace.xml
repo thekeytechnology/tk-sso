@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin/TkSsoSettingsPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/TkSsoSettingsPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tkt-sso.php" beforeDir="false" afterPath="$PROJECT_DIR$/tkt-sso.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +87,7 @@
       <workItem from="1642762583524" duration="2206000" />
       <workItem from="1642776323543" duration="8125000" />
       <workItem from="1644630044574" duration="927000" />
-      <workItem from="1645741688891" duration="7820000" />
+      <workItem from="1645741688891" duration="8472000" />
     </task>
     <task id="LOCAL-00001" summary="added update logic">
       <created>1631526433003</created>
@@ -409,7 +411,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646078218559</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Version Bump">
+      <created>1646078624361</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1646078624361</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,7 +453,6 @@
     <MESSAGE value="Added user class as an api for the page, refactored a lot so we don't repeat ourselves" />
     <MESSAGE value="Added meta box to restrict access to posts by role, refactored some stuff" />
     <MESSAGE value="Updated Plugin to work with Drupal Api" />
-    <MESSAGE value="Version Bump" />
     <MESSAGE value="added new setting" />
     <MESSAGE value="version bump" />
     <MESSAGE value="added doccheck support" />
@@ -459,7 +467,8 @@
     <MESSAGE value="Added Util Class" />
     <MESSAGE value="Bugfix" />
     <MESSAGE value="SSO V2 Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="SSO V2 Fixes" />
+    <MESSAGE value="Version Bump" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version Bump" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
