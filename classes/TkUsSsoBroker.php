@@ -30,12 +30,25 @@ class TkUsSsoBroker extends TkSsoBroker {
              * successfully authenticated
              */
             if ($response['authenticated'] == 1 && !empty($response['token'])) {
-                $this->successfullyAuthenticated($response['token']);
-                $brokers = $this->getAllBrokers();
-                return apply_filters("tk-sso-login-success-return-array", [
-                    'authenticated' => true,
-                    'brokers' => $brokers
-                ]);
+                $data = $this->authenticate("", $response['token']);
+                $roleProcesses = $data['roleApplicationProcesses'] ?? [];
+                $hasAccess = false;
+                foreach ($roleProcesses as $role) {
+                    if ($role['status'] == "Finished" && $role['userStatus'] == "Active") {
+                        $hasAccess = true;
+                    }
+                }
+                if ($hasAccess) {
+                    $this->successfullyAuthenticated($response['token']);
+                    $brokers = $this->getAllBrokers();
+                    return apply_filters("tk-sso-login-success-return-array", [
+                        'authenticated' => true,
+                        'brokers' => $brokers
+                    ]);
+                } else {
+                    return ['error' => 'Ihre Daten werden noch von uns überprüft.'];
+                }
+
             } /**
              * authentication error
              */
