@@ -145,7 +145,7 @@ abstract class TkSsoBroker
      */
     public function successfullyAuthenticated($token)
     {
-        $this->setCookie();
+        $this->setCookie($token);
     }
 
 
