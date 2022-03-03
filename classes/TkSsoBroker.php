@@ -57,7 +57,7 @@ abstract class TkSsoBroker
      */
     public function setCookie(string $token) {
         if ($token) {
-            error_log("SSO_INFO: deleting token");
+//            error_log("SSO_INFO: deleting token");
         }
         $this->setCookieSameSite($this->getCookieName(), $token, time() + 86400, '/');
     }
