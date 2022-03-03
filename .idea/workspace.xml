@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/TkSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoBroker.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tkt-sso.php" beforeDir="false" afterPath="$PROJECT_DIR$/tkt-sso.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,14 +88,7 @@
       <workItem from="1642776323543" duration="8125000" />
       <workItem from="1644630044574" duration="927000" />
       <workItem from="1645741688891" duration="16418000" />
-      <workItem from="1646307057897" duration="3149000" />
-    </task>
-    <task id="LOCAL-00005" summary="Added meta box to restrict access to posts by role, refactored some stuff">
-      <created>1631826995109</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1631826995109</updated>
+      <workItem from="1646307057897" duration="4067000" />
     </task>
     <task id="LOCAL-00006" summary="Updated Plugin to work with Drupal Api">
       <created>1634905771898</created>
@@ -434,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646310941028</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="debug stuff">
+      <created>1646311642078</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1646311642078</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

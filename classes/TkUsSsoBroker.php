@@ -123,7 +123,7 @@ class TkUsSsoBroker extends TkSsoBroker {
          * cannot authenticate users who are not logged in
          */
         if (empty($token)) {
-//            tkSsoLogToPage("empty token response");
+            error_log("SSO_ERROR: empty token");
             $this->tkSsoFrontEndCache->unsetAuthenticationData();
             return ['error' => 'Bitte melden Sie sich erneut an'];
         }
@@ -142,7 +142,8 @@ class TkUsSsoBroker extends TkSsoBroker {
          * authentication error
          */
         if (!is_array($response)) {
-//            tkSsoLogToPage("Response not array");
+            error_log("SSO_ERROR: response is not an array");
+            error_log(print_r($response, true));
             return ['error' => 'Bitte melden Sie sich erneut an'];
         }
 

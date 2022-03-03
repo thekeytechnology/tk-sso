@@ -56,8 +56,10 @@ abstract class TkSsoBroker
      * Sets the cookie. Token should be retrieved automatically, if it is not passed
      */
     public function setCookie(string $token) {
-//        tkSsoLogToPage("Setting Cookie: " . $token);
-        
+        if ($token) {
+            error_log("SSO_INFO: deleting token");
+        }
+        error_log("empty token response");
         $this->setCookieSameSite($this->getCookieName(), $token, time() + 36000, '/');
     }
 
@@ -144,11 +146,11 @@ abstract class TkSsoBroker
      */
     public function successfullyAuthenticated($token)
     {
-        $this->setCookieSameSite($this->getCookieName(), $token, time() + 3600, '/');
+        $this->setCookieSameSite($this->getCookieName(), $token, time() + 86400, '/');
         $developmentMode = get_option("tk-development-mode");
         if($developmentMode) {
             // $this->setCookieSameSite do not work locally with no SSL
-            setcookie($this->getCookieName(), $token, time() + 3600, '/');
+            setcookie($this->getCookieName(), $token, time() + 86400, '/');
         }
     }
 
