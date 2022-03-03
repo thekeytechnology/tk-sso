@@ -14,9 +14,9 @@ function tkAttachCookiesToAllBrokers() {
             foreach ($brokers as $broker) {
                 if (get_home_url() != $broker) {
                     if (isset($_GET['loggedIn'])) {
-                        $html .= "<iframe style='display: none; width:0px; opacity: 0;' src='$broker?$cookieName=$token'></iframe>";
+                        $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker?$cookieName=$token'/>";
                     } else {
-                        $html .= "<iframe style='display: none; width:0px; opacity: 0;' src='$broker?$cookieName='></iframe>";
+                        $html .= "<img style='display: none; width:0px; opacity: 0;' src='$broker?$cookieName='/>";
                     }
                 }
             }
