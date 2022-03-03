@@ -4,7 +4,7 @@
  * @return bool
  */
 function tkSsoIsDocCheckInstalled(): bool {
-    return class_exists("DCL\Client\DCL_Client");
+    return class_exists("DCL\Client\DCL_Client") || TkSsoUtil::getApiVersion() == "2";
 }
 
 /**
