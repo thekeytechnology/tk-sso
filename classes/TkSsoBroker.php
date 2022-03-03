@@ -56,6 +56,7 @@ abstract class TkSsoBroker
      * Sets the cookie. Token should be retrieved automatically, if it is not passed
      */
     public function setCookie(string $token) {
+        tkSsoLogToPage("Setting Cookie: " . $token);
         $this->setCookieSameSite($this->getCookieName(), $token, time() + 36000, '/');
     }
 
