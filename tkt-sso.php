@@ -2,7 +2,7 @@
 /*
 Plugin Name: TKT SSO
 Plugin URI:  https://www.thekey.technology
-Version:     50
+Version:     51
 Author:      the key technology
 Author URI:  https://www.thekey.technology
 License:     proprietary
@@ -35,9 +35,4 @@ $updateChecker = Puc_v4_Factory::buildUpdateChecker(
     'tk-sso'
 );
 $updateChecker->setBranch('master');
-
-function tkSsoLogToPage($msg) {
-    echo "<div style='display: none' class='tk-sso-hidden-log'>$msg</div>";
-}
-
 
