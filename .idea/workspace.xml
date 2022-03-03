@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/classes/TkSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkSsoBroker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/TkUsSsoBroker.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,14 +86,7 @@
       <workItem from="1642776323543" duration="8125000" />
       <workItem from="1644630044574" duration="927000" />
       <workItem from="1645741688891" duration="16418000" />
-      <workItem from="1646307057897" duration="4067000" />
-    </task>
-    <task id="LOCAL-00006" summary="Updated Plugin to work with Drupal Api">
-      <created>1634905771898</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1634905771898</updated>
+      <workItem from="1646307057897" duration="4580000" />
     </task>
     <task id="LOCAL-00007" summary="Updated Plugin to work with Drupal Api">
       <created>1634907989588</created>
@@ -433,7 +424,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646311642078</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="updates">
+      <created>1646312720450</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1646312720450</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,7 +484,8 @@
     <MESSAGE value="Remove some pointless code" />
     <MESSAGE value="Added Role check to login" />
     <MESSAGE value="debug stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug stuff" />
+    <MESSAGE value="updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
