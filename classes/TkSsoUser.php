@@ -2,7 +2,6 @@
 
 class TkSsoUser {
     private $data = [];
-    private $loggedIn = false;
 
     public function getRole(): string {
         $role = $this->getData('role');
@@ -10,17 +9,12 @@ class TkSsoUser {
     }
 
     public function isLoggedIn(): bool {
-        if ($this->loggedIn) {
-            return true;
-        } else {
-            global $tkSsoBroker;
+        global $tkSsoBroker;
 
-            $acceptWordpressLogin = get_option(TkSsoSettingsPage::$OPTION_ACCEPT_WORDPRESS_LOGIN);
+        $acceptWordpressLogin = get_option(TkSsoSettingsPage::$OPTION_ACCEPT_WORDPRESS_LOGIN);
 
-            $this->loggedIn = $tkSsoBroker->isUserLoggedIn() || ($acceptWordpressLogin == "1" && is_user_logged_in());
-            return $this->loggedIn;
-        }
-
+        $this->loggedIn = $tkSsoBroker->isUserLoggedIn() || ($acceptWordpressLogin == "1" && is_user_logged_in());
+        return $this->loggedIn;
     }
 
     /**
