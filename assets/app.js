@@ -111,7 +111,7 @@ jQuery(function ($) {
             }
         }
     }
-    redirectAfterLogin();
+    $(window).on("load", redirectAfterLogin);
 
 })
 

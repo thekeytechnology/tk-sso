@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
+    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="Bugfix with tksso user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,13 +106,7 @@
       <workItem from="1646307057897" duration="8330000" />
       <workItem from="1646368232595" duration="599000" />
       <workItem from="1646727746189" duration="923000" />
-    </task>
-    <task id="LOCAL-00013" summary="added doccheck support">
-      <created>1636412468388</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1636412468389</updated>
+      <workItem from="1646936623952" duration="1230000" />
     </task>
     <task id="LOCAL-00014" summary="removed most css as it applied to the entire page&#10;moved session start to plugin level to prevent warnings&#10;content restriction no longer applies when the user is logged in as admin or administrator">
       <created>1637593101972</created>
@@ -450,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646367619383</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Bugfix with tksso user">
+      <created>1646936646244</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1646936646245</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +482,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added user class as an api for the page, refactored a lot so we don't repeat ourselves" />
     <MESSAGE value="Added meta box to restrict access to posts by role, refactored some stuff" />
     <MESSAGE value="Updated Plugin to work with Drupal Api" />
     <MESSAGE value="added new setting" />
@@ -506,7 +506,8 @@
     <MESSAGE value="docCheck v2 without doccheck plugin" />
     <MESSAGE value="test" />
     <MESSAGE value="trying to fix bug with drupal" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to fix bug with drupal" />
+    <MESSAGE value="Bugfix with tksso user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfix with tksso user" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
