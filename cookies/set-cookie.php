@@ -14,7 +14,10 @@ function setTkSsoTokenCookie() {
     require_once "./functions.php";
     $tkSsoTokenValue = $_GET[$cookieName];
     $tkSsoBroker->setCookie($tkSsoTokenValue);
+
 }
+
+header('Content-type: image/png');
 setTkSsoTokenCookie();
 ?>
 <pre><?php print_r($_COOKIE) ?></pre>

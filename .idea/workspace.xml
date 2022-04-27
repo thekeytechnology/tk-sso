@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="Bugfix with tksso user">
+    <list default="true" id="67c6a874-f220-4d6e-9af3-0973cdb3c48d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,15 +28,15 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/attach-cookies.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/tkt-sso.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/doccheck/doccheck-util.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/functions.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/classes/TkUsSsoBroker.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/classes/TkSsoBroker.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/classes/TkSsoFrontEndCache.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tkt-sso.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/cookies/remove-cookie.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/attach-cookies.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/classes/TkSsoFrontEndCache.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/classes/TkUsSsoBroker.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/doccheck/doccheck-util.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/cookies/set-cookie.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/classes/TkSsoBroker.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -45,6 +45,8 @@
   <component name="PhpServers">
     <servers>
       <server host="ifp.test" id="77e6472a-0b00-4b57-a2e7-7a49cd707d32" name="ifp.test" />
+      <server host="ifp.test" id="43ecaf34-35da-49d2-875c-5bdaeb3c78b2" name="ifp.test (1)" port="443" />
+      <server host="paedia.test" id="f14c92b9-5135-4905-a81e-98f6c278a471" name="paedia.test" port="443" />
     </servers>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
@@ -107,13 +109,11 @@
       <workItem from="1646368232595" duration="599000" />
       <workItem from="1646727746189" duration="923000" />
       <workItem from="1646936623952" duration="1230000" />
-    </task>
-    <task id="LOCAL-00014" summary="removed most css as it applied to the entire page&#10;moved session start to plugin level to prevent warnings&#10;content restriction no longer applies when the user is logged in as admin or administrator">
-      <created>1637593101972</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1637593101972</updated>
+      <workItem from="1647008242791" duration="973000" />
+      <workItem from="1647253052671" duration="55000" />
+      <workItem from="1647895294873" duration="448000" />
+      <workItem from="1648641839197" duration="659000" />
+      <workItem from="1649759107424" duration="596000" />
     </task>
     <task id="LOCAL-00015" summary="bigfix">
       <created>1637593821632</created>
@@ -451,7 +451,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646936646245</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Hopefully removed a race condition when sending the token to all brokers">
+      <created>1647008298660</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1647008298660</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -482,7 +489,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added meta box to restrict access to posts by role, refactored some stuff" />
     <MESSAGE value="Updated Plugin to work with Drupal Api" />
     <MESSAGE value="added new setting" />
     <MESSAGE value="version bump" />
@@ -507,20 +513,10 @@
     <MESSAGE value="test" />
     <MESSAGE value="trying to fix bug with drupal" />
     <MESSAGE value="Bugfix with tksso user" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfix with tksso user" />
+    <MESSAGE value="Hopefully removed a race condition when sending the token to all brokers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hopefully removed a race condition when sending the token to all brokers" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/attach-cookies.php</url>
-          <line>12</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
