@@ -14,6 +14,7 @@ function removeTkSsoTokenCookie() {
     $tkSsoTokenValue = '';
     $tkSsoBroker->setCookie($tkSsoTokenValue);
 }
+header('Content-type: image/png');
 removeTkSsoTokenCookie();
 ?>
 <pre><?php print_r($_COOKIE) ?></pre>
