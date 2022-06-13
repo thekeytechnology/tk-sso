@@ -56,12 +56,16 @@ class TkSsoRestrictToRolesMetaBox {
 
 
     public function saveMetaBox($postId) {
-        $selectedValues = $_POST[$this::$POST_PARAM_NAME] ?? [];
+        $selectedValues = $_POST[$this::$POST_PARAM_NAME] ?? false;
 
-        update_post_meta($postId, $this::$META_KEY, $selectedValues);
+        if ($selectedValues !== false) {
+            update_post_meta($postId, $this::$META_KEY, $selectedValues);
+        }
 
-        $redirect = $_POST[$this::$POST_PARAM_NAME_REDIRECT] ?? [];
+        $redirect = $_POST[$this::$POST_PARAM_NAME_REDIRECT] ?? false;
 
-        update_post_meta($postId, $this::$META_KEY_REDIRECT, $redirect);
+        if ($redirect !== false) {
+            update_post_meta($postId, $this::$META_KEY_REDIRECT, $redirect);
+        }
     }
 }
