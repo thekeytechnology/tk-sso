@@ -36,6 +36,7 @@ class TkSsoRestrictToRolesMetaBox {
                                                                       id='$role' $checked> $role</label></li>";
                 } ?>
             </ul>
+            <input type="hidden" name="<?php echo "{$this::$POST_PARAM_NAME}[]" ?>" value=""/>
             <input type="text" name="<?php echo $this::$POST_PARAM_NAME_REDIRECT ?>" value="<?php echo $redirect ?>"/>
             <small>Custom Redirect wenn Nutzer nicht die entsprechenden Rollen hat. {{url}} entspricht der aktuellen
                 Url. Beispiel: /login/?redirectTo={{url}}</small>
@@ -58,8 +59,12 @@ class TkSsoRestrictToRolesMetaBox {
     public function saveMetaBox($postId) {
         $selectedValues = $_POST[$this::$POST_PARAM_NAME] ?? false;
 
+        //We do this to prevent deletion should the post be somehow saved without this field
         if ($selectedValues !== false) {
-            update_post_meta($postId, $this::$META_KEY, $selectedValues);
+            $filteredValue = array_filter($selectedValues, function ($val) {
+                return $val !== "";
+            });
+            update_post_meta($postId, $this::$META_KEY, $filteredValue);
         }
 
         $redirect = $_POST[$this::$POST_PARAM_NAME_REDIRECT] ?? false;
