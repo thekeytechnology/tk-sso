@@ -27,6 +27,9 @@ class TkUsSsoBroker extends TkSsoBroker {
                     }
                     return ['error' => $errMsg];
                 }
+                if ($response['error'] == 'user-not-activated') {
+                    return ['error' => 'Sie haben Ihre E-Mail noch nicht bestätigt, bitte prüfen Sie Ihr Postfach.'];
+                }
                 return ['error' => $response['error']];
             }
 
