@@ -43,6 +43,7 @@ class TkUsSsoBroker extends TkSsoBroker {
                 foreach ($roleProcesses as $role) {
                     if ($role['status'] == "Finished" && $role['userStatus'] == "Active") {
                         $hasAccess = true;
+                        break;
                     }
                 }
                 if ($hasAccess) {
@@ -53,7 +54,18 @@ class TkUsSsoBroker extends TkSsoBroker {
                         'brokers' => $brokers
                     ]);
                 } else {
-                    return ['error' => 'Ihre Daten werden noch von uns überprüft.'];
+                    $isInactiv = false;
+                    foreach ($roleProcesses as $role) {
+                        if ($role['status'] == "Finished" && $role['userStatus'] == "Inactive") {
+                            $isInactiv = true;
+                            break;
+                        }
+                    }
+                    if ($isInactiv) {
+                        return ['error' => 'Authentifizierungsfehler'];
+                    } else {
+                        return ['error' => 'Ihre Daten werden noch von uns überprüft.'];
+                    }
                 }
 
             } /**
