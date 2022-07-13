@@ -22,6 +22,17 @@ function tkSsoIsV2DocCheckLogin(): bool {
     return isset($_GET['loggedIn']) && $_GET['loggedIn'] == "true" && isset($_GET['token']);
 }
 
+function tkSsoGenerateDocCheckLink($redirect = ""): string {
+
+    $currentDomain = "https://$_SERVER[HTTP_HOST]";
+    $login = rtrim(tkSsoGenerateLoginLink(""), "/") . '/';
+    $redirectTo = $redirect ? "&redirectTo=" . urlencode($redirect) : "";
+    $docCheckRedirect = tkSsoBase64UrlEncode(base64_encode($currentDomain . "$login?loggedIn=true$redirectTo"));
+
+    $brand = TkSsoUtil::getBrandId();
+    return "https://identity.infectopharm.com/doccheck/$brand/$docCheckRedirect";
+}
+
 function tkSsoBase64UrlEncode($string) {
     $string = str_replace("/", "_", $string);
     $string = str_replace("+", "-", $string);

@@ -75,7 +75,8 @@ class TkSsoSettingsPage
                     </tr>
                     <tr>
                         <th scope="row">
-                            <label for="<?php echo $this::$OPTION_SERVER_URL ?>">SSO server url <psan style="font-size: 14px;"><br> Drupal:<br> https://cme-portal.infectopharm.com/api/tkt-sso/server<br> US: <br>https://staging.api.identity.infectopharm.com/api </psan></label>
+                            <label for="<?php echo $this::$OPTION_SERVER_URL ?>">SSO server url <span
+                                        style="font-size: 14px;"><br> Drupal:<br> https://cme-portal.infectopharm.com/api/tkt-sso/server<br> US: <br>https://api.identity.infectopharm.com/api </span></label>
                         </th>
                         <td>
                             <input name="<?php echo $this::$OPTION_SERVER_URL ?>" type="text"
