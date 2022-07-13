@@ -2,6 +2,7 @@
 
 class TkSsoUser {
     private $data = [];
+    const FILTER_DATA = "";
 
     public function getRole(): string {
         $role = $this->getData('role');
@@ -47,7 +48,8 @@ class TkSsoUser {
 
         $value = str_replace("Unknown", "", $value);
 
-        return $value;
+
+        return apply_filters(TkSsoUser::FILTER_DATA, $value, $key);
     }
 
     public function hasRole(array $roles): bool {
