@@ -6,8 +6,8 @@ function tkSsoDocCheckUserDataFilter($value, $key) {
         return $value;
     }
 
-    $roleManager = new TkSsoRoleManager();
-    if ($roleManager->userHasRole([TkSsoRoleManager::$ROLE_DOCCHECK_LOGGED_IN])) {
+    global $tkSsoUser;
+    if ($tkSsoUser->hasRole([TkSsoRoleManager::$ROLE_DOCCHECK_LOGGED_IN])) {
         if ($key == "e-mail") {
             return "";
         }

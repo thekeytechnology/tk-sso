@@ -2,11 +2,39 @@
 
 class TkSsoUser {
     private $data = [];
+    private $roleManager;
     const FILTER_DATA = "";
+
+    public function __construct() {
+        $this->roleManager = new TkSsoRoleManager();
+    }
 
     public function getRole(): string {
         $role = $this->getData('role');
         return $role ?: TkSsoRoleManager::$ROLE_NOT_LOGGED_IN;
+    }
+
+    public function getRoles(): array {
+        $systemRoles = $this->roleManager->getSystemRolesForCurrentUser();
+
+        $userRole = $this->getRole();
+
+        return array_merge($systemRoles, [$userRole]);
+    }
+
+    public function hasRole($roles): bool {
+        if (empty($roles)) {
+            return true;
+        }
+
+        $userRoles = $this->getRoles();
+        foreach ($userRoles as $role) {
+            if (in_array($role, $roles)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function isLoggedIn(): bool {
@@ -50,11 +78,6 @@ class TkSsoUser {
 
 
         return apply_filters(TkSsoUser::FILTER_DATA, $value, $key);
-    }
-
-    public function hasRole(array $roles): bool {
-        $roleManager = new TkSsoRoleManager();
-        return $roleManager->userHasRole($roles);
     }
 }
 

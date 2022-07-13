@@ -5,9 +5,9 @@ add_action("template_redirect", function () {
 
     if ($post instanceof WP_Post && tkSsoShouldRestrict()) {
         $restrictToRoles = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY, true);
-        $roleManager = new TkSsoRoleManager();
+        global $tkSsoUser;
 
-        if (!($roleManager->userHasRole($restrictToRoles))) {
+        if (!($tkSsoUser->hasRole($restrictToRoles))) {
             global $wp;
             $currentUrl = home_url($wp->request);
             $customRedirect = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY_REDIRECT, true);

@@ -62,9 +62,9 @@ function tkRestrictContainer($should_render, $object) {
     $settings = $object->get_settings_for_display();
     if (isset($settings['tk_enable_restriction']) && $settings['tk_enable_restriction'] == 'yes') {
         if (!empty($settings['tk_show_content_to_roles'])) {
-            $roleManager = new TkSsoRoleManager();
+            global $tkSsoUser;
             $allowedRoles = $settings['tk_show_content_to_roles'];
-            if (!$roleManager->userHasRole($allowedRoles)) {
+            if (!$tkSsoUser->hasRole($allowedRoles)) {
                 $should_render = false;
             }
         }
