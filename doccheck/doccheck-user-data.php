@@ -1,18 +1,20 @@
 <?php
 
 function tkSsoDocCheckUserDataFilter($value, $key) {
-    //Prevent loop
+
+    $key = strtolower($key);
+    // This prevents a loop, since we are querying the role in this function
     if ($key == "role") {
         return $value;
     }
 
     global $tkSsoUser;
     if ($tkSsoUser->hasRole([TkSsoDocCheckRoleManager::$ROLE_DOCCHECK_LOGGED_IN])) {
-        if ($key == "e-mail") {
+        if ($key == "email") {
             return "";
         }
 
-        if ($key == "onekeyId") {
+        if ($key == "onekeyid") {
             return "DocCheck Nutzer";
         }
     }
@@ -20,4 +22,4 @@ function tkSsoDocCheckUserDataFilter($value, $key) {
     return $value;
 }
 
-add_filter(TkSsoUser::FILTER_DATA, "tkSsoDocCheckUserDataFilter", 10, 2);
+add_filter(TkSsoUser::$FILTER_DATA, "tkSsoDocCheckUserDataFilter", 10, 2);

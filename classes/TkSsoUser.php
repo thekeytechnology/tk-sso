@@ -1,9 +1,9 @@
 <?php
 
 class TkSsoUser {
-    private $data = [];
-    private $roleManager;
-    const FILTER_DATA = "";
+    private array $data = [];
+    private TkSsoRoleManager $roleManager;
+    public static string $FILTER_DATA = "";
 
     public function __construct() {
         $this->roleManager = new TkSsoRoleManager();
@@ -77,7 +77,7 @@ class TkSsoUser {
         $value = str_replace("Unknown", "", $value);
 
 
-        return apply_filters(TkSsoUser::FILTER_DATA, $value, $key);
+        return apply_filters(TkSsoUser::$FILTER_DATA, $value, $key);
     }
 }
 
