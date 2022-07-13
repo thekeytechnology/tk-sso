@@ -8,7 +8,10 @@ add_action("template_redirect", function () {
         $blacklistRoles = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY_BLACKLIST, true);
         global $tkSsoUser;
 
-        if ((!$tkSsoUser->hasRole($whitelistRoles)) || $tkSsoUser->hasRole($blacklistRoles)) {
+        if (
+            (!$tkSsoUser->hasRole($whitelistRoles)) ||
+            (!empty($blacklistRoles) && $tkSsoUser->hasRole($blacklistRoles))
+        ) {
             global $wp;
             $currentUrl = home_url($wp->request);
             $customRedirect = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY_REDIRECT, true);

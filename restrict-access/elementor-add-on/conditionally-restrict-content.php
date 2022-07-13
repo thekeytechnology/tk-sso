@@ -80,7 +80,10 @@ function tkRestrictContainer($should_render, $object) {
         global $tkSsoUser;
         $whitelistRoles = $settings['tk_show_content_to_roles'] ?? [];
         $blacklistRoles = $settings['tk_show_content_to_roles_blacklist'] ?? [];
-        if (!$tkSsoUser->hasRole($whitelistRoles) || $tkSsoUser->hasRole($blacklistRoles)) {
+        if (
+            (!$tkSsoUser->hasRole($whitelistRoles)) ||
+            (!empty($blacklistRoles) && $tkSsoUser->hasRole($blacklistRoles))
+        ) {
             $should_render = false;
         }
         return apply_filters("tk-sso-restrict-content-elementor-should-render", $should_render, $object);

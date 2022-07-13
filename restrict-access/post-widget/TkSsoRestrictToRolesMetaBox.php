@@ -29,8 +29,8 @@ class TkSsoRestrictToRolesMetaBox {
         }
 
         ?>
+        Einschließen:
         <div class="tk-meta-box-multiselect">
-            Einschließen:
             <ul id="tkSso-restrict-access-roles-list" class="categorychecklist form-no-clear">
                 <?php foreach ($roles as $role) {
                     $checked = in_array($role, $whitelistValues) ? "checked='checked'" : "";
@@ -40,8 +40,9 @@ class TkSsoRestrictToRolesMetaBox {
                 } ?>
             </ul>
             <input type="hidden" name="<?php echo "{$this::$POST_PARAM_NAME_WHITELIST}[]" ?>" value=""/>
-
-            Ausschließen:
+        </div>
+        Ausschließen:
+        <div class="tk-meta-box-multiselect">
             <ul id="tkSso-restrict-access-roles-list" class="categorychecklist form-no-clear">
                 <?php foreach ($roles as $role) {
                     $checked = in_array($role, $blacklistValues) ? "checked='checked'" : "";
@@ -51,12 +52,12 @@ class TkSsoRestrictToRolesMetaBox {
                 } ?>
             </ul>
             <input type="hidden" name="<?php echo "{$this::$POST_PARAM_NAME_BLACKLIST}[]" ?>" value=""/>
-            (Frei lassen, um die Box zu ignorieren)
-
-            <input type="text" name="<?php echo $this::$POST_PARAM_NAME_REDIRECT ?>" value="<?php echo $redirect ?>"/>
-            <small>Custom Redirect wenn Nutzer nicht die entsprechenden Rollen hat. {{url}} entspricht der aktuellen
-                Url. Beispiel: /login/?redirectTo={{url}}</small>
         </div>
+        <br/>
+        <input type="text" name="<?php echo $this::$POST_PARAM_NAME_REDIRECT ?>" value="<?php echo $redirect ?>"/>
+        <br/>
+        <small>Custom Redirect wenn Nutzer nicht die entsprechenden Rollen hat. {{url}} entspricht der aktuellen
+            Url. <br/>Beispiel: /login/?redirectTo={{url}}</small>
         <?php
     }
 
