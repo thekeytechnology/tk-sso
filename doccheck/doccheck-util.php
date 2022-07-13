@@ -66,8 +66,8 @@ add_shortcode('tk-sso-status', function () {
     $val = "<pre>";
     $val .= "DocCheck Status: " . tkSsoIsDocCheckInstalled() . PHP_EOL;
     $val .= "DocCheck Logged In: " . $client->dcl_has_logged_in_user() . PHP_EOL;
-    $rm = new TkSsoRoleManager();
-    $val .= json_encode($rm->getSystemRolesForCurrentUser());
+    global $tkSsoUser;
+    $val .= json_encode($tkSsoUser->getRoles());
     $val .= "</pre>";
 
     return $val;
