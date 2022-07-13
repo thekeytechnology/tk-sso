@@ -53,6 +53,22 @@ function tkAddRestrictionControls($element) {
         ]
     );
 
+    $element->add_control(
+        'tk_show_content_to_roles_blacklist',
+        [
+            'type' => \Elementor\Controls_Manager::SELECT2,
+            'label' => __('Inhalte für folgende Benutzerrollen verbergen', 'tk-sso'),
+            'description' => __('', 'tk-sso'),
+            'options' => $options,
+            'separator' => 'before',
+            'multiple' => true,
+            'label_block' => true,
+            'condition' => [
+                'tk_enable_restriction' => 'yes',
+            ]
+        ]
+    );
+
     $element->end_controls_section();
 }
 
@@ -61,12 +77,11 @@ function tkRestrictContainer($should_render, $object) {
 
     $settings = $object->get_settings_for_display();
     if (isset($settings['tk_enable_restriction']) && $settings['tk_enable_restriction'] == 'yes') {
-        if (!empty($settings['tk_show_content_to_roles'])) {
-            global $tkSsoUser;
-            $allowedRoles = $settings['tk_show_content_to_roles'];
-            if (!$tkSsoUser->hasRole($allowedRoles)) {
-                $should_render = false;
-            }
+        global $tkSsoUser;
+        $whitelistRoles = $settings['tk_show_content_to_roles'] ?? [];
+        $blacklistRoles = $settings['tk_show_content_to_roles_blacklist'] ?? [];
+        if (!$tkSsoUser->hasRole($whitelistRoles) || $tkSsoUser->hasRole($blacklistRoles)) {
+            $should_render = false;
         }
         return apply_filters("tk-sso-restrict-content-elementor-should-render", $should_render, $object);
     }

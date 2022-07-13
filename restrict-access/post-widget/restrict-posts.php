@@ -4,10 +4,11 @@ add_action("template_redirect", function () {
     $post = get_queried_object();
 
     if ($post instanceof WP_Post && tkSsoShouldRestrict()) {
-        $restrictToRoles = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY, true);
+        $whitelistRoles = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY_WHITELIST, true);
+        $blacklistRoles = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY_BLACKLIST, true);
         global $tkSsoUser;
 
-        if (!($tkSsoUser->hasRole($restrictToRoles))) {
+        if ((!$tkSsoUser->hasRole($whitelistRoles)) || $tkSsoUser->hasRole($blacklistRoles)) {
             global $wp;
             $currentUrl = home_url($wp->request);
             $customRedirect = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY_REDIRECT, true);
