@@ -12,12 +12,12 @@ add_action("template_redirect", function () {
             $currentUrl = home_url($wp->request);
             $customRedirect = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY_REDIRECT, true);
             if ($customRedirect) {
-                $loginUrl = str_replace(TkSsoRestrictToRolesMetaBox::$STRING_REPLACE_URL, urlencode($currentUrl), $customRedirect);
+                $targetUrl = str_replace(TkSsoRestrictToRolesMetaBox::$STRING_REPLACE_URL, urlencode($currentUrl), $customRedirect);
             } else {
-                $loginUrl = get_option(TkSsoSettingsPage::$OPTION_LOGIN_URL) . "?redirectTo=" . urlencode($currentUrl);
+                $targetUrl = tkSsoGenerateLoginLink($currentUrl);
             }
 
-            wp_redirect($loginUrl);
+            wp_redirect($targetUrl);
         }
     }
 });
