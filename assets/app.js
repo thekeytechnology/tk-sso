@@ -90,13 +90,14 @@ jQuery(function ($) {
         const urlSearchParams = new URLSearchParams(window.location.search);
 
         let redirectTo = urlSearchParams.get("redirectTo");
+        let finalRedirect = "";
         if (redirectTo) {
-            redirectTo = decodeURI(redirectTo)
+            finalRedirect = decodeURIComponent(redirectTo)
         } else {
-            redirectTo = tkSsoSettings.redirectUrl
+            finalRedirect = tkSsoSettings.redirectUrl ? tkSsoSettings.redirectUrl : ""
         }
 
-        return redirectTo;
+        return finalRedirect;
     }
 
     const redirectAfterLogin = () => {
@@ -114,5 +115,3 @@ jQuery(function ($) {
     $(window).on("load", redirectAfterLogin);
 
 })
-
-
