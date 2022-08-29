@@ -19,7 +19,7 @@ class TkSsoUser {
 
         $userRole = $this->getRole();
 
-        return array_merge($systemRoles, [$userRole]);
+        return array_unique(array_merge($systemRoles, [$userRole]));
     }
 
     public function hasRole($roles): bool {

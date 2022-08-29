@@ -67,7 +67,6 @@ class TkUsSsoBroker extends TkSsoBroker {
                         return ['error' => 'Ihre Daten werden noch von uns überprüft.'];
                     }
                 }
-
             } /**
              * authentication error
              */
