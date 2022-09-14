@@ -1,12 +1,14 @@
 <?php
 
-class TkUsSsoBroker extends TkSsoBroker {
+class TkUsSsoBroker extends TkSsoBroker
+{
     public static string $LOGIN_API = "/sso/login";
     public static string $LOGOUT_API = "/sso/logout";
     public static string $AUTHENTICATE_API = "/sso/authenticate";
     public static string $ALL_BROKERS_API = "/sso/brokers";
 
-    public function getToken(): string {
+    public function getToken(): string
+    {
         return $_COOKIE[$this->getCookieName()] ?? $_GET['dcToken'] ?? "";
     }
 
@@ -15,8 +17,10 @@ class TkUsSsoBroker extends TkSsoBroker {
      * @param $password
      * @return array
      */
-    public function login($name, $password) {
+    public function login($name, $password)
+    {
         if (!empty($name) && !empty($password)) {
+            unset($_COOKIE[$this->getCookieName()]);
             $response = $this->request(TkSsoUtil::getApiUrl() . $this::$LOGIN_API, 'POST', 'login', ['name' => $name, 'password' => $password]);
 
             if (isset($response['error'])) {
@@ -81,7 +85,8 @@ class TkUsSsoBroker extends TkSsoBroker {
         }
     }
 
-    protected function request($endpoint, string $method, string $command, $data = null) {
+    protected function request($endpoint, string $method, string $command, $data = null)
+    {
         $url = !empty($endpoint) ? $endpoint : $this->url;
 //        $data['command'] = $command;
         $data = json_encode($data);
@@ -120,7 +125,8 @@ class TkUsSsoBroker extends TkSsoBroker {
      * @param $token
      * Logs the user out of the browser and the server
      */
-    public function logout($token) {
+    public function logout($token)
+    {
         if (isset($_COOKIE[$this->getCookieName()])) {
             $this->setCookie("");
         }
@@ -134,7 +140,8 @@ class TkUsSsoBroker extends TkSsoBroker {
      * @param $token
      * @return array|mixed|object|string|string[]|void
      */
-    public function authenticate($userVar = "", $token = "") {
+    public function authenticate($userVar = "", $token = "")
+    {
         $token = !empty($token) ? $token : $this->getToken();
 
         /**
@@ -196,7 +203,8 @@ class TkUsSsoBroker extends TkSsoBroker {
     }
 
 
-    public function getAllBrokers() {
+    public function getAllBrokers()
+    {
         $token = $this->getToken();
         $response = $this->request(TkSsoUtil::getApiUrl() . $this::$ALL_BROKERS_API, 'GET', 'getAllBrokers', ['token' => $token]);
         if (!empty($response) && !isset($response['error'])) {
@@ -209,7 +217,8 @@ class TkUsSsoBroker extends TkSsoBroker {
      * @param $array
      * @return string
      */
-    public function tkSearchArray($key, $array): string {
+    public function tkSearchArray($key, $array): string
+    {
         if (is_array($array)) {
             $keyToLower = strtolower($key);
             $arrayToLower = array_change_key_case($array, CASE_LOWER);
@@ -227,7 +236,8 @@ class TkUsSsoBroker extends TkSsoBroker {
         return "";
     }
 
-    public function isUserLoggedIn(): bool {
+    public function isUserLoggedIn(): bool
+    {
         $role = $this->authenticate('role');
         if ($role == "Doccheck" || isset($role['error'])) {
             return false;

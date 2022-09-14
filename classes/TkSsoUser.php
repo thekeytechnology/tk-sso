@@ -1,20 +1,24 @@
 <?php
 
-class TkSsoUser {
+class TkSsoUser
+{
     private array $data = [];
     private TkSsoRoleManager $roleManager;
     public static string $FILTER_DATA = "";
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->roleManager = new TkSsoRoleManager();
     }
 
-    public function getRole(): string {
+    public function getRole(): string
+    {
         $role = $this->getData('role');
         return $role ?: TkSsoRoleManager::$ROLE_NOT_LOGGED_IN;
     }
 
-    public function getRoles(): array {
+    public function getRoles(): array
+    {
         $systemRoles = $this->roleManager->getSystemRolesForCurrentUser();
 
         $userRole = $this->getRole();
@@ -22,7 +26,8 @@ class TkSsoUser {
         return array_unique(array_merge($systemRoles, [$userRole]));
     }
 
-    public function hasRole($roles): bool {
+    public function hasRole($roles): bool
+    {
         if (empty($roles)) {
             return true;
         }
@@ -37,7 +42,8 @@ class TkSsoUser {
         return false;
     }
 
-    public function isLoggedIn(): bool {
+    public function isLoggedIn(): bool
+    {
         global $tkSsoBroker;
 
         $acceptWordpressLogin = get_option(TkSsoSettingsPage::$OPTION_ACCEPT_WORDPRESS_LOGIN);
@@ -46,11 +52,17 @@ class TkSsoUser {
         return $this->loggedIn;
     }
 
+    public function isActive(): bool
+    {
+        return $this->getData('status') == 'Finished';
+    }
+
     /**
      * @param string $key
      * @return array|string
      */
-    public function getData($key = '') {
+    public function getData($key = '')
+    {
         global $tkSsoBroker;
 
         if (empty($key)) {
