@@ -54,7 +54,7 @@ class TkSsoUser
 
     public function isActive(): bool
     {
-        return $this->getData('status') == 'Finished';
+        return $this->getData('globalUserStatus') != 'inactive';
     }
 
     /**
