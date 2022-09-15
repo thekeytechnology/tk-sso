@@ -42,14 +42,7 @@ class TkUsSsoBroker extends TkSsoBroker
              */
             if ($response['authenticated'] == 1 && !empty($response['token'])) {
                 $data = $this->authenticate("", $response['token']);
-                $roleProcesses = $data['roleApplicationProcesses'] ?? [];
-                $hasAccess = false;
-                foreach ($roleProcesses as $role) {
-                    if ($role['globalUserStatus'] != "initialValidation") {
-                        $hasAccess = true;
-                        break;
-                    }
-                }
+                $hasAccess = $data['globalUserStatus'] != 'initialValidation';
                 if ($hasAccess) {
                     $this->successfullyAuthenticated($response['token']);
                     $brokers = $this->getAllBrokers();
