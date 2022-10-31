@@ -41,6 +41,9 @@ class TkUsSsoBroker extends TkSsoBroker
              * successfully authenticated
              */
             if ($response['authenticated'] == 1 && !empty($response['token'])) {
+                if (!is_array($this->authenticate("", $response['token']))) {
+                    return ['error' => 'Leider gibt es aktuell technische Probleme. Wir arbeiten bereits an einer Lösung.'];
+                }
                 $data = $this->authenticate("", $response['token']);
                 $hasAccess = $data['globalUserStatus'] != 'initialValidation';
                 if ($hasAccess) {
