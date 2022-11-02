@@ -12,6 +12,10 @@ add_action("template_redirect", function () {
             (!$tkSsoUser->hasRole($whitelistRoles)) ||
             (!empty($blacklistRoles) && $tkSsoUser->hasRole($blacklistRoles))
         ) {
+            if(tkIsLoggedInViaAnySource()){
+                wp_redirect( get_home_url() . '/404', 301 );
+                exit();
+            }
             global $wp;
             $currentUrl = home_url($wp->request);
             $customRedirect = get_post_meta($post->ID, TkSsoRestrictToRolesMetaBox::$META_KEY_REDIRECT, true);
