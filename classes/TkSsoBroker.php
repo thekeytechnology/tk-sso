@@ -151,25 +151,37 @@ abstract class TkSsoBroker
 
     public function setCookieSameSite(
         string $name, string $value,
-        int    $expire, string $path = "", string $domain = "",
-        bool   $secure = true, bool $httponly = false, string $samesite = 'None'
-    ) {
-        $fullUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $host = $this->getDomain($fullUrl);
-        $domain = $domain ?: $host;
-        $_COOKIE[$this->getCookieName()] = $value;
-        if (PHP_VERSION_ID < 70300) {
-            setcookie($name, $value, $expire, $path . '; samesite=' . $samesite, $domain, $secure, $httponly);
-            return;
+        int    $expire = null, string $path = "/", string $domain = null,
+        bool   $httponly = false, string $samesite = 'None'
+    )
+    {
+        if ($domain === null) {
+            $domain = '.' . $_SERVER['HTTP_HOST'];
         }
-        setcookie($name, $value, [
+        if ($expire === null) {
+            $expire = time() + 86400;
+        }
+
+        $homeUrl = get_home_url();
+        if($homeUrl == 'https://paedia.de') {
+            $domain = ".paedia.de";
+        }
+
+        $secure = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on');
+
+        $_COOKIE[$this->getCookieName()] = $value;
+
+        $cookieOptions = [
             'expires' => $expire,
             'path' => $path,
             'domain' => $domain,
-            'samesite' => $samesite,
             'secure' => $secure,
             'httponly' => $httponly
-        ]);
+        ];
+        if ($secure) {
+            $cookieOptions['samesite'] = $samesite;
+        }
+        setcookie($name, $value, $cookieOptions);
     }
 
     // https://gist.github.com/Xeoncross/1561096

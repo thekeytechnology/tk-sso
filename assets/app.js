@@ -3,6 +3,7 @@ jQuery(function ($) {
     const tkSsoForm = $(".tk-sso-login-form");
 
     const tkSsoFormSubmit = () => {
+	
         setTimeout(function () {
             $('.tkSSoSpinner').addClass('active');
         }, 100);

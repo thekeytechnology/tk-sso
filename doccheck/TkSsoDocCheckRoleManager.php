@@ -2,7 +2,6 @@
 
 class TkSsoDocCheckRoleManager {
     public static string $ROLE_DOCCHECK_LOGGED_IN = "DocCheck Logged In";
-    public static string $ROLE_DOCCHECK_NOT_LOGGED_IN = "DocCheck Not Logged In";
 
     /**
      * @param TkSsoCustomRole[] $roles
@@ -22,22 +21,6 @@ class TkSsoDocCheckRoleManager {
                         return $dclClient->dcl_has_logged_in_user();
                     }
                     return false;
-                }
-            }
-        );
-
-        $roles[] = new TkSsoCustomRole(
-            TkSsoDocCheckRoleManager::$ROLE_DOCCHECK_NOT_LOGGED_IN,
-            function () {
-                global $tkSsoUser;
-                if (TkSsoUtil::getApiVersion() == "2") {
-                    return !($tkSsoUser->getRole() == "Doccheck");
-                } else {
-                    if (tkSsoIsDocCheckInstalled()) {
-                        $dclClient = tkSsoGetDocCheckClient();
-                        return !$dclClient->dcl_has_logged_in_user();
-                    }
-                    return true;
                 }
             }
         );

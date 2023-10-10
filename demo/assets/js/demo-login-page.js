@@ -1,6 +1,6 @@
 jQuery(function ($) {
     $('#tkSsoLogIn').click(function () {
-
+		console.log('tisiiiii')
         setTimeout(function () {
             $('.tkSSoSpinner').addClass('active');
         }, 100);

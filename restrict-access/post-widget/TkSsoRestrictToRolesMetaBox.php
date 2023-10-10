@@ -3,13 +3,11 @@
 class TkSsoRestrictToRolesMetaBox {
 
     public static string $META_KEY_WHITELIST = "tk-sso-restrict-to-roles";
-    public static string $META_KEY_BLACKLIST = "tk-sso-restrict-to-roles-blacklist";
     public static string $META_KEY_REDIRECT = "tk-sso-restrict-to-roles-redirect";
     public static string $STRING_REPLACE_URL = "{{url}}";
 
     private static string $META_BOX_ID = "tkSsoRestrictAccessMetaBox";
     private static string $POST_PARAM_NAME_WHITELIST = "tkSsoRestrictToRolesWhitelist";
-    private static string $POST_PARAM_NAME_BLACKLIST = "tkSsoRestrictToRolesBlacklist";
     private static string $POST_PARAM_NAME_REDIRECT = "tkSsoRestrictToRolesRedirect";
 
     public function init() {
@@ -18,46 +16,51 @@ class TkSsoRestrictToRolesMetaBox {
     }
 
     public function renderMetaBox($post) {
-
         $roleManager = new TkSsoRoleManager();
         $roles = $roleManager->getRolesForRestriction();
-        $whitelistValues = get_post_meta($post->ID, $this::$META_KEY_WHITELIST, true);
-        $blacklistValues = get_post_meta($post->ID, $this::$META_KEY_BLACKLIST, true);
+        $whitelistValues = is_array($temp = get_post_meta($post->ID, $this::$META_KEY_WHITELIST, true)) ? $temp : array();
         $redirect = get_post_meta($post->ID, $this::$META_KEY_REDIRECT)[0] ?? "";
         if (is_array($redirect)) {
             $redirect = $redirect[0] ?? "";
         }
-
         ?>
-        Einschließen:
-        <div class="tk-meta-box-multiselect">
-            <ul id="tkSso-restrict-access-roles-list" class="categorychecklist form-no-clear">
-                <?php foreach ($roles as $role) {
-                    $checked = in_array($role, $whitelistValues) ? "checked='checked'" : "";
-                    echo "<li id='$role'><label class='selectit'><input value='$role' type='checkbox'
-                                                                      name='{$this::$POST_PARAM_NAME_WHITELIST}[]'
-                                                                      id='$role' $checked> $role</label></li>";
-                } ?>
-            </ul>
-            <input type="hidden" name="<?php echo "{$this::$POST_PARAM_NAME_WHITELIST}[]" ?>" value=""/>
+        <div style="font-size: 14px;">
+            <strong>Rollen auswählen:</strong>
+            <div class="tk-meta-box-multiselect" style="border: 1px solid #e5e5e5; padding: 10px; border-radius: 5px; background-color: #f9f9f9; margin-bottom: 20px; margin-top: 6px">
+                <ul id="tkSso-restrict-access-roles-list" class="categorychecklist form-no-clear" style="list-style-type: none; margin: 0; padding: 0;">
+                    <?php foreach ($roles as $role) {
+                        $checked = in_array($role, $whitelistValues) ? "checked='checked'" : "";
+                        echo "<li id='$role' style='margin-bottom: 8px;'><label class='selectit'><input value='$role' type='checkbox' style='margin-right: 10px;'
+                                                                  name='{$this::$POST_PARAM_NAME_WHITELIST}[]'
+                                                                  id='$role' $checked> $role</label></li>";
+                    } ?>
+                </ul>
+                <input type="hidden" name="<?php echo "{$this::$POST_PARAM_NAME_WHITELIST}[]" ?>" value=""/>
+            </div>
+
+            <span style="color: #d9534f; font-size: 14px; display: block; padding: 10px 15px; border: 1px solid #d9534f; border-radius: 5px; background-color: #fdf2f2; margin-bottom: 20px;">Hinweis: Bei Auswahl von "Aus Deutschland" oder "Aus Österreich" ist ein Login erforderlich, um Zugang zu dieser Seite zu erhalten. Bitte stellen Sie sicher, dass Sie auch eine Anmeldeoption aktivieren.</span>
+
+            <hr style="border: 0; border-top: 1px solid #e5e5e5; margin-bottom: 20px;">
+
+            <strong>Benutzergruppen:</strong>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; margin-top: 6px;">
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #e5e5e5; font-weight: bold;">UG1</td>
+                    <td style="padding: 8px; border: 1px solid #e5e5e5;">Arzt und Apotheker</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #e5e5e5; font-weight: bold;">UG2</td>
+                    <td style="padding: 8px; border: 1px solid #e5e5e5;">Arzt, Apotheker, Hebamme und PTA</td>
+                </tr>
+            </table>
+
+            <hr style="border: 0; border-top: 1px solid #e5e5e5; margin-bottom: 20px;">
+
+            <strong>Redirect Einstellungen:</strong>
+            <small style="color: #555; display: block; margin-bottom: 10px;">Custom Redirect wenn Nutzer nicht die entsprechenden Rollen hat. {{url}} entspricht der aktuellen Url. <br/>Beispiel: /login/?redirectTo={{url}}</small>
+            <input type="text" name="<?php echo $this::$POST_PARAM_NAME_REDIRECT ?>" value="<?php echo $redirect ?>" />
         </div>
-        Ausschließen:
-        <div class="tk-meta-box-multiselect">
-            <ul id="tkSso-restrict-access-roles-list" class="categorychecklist form-no-clear">
-                <?php foreach ($roles as $role) {
-                    $checked = in_array($role, $blacklistValues) ? "checked='checked'" : "";
-                    echo "<li id='$role'><label class='selectit'><input value='$role' type='checkbox'
-                                                                      name='{$this::$POST_PARAM_NAME_BLACKLIST}[]'
-                                                                      id='$role' $checked> $role</label></li>";
-                } ?>
-            </ul>
-            <input type="hidden" name="<?php echo "{$this::$POST_PARAM_NAME_BLACKLIST}[]" ?>" value=""/>
-        </div>
-        <br/>
-        <input type="text" name="<?php echo $this::$POST_PARAM_NAME_REDIRECT ?>" value="<?php echo $redirect ?>"/>
-        <br/>
-        <small>Custom Redirect wenn Nutzer nicht die entsprechenden Rollen hat. {{url}} entspricht der aktuellen
-            Url. <br/>Beispiel: /login/?redirectTo={{url}}</small>
+
         <?php
     }
 
@@ -73,11 +76,9 @@ class TkSsoRestrictToRolesMetaBox {
     }
 
 
+
     public function saveMetaBox($postId) {
         $whitelistValues = $_POST[$this::$POST_PARAM_NAME_WHITELIST] ?? false;
-        $blacklistValues = $_POST[$this::$POST_PARAM_NAME_BLACKLIST] ?? false;
-
-        //We do this to prevent deletion should the post be somehow saved without this field
         if ($whitelistValues !== false) {
 
             $filteredWhitelistValues = array_filter($whitelistValues, function ($val) {
@@ -87,14 +88,6 @@ class TkSsoRestrictToRolesMetaBox {
             update_post_meta($postId, $this::$META_KEY_WHITELIST, $filteredWhitelistValues);
         }
 
-        //We do this to prevent deletion should the post be somehow saved without this field
-        if ($blacklistValues !== false) {
-            $filteredBlacklistValues = array_filter($blacklistValues, function ($val) {
-                return $val !== "";
-            });
-
-            update_post_meta($postId, $this::$META_KEY_BLACKLIST, $filteredBlacklistValues);
-        }
 
         $redirect = $_POST[$this::$POST_PARAM_NAME_REDIRECT] ?? false;
 
@@ -103,3 +96,4 @@ class TkSsoRestrictToRolesMetaBox {
         }
     }
 }
+

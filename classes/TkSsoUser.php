@@ -14,7 +14,7 @@ class TkSsoUser
     public function getRole(): string
     {
         $role = $this->getData('role');
-        return $role ?: TkSsoRoleManager::$ROLE_NOT_LOGGED_IN;
+        return $role ?: false;
     }
 
     public function getRoles(): array
@@ -28,6 +28,8 @@ class TkSsoUser
 
     public function hasRole($roles): bool
     {
+
+        $return = false;
         if (empty($roles)) {
             return true;
         }
@@ -35,12 +37,56 @@ class TkSsoUser
         $userRoles = $this->getRoles();
         foreach ($userRoles as $role) {
             if (in_array($role, $roles)) {
-                return true;
+                $return = true;
+                break;
             }
+        }
+
+        if ($return) {
+            return $this->validateLand($roles);
         }
 
         return false;
     }
+
+    public function getUserCountry() {
+        global $tkSsoBroker;
+        $authenticate = $tkSsoBroker->authenticate();
+        $roleApplicationProcesses = $authenticate['roleApplicationProcesses'][0] ?? null;
+
+        if (!$roleApplicationProcesses) {
+            return false;
+        }
+
+        $address = $roleApplicationProcesses['address'] ?? null;
+        return $address['country'] ?? false;
+    }
+
+    public function validateLand($roles): bool
+    {
+
+        $country = [];
+        if (in_array('Deutschland', $roles)) {
+            $country[] = 'Deutschland';
+        }
+        if (in_array('Oesterreich', $roles)) {
+            $country[] = 'Oesterreich';
+        }
+
+
+        if (empty($country)) {
+            return true;
+        }
+
+        $userCountry = $this->getUserCountry();
+
+        if(!$userCountry) {
+            return false;
+        }
+
+        return in_array($userCountry, $country);
+    }
+
 
     public function isLoggedIn(): bool
     {
@@ -48,7 +94,7 @@ class TkSsoUser
 
         $acceptWordpressLogin = get_option(TkSsoSettingsPage::$OPTION_ACCEPT_WORDPRESS_LOGIN);
 
-        $this->loggedIn = $tkSsoBroker->isUserLoggedIn() || ($acceptWordpressLogin == "1" && is_user_logged_in());
+        $this->loggedIn = $tkSsoBroker->isUserLoggedIn();
         return $this->loggedIn;
     }
 

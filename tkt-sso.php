@@ -15,11 +15,13 @@ if (!session_id()) {
 require_once "assets/enqueue-assets.php";
 require_once "admin/_admin.php";
 require_once "classes/_classes.php";
+require_once "custom-roles/_custom-roles.php";
 require_once "functions.php";
 require_once "restrict-access/_restrict-access.php";
 require_once "shortcodes/_shortcodes.php";
 require_once("doccheck/_doccheck.php");
 require_once "wp-rocket/_wp-rocket.php";
+
 
 if (!is_admin()) {
     require_once "attach-cookies.php";

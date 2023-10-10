@@ -74,7 +74,7 @@ class TkUsSsoBroker extends TkSsoBroker
     {
         $url = !empty($endpoint) ? $endpoint : $this->url;
 //        $data['command'] = $command;
-        $data = json_encode($data);
+     	$data = $method == "GET"? $data : json_encode($data);
         add_filter('https_ssl_verify', '__return_false');
         $response = wp_remote_post($url, array(
                 'method' => $method,
@@ -127,6 +127,7 @@ class TkUsSsoBroker extends TkSsoBroker
      */
     public function authenticate($userVar = "", $token = "")
     {
+
         $token = !empty($token) ? $token : $this->getToken();
 
         /**
@@ -157,6 +158,7 @@ class TkUsSsoBroker extends TkSsoBroker
             return ['error' => 'Bitte melden Sie sich erneut an'];
         }
 
+
         /**
          * if isset $userVar => return just the value of this var
          * example: authenticate(token, userName) returns just the username that has this token
@@ -184,6 +186,12 @@ class TkUsSsoBroker extends TkSsoBroker
          * Cache authentication data from the response if user data is not already cached
          */
         $this->cacheAuthenticationDataIfNotAlreadyCached($response);
+        global $tkSsoUser;
+        $userLand = $tkSsoUser->getUserCountry();
+        if($userLand == 'Deutschland') {
+
+        }
+        //$this->setCookieSameSite('tkDisplayCookieConsent', 1);
         return $response;
     }
 

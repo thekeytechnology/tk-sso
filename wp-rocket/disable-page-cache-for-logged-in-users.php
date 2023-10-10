@@ -1,8 +1,19 @@
 <?php
 
-add_action("init", function () {
-    global $tkSsoUser;
-    if ($tkSsoUser->isLoggedIn()) {
-        add_filter('do_rocket_generate_caching_files', '__return_false');
-    }
-});
+/**
+ * Filter the cookies rejected by WP Rocket.
+ *
+ * Add the SESStkssocookie to the list of cookies, to serve dynamic content when this cookie is present.
+ *
+ * @param array $cookies The current list of cookies rejected by WP Rocket.
+ * @return array Updated list of cookies.
+ */
+add_filter('rocket_cache_reject_cookies', 'tkDisablePageCacheForLoggedInUsers');
+
+function tkDisablePageCacheForLoggedInUsers($cookies)
+{
+    $cookies[] = 'SESStkssocookie';
+    return $cookies;
+}
+
+

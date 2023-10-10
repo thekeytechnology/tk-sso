@@ -3,9 +3,6 @@
 class TkSsoRoleManager {
 
     public static string $ROLE_LOGGED_IN = "Logged In";
-    public static string $ROLE_NOT_LOGGED_IN = "Not Logged In";
-    public static string $ROLE_WP_LOGGED_IN = "Wordpress Logged In";
-    public static string $ROLE_WP_NOT_LOGGED_IN = "Wordpress Not Logged In";
     public static string $FILTER_ROLES_FOR_RESTRICTION = "tk_sso_roles_for_restriction";
     public static string $FILTER_SYSTEM_ROLES_FOR_CURRENT_USER = "tk_sso_system_roles_for_current_user";
     public static string $FILTER_CUSTOM_ROLES = "tk_sso_custom_roles";
@@ -14,9 +11,6 @@ class TkSsoRoleManager {
         $roles = [];
 
         $roles[] = $this::$ROLE_LOGGED_IN;
-        $roles[] = $this::$ROLE_NOT_LOGGED_IN;
-        $roles[] = $this::$ROLE_WP_LOGGED_IN;
-        $roles[] = $this::$ROLE_WP_NOT_LOGGED_IN;
 
         $customRoles = $this->getCustomRoles();
         foreach ($customRoles as $customRole) {
@@ -24,7 +18,7 @@ class TkSsoRoleManager {
         }
 
         $roles = apply_filters($this::$FILTER_ROLES_FOR_RESTRICTION, $roles);
-
+        //print_a(array_combine($roles, $roles));
         return array_combine($roles, $roles);
     }
 
@@ -56,14 +50,6 @@ class TkSsoRoleManager {
 
         if ($tkSsoUser->isLoggedIn()) {
             $roles[] = $this::$ROLE_LOGGED_IN;
-        } else {
-            $roles[] = $this::$ROLE_NOT_LOGGED_IN;
-        }
-
-        if (is_user_logged_in()) {
-            $roles[] = $this::$ROLE_WP_LOGGED_IN;
-        } else {
-            $roles[] = $this::$ROLE_WP_NOT_LOGGED_IN;
         }
 
         $customRoles = $this->getCustomRoles();
