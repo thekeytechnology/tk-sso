@@ -27,8 +27,8 @@ function tkRestrictContainer($should_render, $object)
 
     $basicRestrictionShouldRender = tkBasicRestrictionShouldRender($should_render, $object);
     $timeRestrictionShouldRender = tkTimeRestrictionShouldRender($should_render, $object);
-    if ($timeRestrictionShouldRender === false) {
-        return false;
+    if (!$timeRestrictionShouldRender || !$basicRestrictionShouldRender) {
+        $should_render = false;
     }
 
 

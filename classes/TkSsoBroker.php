@@ -163,7 +163,7 @@ abstract class TkSsoBroker
         }
 
         $homeUrl = get_home_url();
-        if($homeUrl == 'https://paedia.de') {
+        if($homeUrl == 'https://paedia.de' || 'https://staging.paedia.de' || 'https://www.paedia.de/') {
             $domain = ".paedia.de";
         }
 
