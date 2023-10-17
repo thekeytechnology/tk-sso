@@ -67,25 +67,31 @@ function tkAddTimeRestrictionControls($element)
 
 function tkTimeRestrictionShouldRender($should_render, $object) {
     $settings = $object->get_settings_for_display();
+
     if (isset($settings['tk_enable_time_restriction']) && $settings['tk_enable_time_restriction'] == 'yes') {
-        $current_time = current_time('Y-m-d H:i:s');
-        $from_time = $settings['tk_show_content_time_from'];
-        $to_time = $settings['tk_show_content_time_to'];
+
+        // Adjusting this to get Berlin's time
+        $dateTimeZoneBerlin = new DateTimeZone('Europe/Berlin');
+        $currentDateTime = new DateTime('now', $dateTimeZoneBerlin);
+
+        $fromDateTime = !empty($settings['tk_show_content_time_from']) ? new DateTime($settings['tk_show_content_time_from'], $dateTimeZoneBerlin) : null;
+        $toDateTime = !empty($settings['tk_show_content_time_to']) ? new DateTime($settings['tk_show_content_time_to'], $dateTimeZoneBerlin) : null;
+
         $isVisible = true;
 
-        if(!empty($from_time) && $current_time < $from_time) {
+        if ($fromDateTime && $currentDateTime < $fromDateTime) {
             $isVisible = false;
         }
 
-        if(!empty($to_time) && $current_time > $to_time) {
+        if ($toDateTime && $currentDateTime > $toDateTime) {
             $isVisible = false;
         }
 
-        if($settings['tk_visibility_option'] === 'hidden') {
+        if ($settings['tk_visibility_option'] === 'hidden') {
             $isVisible = !$isVisible;
         }
 
-        if(!$isVisible) {
+        if (!$isVisible) {
             $should_render = false;
         }
 
@@ -93,5 +99,6 @@ function tkTimeRestrictionShouldRender($should_render, $object) {
     }
 
     return $should_render;
+
 }
 

@@ -74,7 +74,7 @@ class TkUsSsoBroker extends TkSsoBroker
     {
         $url = !empty($endpoint) ? $endpoint : $this->url;
 //        $data['command'] = $command;
-     	$data = $method == "GET"? $data : json_encode($data);
+        $data = $method == "GET"? $data : json_encode($data);
         add_filter('https_ssl_verify', '__return_false');
         $response = wp_remote_post($url, array(
                 'method' => $method,
@@ -134,7 +134,7 @@ class TkUsSsoBroker extends TkSsoBroker
          * cannot authenticate users who are not logged in
          */
         if (empty($token)) {
-//            error_log("SSO_ERROR: empty token");
+            //  error_log("SSO_ERROR: empty token");
             $this->tkSsoFrontEndCache->unsetAuthenticationData();
             return ['error' => 'Bitte melden Sie sich erneut an'];
         }
@@ -147,14 +147,15 @@ class TkUsSsoBroker extends TkSsoBroker
             $response['cached'] = 'cached';
         } else {
             $response = $this->request(TkSsoUtil::getApiUrl() . $this::$AUTHENTICATE_API, 'POST', 'authenticate', ['token' => $token]);
+            $this->tkSsoFrontEndCache->cacheAuthenticationData($response);
         }
 
         /**
          * authentication error
          */
         if (!is_array($response)) {
-//            error_log("SSO_ERROR: response is not an array");
-//            error_log(print_r($response, true));
+            // error_log("SSO_ERROR: response is not an array");
+            //  error_log(print_r($response, true));
             return ['error' => 'Bitte melden Sie sich erneut an'];
         }
 
@@ -177,21 +178,10 @@ class TkUsSsoBroker extends TkSsoBroker
                 $userVal = $this->tkSearchArray($userVar, $response);
             }
             if ($userVal) {
-                $this->cacheAuthenticationDataIfNotAlreadyCached($response);
                 return $userVal;
             }
         }
 
-        /**
-         * Cache authentication data from the response if user data is not already cached
-         */
-        $this->cacheAuthenticationDataIfNotAlreadyCached($response);
-        global $tkSsoUser;
-        $userLand = $tkSsoUser->getUserCountry();
-        if($userLand == 'Deutschland') {
-
-        }
-        //$this->setCookieSameSite('tkDisplayCookieConsent', 1);
         return $response;
     }
 
