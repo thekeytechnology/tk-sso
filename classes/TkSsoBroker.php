@@ -163,8 +163,12 @@ abstract class TkSsoBroker
         }
 
         $homeUrl = get_home_url();
+        
         if($homeUrl == 'https://paedia.de' || 'https://staging.paedia.de' || 'https://www.paedia.de/') {
             $domain = ".paedia.de";
+        }
+        if($homeUrl == 'https://www.infectopharm.com/' || 'https://staging.qa.infectopharm.com/') {
+            $domain = ".infectopharm.com";
         }
 
         $secure = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on');
