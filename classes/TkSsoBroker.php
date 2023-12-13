@@ -155,21 +155,25 @@ abstract class TkSsoBroker
         bool   $httponly = false, string $samesite = 'None'
     )
     {
-        if ($domain === null) {
-            $domain = '.' . $_SERVER['HTTP_HOST'];
-        }
+
         if ($expire === null) {
             $expire = time() + 86400;
         }
 
-        $homeUrl = get_home_url();
-        
-        if($homeUrl == 'https://paedia.de' || 'https://staging.paedia.de' || 'https://www.paedia.de/') {
-            $domain = ".paedia.de";
+        $current_url = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+        $domain = '';
+        switch (true) {
+            case strpos($current_url, 'paedia') !== false:
+                $domain = '.paedia.de';
+                break;
+            case strpos($current_url, 'infectopharm') !== false:
+                $domain = '.infectopharm.com';
+                break;
+            case strpos($current_url, 'data-storage') !== false:
+                $domain = '.data-storage.live';
+                break;
         }
-        if($homeUrl == 'https://www.infectopharm.com/' || 'https://staging.qa.infectopharm.com/') {
-            $domain = ".infectopharm.com";
-        }
+
 
         $secure = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on');
 
