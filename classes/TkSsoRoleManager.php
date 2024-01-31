@@ -68,36 +68,3 @@ class TkSsoRoleManager
     }
 }
 
-
-/**
- * @param string $file path to the file
- * @param WP_User|null $user
- */
-function tkUserCanAccessFile($file, $user = null)
-{
-    if (strpos($file, "/unsec/") != false || is_user_logged_in()) {
-        return true;
-    } else {
-        if (class_exists("TkSsoUser")) {
-            global $tkSsoUser;
-            $isUG1User = $tkSsoUser->hasRole(['UG1']);
-            $isUG2User = $tkSsoUser->hasRole(['UG2']);
-            if (strpos($file, "/ug1/") != false) {
-                if ($isUG1User) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-            if (strpos($file, "/ug2/") != false && ($isUG1User || $isUG2User)) {
-                return true;
-            }
-            return $tkSsoUser->hasRole([
-                TkSsoRoleManager::$ROLE_LOGGED_IN,
-                TkSsoDocCheckRoleManager::$ROLE_DOCCHECK_LOGGED_IN
-            ]);
-        } else {
-            return is_user_logged_in();
-        }
-    }
-}

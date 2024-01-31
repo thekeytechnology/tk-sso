@@ -52,7 +52,6 @@ function tkBasicRestrictionShouldRender($should_render, $object) {
         ) {
             $should_render = false;
         }
-        return $should_render;
     }
     return $should_render;
 }
