@@ -52,7 +52,6 @@ function tkBasicRestrictionShouldRender($should_render, $object) {
         ) {
             $should_render = false;
         }
-        return apply_filters("tk-sso-restrict-content-elementor-should-render", $should_render, $object);
     }
     return $should_render;
 }

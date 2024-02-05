@@ -12,7 +12,14 @@ add_filter('rocket_cache_reject_cookies', 'tkDisablePageCacheForLoggedInUsers');
 
 function tkDisablePageCacheForLoggedInUsers($cookies)
 {
-    $cookies[] = 'SESStkssocookie';
+    $refreshTokenName = TkSsoUtils::REFRESH_TOKEN_NAME;
+    $accessTokenName = TkSsoUtils::ACCESS_TOKEN_NAME;
+    $accountIdName = TkSsoUtils::ACCOUNT_ID_NAME;
+
+    $cookies[] = $refreshTokenName;
+    $cookies[] = $accessTokenName;
+    $cookies[] = $accountIdName;
+
     return $cookies;
 }
 

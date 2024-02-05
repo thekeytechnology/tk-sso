@@ -8,9 +8,9 @@ add_filter(TkSsoRoleManager::$FILTER_CUSTOM_ROLES, function($roles) {
             "Doctor",
             "Apothecary",
         ];
-
         return in_array($role, $catRoles);
     });
+
     $roles[] = new TkSsoCustomRole("UG2", function() {
         global $tkSsoUser;
         $role = $tkSsoUser->getRole();
@@ -20,13 +20,13 @@ add_filter(TkSsoRoleManager::$FILTER_CUSTOM_ROLES, function($roles) {
             "Midwife",
             "PTA"
         ];
-
         return in_array($role, $catRoles);
     });
 
     $roles[] = new TkSsoCustomRole("Deutschland", function() {
        return false;
     });
+
     $roles[] = new TkSsoCustomRole("Oesterreich", function() {
        return false;
     });
