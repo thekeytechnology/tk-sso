@@ -108,6 +108,30 @@ class TkSsoBroker
         return $url . $brand . '/' . $base64EncodedUrl;
     }
 
+    /**
+     * @param $key
+     * @param $array
+     * @return string
+     */
+    public function tkSearchArray($key, $array): string
+    {
+        if (is_array($array)) {
+            $keyToLower = strtolower($key);
+            $arrayToLower = array_change_key_case($array, CASE_LOWER);
+            if (isset($arrayToLower[$keyToLower])) {
+                return $arrayToLower[$keyToLower];
+            }
+            $value = "";
+            foreach ($arrayToLower as $subarray) {
+                $value .= $this->tkSearchArray($key, $subarray);
+                if ($value != "") {
+                    return $value;
+                }
+            }
+        }
+        return "";
+    }
+
 
 
 
