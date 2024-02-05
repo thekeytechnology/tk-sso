@@ -4,7 +4,7 @@ class TkSsoUser
 {
     private array $data = [];
     private TkSsoRoleManager $roleManager;
-    public static string $FILTER_DATA = "";
+    public static string $FILTER_DATA = "tk_sso_filter_data";
 
     public function __construct()
     {
@@ -43,7 +43,7 @@ class TkSsoUser
         }
 
         if ($return) {
-            return $this->validateLand($roles);
+            return $this->validateCountry($roles);
         }
 
         return false;
@@ -51,8 +51,8 @@ class TkSsoUser
 
     public function getUserCountry() {
         global $tkSsoBroker;
-        $authenticate = $tkSsoBroker->authenticate();
-        $roleApplicationProcesses = $authenticate['roleApplicationProcesses'][0] ?? null;
+        $userData = $tkSsoBroker->getUserData();
+        $roleApplicationProcesses = $userData['roleApplicationProcesses'][0] ?? null;
 
         if (!$roleApplicationProcesses) {
             return false;
@@ -62,7 +62,7 @@ class TkSsoUser
         return $address['country'] ?? false;
     }
 
-    public function validateLand($roles): bool
+    public function validateCountry($roles): bool
     {
 
         $country = [];
@@ -91,11 +91,7 @@ class TkSsoUser
     public function isLoggedIn(): bool
     {
         global $tkSsoBroker;
-
-        $acceptWordpressLogin = get_option(TkSsoSettingsPage::$OPTION_ACCEPT_WORDPRESS_LOGIN);
-
-        $this->loggedIn = $tkSsoBroker->isUserLoggedIn();
-        return $this->loggedIn;
+        return  $tkSsoBroker->isUserLoggedIn();
     }
 
     public function isActive(): bool
@@ -112,14 +108,13 @@ class TkSsoUser
         global $tkSsoBroker;
 
         if (empty($key)) {
-            return $tkSsoBroker->authenticate();
+            return $tkSsoBroker->getUserData();
         }
 
-        $value = "";
         if (key_exists($key, $this->data)) {
             $value = $this->data[$key];
         } else {
-            $value = $tkSsoBroker->authenticate($key);
+            $value = $tkSsoBroker->getUserData($key);
             if (is_string($value)) {
                 $this->data[$key] = $value;
             } else {
@@ -139,6 +134,5 @@ class TkSsoUser
     }
 }
 
-global /** @var TkSsoUser $tkSsoUser */
-$tkSsoUser;
+global $tkSsoUser;
 $tkSsoUser = new TkSsoUser();
