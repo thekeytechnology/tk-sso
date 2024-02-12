@@ -97,8 +97,6 @@ class TkSsoBroker
     {
         global $wp;
         $currentUrl = home_url(add_query_arg(array(), $wp->request));
-        $fragment = $_SERVER['REQUEST_URI'];
-        $currentUrl .= $fragment;
         $base64EncodedUrl = base64_encode($currentUrl);
         $brand = TkSsoUtils::getBrandId();
         $url = TkSsoUtils::getFrontEndUrl();
