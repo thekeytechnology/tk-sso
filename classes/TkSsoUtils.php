@@ -4,8 +4,8 @@
 class TkSsoUtils
 {
 
-    const PRODUCTION_SERVER_URL = 'https://staging.api.identity.infectopharm.com/api/';
-    const PRODUCTION_FRONTEND_URL = 'https://staging.identity.infectopharm.com/';
+    const PRODUCTION_SERVER_URL = 'https://api.identity.infectopharm.com/api/';
+    const PRODUCTION_FRONTEND_URL = 'https://identity.infectopharm.com/';
 
     const STAGING_SERVER_URL = 'https://staging.api.identity.infectopharm.com/api/';
     const STAGING_FRONTEND_URL = 'https://staging.identity.infectopharm.com/';
