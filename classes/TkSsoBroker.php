@@ -93,10 +93,9 @@ class TkSsoBroker
     }
 
 
-    public function createUrl($action="login"): string
+    public function createUrl($action="login", $customRedirect = ""): string
     {
-        global $wp;
-        $currentUrl = home_url(add_query_arg(array(), $wp->request));
+        $currentUrl = $customRedirect ?? get_home_url() . $_SERVER['REQUEST_URI'];
         $base64EncodedUrl = base64_encode($currentUrl);
         $brand = TkSsoUtils::getBrandId();
         $url = TkSsoUtils::getFrontEndUrl();
