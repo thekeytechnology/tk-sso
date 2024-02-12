@@ -95,7 +95,7 @@ class TkSsoBroker
 
     public function createUrl($action="login", $customRedirect = ""): string
     {
-        $currentUrl = $customRedirect ?? get_home_url() . $_SERVER['REQUEST_URI'];
+        $currentUrl = !empty($customRedirect) ? $customRedirect : get_home_url() . $_SERVER['REQUEST_URI'];
         $base64EncodedUrl = base64_encode($currentUrl);
         $brand = TkSsoUtils::getBrandId();
         $url = TkSsoUtils::getFrontEndUrl();
