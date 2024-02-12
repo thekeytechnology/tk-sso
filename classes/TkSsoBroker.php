@@ -100,7 +100,7 @@ class TkSsoBroker
         $brand = TkSsoUtils::getBrandId();
         $url = TkSsoUtils::getFrontEndUrl();
         if($action == 'logout') {
-            $url .= TkSsoUtils::LOGOUT_API . '/';
+            $url .= TkSsoUtils::LOGOUT_API . '/' . $base64EncodedUrl;
         }
         return $url . $brand . '/' . $base64EncodedUrl;
     }
