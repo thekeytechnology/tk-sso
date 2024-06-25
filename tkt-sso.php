@@ -2,7 +2,7 @@
 /*
 Plugin Name: TKT SSO
 Plugin URI:  https://www.thekey.technology
-Version:     90
+Version:     90.0.0
 Author:      the key technology
 Author URI:  https://www.thekey.technology
 License:     proprietary

@@ -37,12 +37,12 @@ class TkSsoCookieManager
         switch (true) {
             case str_contains($currentUrl, 'paedia'):
                 return '.paedia.de';
-            case str_contains($currentUrl, 'infectopharm'):
-                return '.infectopharm.com';
             case str_contains($currentUrl, 'data-storage'):
                 return '.data-storage.live';
             case str_contains($currentUrl, 'consilium'):
                 return '.consilium.live';
+            case str_contains($currentUrl, 'infectopharm'):
+                return '.infectopharm.com';
             default:
                 return '';
         }

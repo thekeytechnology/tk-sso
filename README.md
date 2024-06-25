@@ -25,6 +25,23 @@
 - **External Server Operations:** The plugin delegates login, registration, and logout processes to an external server Identity Provider: [https://identity.infectopharm.com/](https://identity.infectopharm.com/).
 
 
+## Version 3.0.0
+
+**Release Notes:**
+
+### Changes in this Version:
+
+- **Dynamic API Endpoint Configuration:** Enhanced the `createUrl` function to dynamically append the appropriate API endpoint ('/login' or '/logout') based on the action parameter.
+- **Introduction of cleanupUrl Function:** Added a new private function `cleanupUrl` to the `createUrl` method. This function sanitizes the URL by removing specific query parameters such as 'loggedOut', 'accountId', and 'refreshToken'. This enhancement ensures cleaner URLs that facilitate more reliable re-login or logout operations.
+- **Adjusted Domain Cookie Switch Logic:** The order of cases in the `getDomain` switch statement has been optimized to ensure cookies are set correctly for each associated domain. This precise ordering enhances session management and maintains consistent user states across our various platforms.
+- **Version Update:** Updated the versioning scheme from a numerical format to Semantic Versioning (MAJOR.MINOR.PATCH), indicating major, minor, and patch levels for clearer version management.
+
+### Breaking Changes:
+
+- **Mandatory '/login' Suffix:** The addition of the '/login' suffix is now mandatory for the login API endpoint. This change requires the identity system to be configured accordingly to recognize and process this new URL structure. Failure to update the identity system to accommodate this change will result in login failures.
+
+
+
 ## Version 90
 
 **Release Notes:**

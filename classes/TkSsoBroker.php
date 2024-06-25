@@ -93,16 +93,35 @@ class TkSsoBroker
     }
 
 
-    public function createUrl($action="login", $customRedirect = ""): string
+    public function createUrl($action = "login", $customRedirect = ""): string
     {
-        $currentUrl = $customRedirect ?: (get_home_url() . $_SERVER['REQUEST_URI']);
+        $currentUrl = $this->cleanupUrl(
+            $customRedirect ?: (get_home_url() . $_SERVER['REQUEST_URI'])
+        );
         $base64EncodedUrl = base64_encode($currentUrl);
         $brand = TkSsoUtils::getBrandId();
         $url = TkSsoUtils::getFrontEndUrl();
-        if($action == 'logout') {
-            $url .= TkSsoUtils::LOGOUT_API . '/' . $base64EncodedUrl;
+        $urlSuffix = $action === 'logout' ? TkSsoUtils::LOGOUT_API : TkSsoUtils::LOGIN_API;
+        return "{$url}{$urlSuffix}/{$brand}/{$base64EncodedUrl}";
+    }
+
+    private function cleanupUrl($url): string
+    {
+        $urlComponents = parse_url($url);
+
+        if (!empty($urlComponents['query'])) {
+            parse_str($urlComponents['query'], $queryParams);
+
+            // Remove specific parameters from the query
+            unset($queryParams['loggedOut'], $queryParams['accountId'], $queryParams['refreshToken']);
+
+            $urlComponents['query'] = http_build_query($queryParams);
         }
-        return $url . $brand . '/' . $base64EncodedUrl;
+
+        // Reassemble the URL without the unwanted query parameters
+        return $urlComponents['scheme'] . '://' . $urlComponents['host']
+            . ($urlComponents['path'] ?? '')
+            . (!empty($urlComponents['query']) ? '?' . $urlComponents['query'] : '');
     }
 
     /**

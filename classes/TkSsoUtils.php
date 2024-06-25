@@ -11,6 +11,7 @@ class TkSsoUtils
     const STAGING_FRONTEND_URL = 'https://staging.identity.infectopharm.com/';
 
     const LOGOUT_API = 'logout';
+    const LOGIN_API = 'login';
     const AUTHENTICATE_API = 'refresh-token';
 
     const ACCOUNT_ID_NAME = 'accountId';
