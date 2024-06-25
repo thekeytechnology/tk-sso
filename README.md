@@ -25,7 +25,7 @@
 - **External Server Operations:** The plugin delegates login, registration, and logout processes to an external server Identity Provider: [https://identity.infectopharm.com/](https://identity.infectopharm.com/).
 
 
-## Version 3.0.0
+## Version 90.1.0
 
 **Release Notes:**
 
