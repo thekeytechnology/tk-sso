@@ -25,6 +25,19 @@
 - **External Server Operations:** The plugin delegates login, registration, and logout processes to an external server Identity Provider: [https://identity.infectopharm.com/](https://identity.infectopharm.com/).
 
 
+## Version 90.2.0
+
+**Release Notes:**
+
+### Changes in this Version:
+
+- **Integration with slenyto.de** The plugin has been updated to support slenyto.de.
+
+### Breaking Changes:
+
+-  No Breaking Changes
+
+
 ## Version 90.1.0
 
 **Release Notes:**

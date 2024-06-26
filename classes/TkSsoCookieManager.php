@@ -41,6 +41,8 @@ class TkSsoCookieManager
                 return '.data-storage.live';
             case str_contains($currentUrl, 'consilium'):
                 return '.consilium.live';
+            case str_contains($currentUrl, 'slenyto'):
+                return '.slenyto.de';
             case str_contains($currentUrl, 'infectopharm'):
                 return '.infectopharm.com';
             default:
