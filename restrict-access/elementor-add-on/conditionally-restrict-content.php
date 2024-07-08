@@ -5,13 +5,17 @@
  */
 
 // Hooks
+// Hooks
 add_action('elementor/element/common/_section_style/before_section_start', 'tkAddRestrictionControls', 10, 1);
 add_action('elementor/element/column/layout/after_section_end', 'tkAddRestrictionControls', 10, 1);
+add_action('elementor/element/container/section_layout/after_section_end', 'tkAddRestrictionControls', 10, 1);
 add_action('elementor/element/section/section_typo/after_section_end', 'tkAddRestrictionControls', 10, 1);
 
 add_filter('elementor/frontend/widget/should_render', 'tkRestrictContainer', 10, 2);
 add_filter('elementor/frontend/section/should_render', 'tkRestrictContainer', 10, 2);
 add_filter('elementor/frontend/column/should_render', 'tkRestrictContainer', 10, 2);
+add_filter('elementor/frontend/container/should_render', 'tkRestrictContainer', 10, 2);
+
 
 
 function tkAddRestrictionControls($element)

@@ -25,6 +25,20 @@
 - **External Server Operations:** The plugin delegates login, registration, and logout processes to an external server Identity Provider: [https://identity.infectopharm.com/](https://identity.infectopharm.com/).
 
 
+## Version 90.3.0
+
+**Release Notes:**
+
+### Changes in this Version:
+
+- **Elementor Container Restriction** Added restrictions to Elementor containers based on user roles.
+- **Custom Role "Abgemeldet"** A custom role has been added for logged out users.
+
+### Breaking Changes:
+
+- No Breaking Changes
+
+
 ## Version 90.2.0
 
 **Release Notes:**

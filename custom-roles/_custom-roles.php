@@ -24,11 +24,16 @@ add_filter(TkSsoRoleManager::$FILTER_CUSTOM_ROLES, function($roles) {
     });
 
     $roles[] = new TkSsoCustomRole("Deutschland", function() {
-       return false;
+        return false;
     });
 
     $roles[] = new TkSsoCustomRole("Oesterreich", function() {
-       return false;
+        return false;
+    });
+
+    $roles[] = new TkSsoCustomRole("Abgemeldet", function() {
+        global $tkSsoUser;
+        return !$tkSsoUser->isLoggedIn();
     });
 
     return $roles;
