@@ -25,6 +25,18 @@
 - **External Server Operations:** The plugin delegates login, registration, and logout processes to an external server Identity Provider: [https://identity.infectopharm.com/](https://identity.infectopharm.com/).
 
 
+## Version 90.3.1
+
+**Release Notes:**
+
+### Changes in this Version:
+
+- **Composer Integration:** Added a composer.json file to the plugin to facilitate integration with our new Composer-based workflow. This allows for easier management, version control, and deployment of the plugin within development environments.
+### Breaking Changes:
+
+- **No Breaking Changes:** 
+
+
 ## Version 90.3.0
 
 **Release Notes:**

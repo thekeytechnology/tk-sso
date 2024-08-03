@@ -1,0 +1,16 @@
+{
+  "name": "thekeytechnology/tk-sso",
+  "description": "A custom single sign-on plugin for WordPress.",
+  "type": "wordpress-plugin",
+  "require": {
+    "php": ">=7.4"
+  },
+  "authors": [
+    {
+      "name": "thekey technology",
+      "email": "mohamed.audi@thekey.technology"
+    }
+  ],
+  "minimum-stability": "stable",
+  "version": "90.3.1"
+}
