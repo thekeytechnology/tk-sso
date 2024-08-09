@@ -37,3 +37,10 @@ function tkDoccheckLoginBtn($attr)
         <a  id="tkDocCheckLoginBtn" class="' . $args["classes"] . '" href="' . $loginUrl . '" >' . $args["btnValue"] . '</a>';
 }
 
+
+
+add_shortcode('tk-logout-link', 'tkLogoutLink');
+function tkLogoutLink(){
+    global $tkSsoBroker;
+    return $tkSsoBroker->createUrl('logout');
+}

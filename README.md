@@ -24,6 +24,17 @@
 
 - **External Server Operations:** The plugin delegates login, registration, and logout processes to an external server Identity Provider: [https://identity.infectopharm.com/](https://identity.infectopharm.com/).
 
+## Version 91.0.0
+
+**Release Notes:**
+
+### Changes in this Version:
+
+- **Privacy Consent Requirement:** Introduced a new feature requiring users to accept updated privacy consents whenever a new version is released. This ensures compliance with privacy regulations and keeps users informed about what data is collected and how it is used.
+### Breaking Changes:
+
+- **No Breaking Changes:**
+
 
 ## Version 90.3.1
 
