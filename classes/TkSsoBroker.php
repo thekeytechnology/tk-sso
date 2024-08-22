@@ -34,6 +34,18 @@ class TkSsoBroker
             $this->logout();
             return ['error' => 'Der Benutzer ist ausgeloggt.'];
         }
+
+        $hasUnacceptedPrivacyCookie = TkSsoUtils::HAS_UNACCEPTED_PRIVACY_COOKIE_NAME;
+
+        $shouldSetCookie = array_key_exists('hasUnacceptedPrivacy', $decodedAccessToken) &&
+            $decodedAccessToken['hasUnacceptedPrivacy'] === false &&
+            !isset($_COOKIE[$hasUnacceptedPrivacyCookie]);
+
+        if ($shouldSetCookie) {
+            $cookieManager = new TkSsoCookieManager();
+            $cookieManager->setCookie($hasUnacceptedPrivacyCookie, true);
+        }
+
         return $decodedAccessToken;
     }
 
@@ -147,8 +159,6 @@ class TkSsoBroker
         }
         return "";
     }
-
-
 
 
 }

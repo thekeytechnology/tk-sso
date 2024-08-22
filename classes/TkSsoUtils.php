@@ -13,10 +13,15 @@ class TkSsoUtils
     const LOGOUT_API = 'logout';
     const LOGIN_API = 'login';
     const AUTHENTICATE_API = 'refresh-token';
+    const ACCEPT_PRIVACY_API = 'accept-privacy';
+    const GET_LATEST_PRIVACY = 'get-latest-privacy';
 
     const ACCOUNT_ID_NAME = 'accountId';
     const REFRESH_TOKEN_NAME = 'refreshToken';
     const ACCESS_TOKEN_NAME = 'tkAccessToken';
+
+    const HAS_UNACCEPTED_PRIVACY_COOKIE_NAME = 'hasUnacceptedPrivacy';
+    const ACCEPTANCE_TEXT = 'Datenschutz Akzeptieren';
 
     const COOKIE_LIFETIME = 86400;
 
