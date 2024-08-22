@@ -38,7 +38,7 @@ class TkSsoBroker
         $hasUnacceptedPrivacyCookie = TkSsoUtils::HAS_UNACCEPTED_PRIVACY_COOKIE_NAME;
 
         $shouldSetCookie = array_key_exists('hasUnacceptedPrivacy', $decodedAccessToken) &&
-            $decodedAccessToken['hasUnacceptedPrivacy'] === false &&
+            $decodedAccessToken['hasUnacceptedPrivacy'] === true &&
             !isset($_COOKIE[$hasUnacceptedPrivacyCookie]);
 
         if ($shouldSetCookie) {
