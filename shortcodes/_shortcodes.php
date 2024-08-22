@@ -44,3 +44,29 @@ function tkLogoutLink(){
     global $tkSsoBroker;
     return $tkSsoBroker->createUrl('logout');
 }
+
+
+add_shortcode('tk-display-dynamic-privacy-content', 'tkDisplayDynamicPrivacyContent');
+
+function tkDisplayDynamicPrivacyContent()
+{
+    $requestManager = new TkSsoRequestManager();
+    $url = TkSsoUtils::getServerUrl() . TkSsoUtils::GET_LATEST_PRIVACY;
+    $brandId = TkSsoUtils::getBrandId();
+    $method = 'POST';
+    $data = [
+        'base64BrandId' => $brandId,
+    ];
+    $response = $requestManager->request($url, $method, $data);
+    $errorText = "<p>Oops! Wir konnten die benötigten Datenschutzinformationen gerade nicht laden. Stellen Sie sicher, dass Ihre Internetverbindung aktiv ist und versuchen Sie es in einigen Momenten erneut.</p>";
+
+    if (!is_array($response) || isset($response['error'])) {
+        return $errorText;
+    }
+
+    if (isset($response['content'])) {
+        return $response['content'];
+    }
+
+    return $errorText;
+}
