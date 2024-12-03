@@ -2,7 +2,7 @@
 /*
 Plugin Name: TKT SSO
 Plugin URI:  https://www.thekey.technology
-Version:     91.0.2
+Version:     91.0.3
 Author:      the key technology
 Author URI:  https://www.thekey.technology
 License:     proprietary
@@ -19,7 +19,7 @@ require_once "classes/_classes.php";
 require_once "custom-roles/_custom-roles.php";
 require_once "restrict-access/_restrict-access.php";
 require_once "shortcodes/_shortcodes.php";
-require_once("doccheck/_doccheck.php");
+require_once "doccheck/_doccheck.php";
 require_once "wp-rocket/_wp-rocket.php";
 
 

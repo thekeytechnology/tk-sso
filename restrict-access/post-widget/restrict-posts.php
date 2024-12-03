@@ -12,11 +12,12 @@ add_action("template_redirect", function () {
         ) {
             if ($tkSsoUser->isLoggedIn()) {
                 wp_redirect(get_home_url() . '/404', 301);
-                exit();
+                exit;
             }
             global $tkSsoBroker;
             $loginUrl = $tkSsoBroker->createUrl();
             wp_redirect($loginUrl);
+            exit;
         }
     }
 });
