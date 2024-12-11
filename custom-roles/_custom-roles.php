@@ -6,7 +6,9 @@ add_filter(TkSsoRoleManager::$FILTER_CUSTOM_ROLES, function($roles) {
         $role = $tkSsoUser->getRole();
         $catRoles = [
             "Doctor",
+            "Dentist",
             "Apothecary",
+            "PTA",
         ];
         return in_array($role, $catRoles);
     });
@@ -16,6 +18,7 @@ add_filter(TkSsoRoleManager::$FILTER_CUSTOM_ROLES, function($roles) {
         $role = $tkSsoUser->getRole();
         $catRoles = [
             "Doctor",
+            "Dentist",
             "Apothecary",
             "Midwife",
             "PTA"
