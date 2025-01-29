@@ -38,18 +38,37 @@ function tkAddBasicRestrictionControls($element)
             ],
         ]
     );
+
+    $element->add_control(
+        'tk_show_content_to_iqvia',
+        [
+            'type' => \Elementor\Controls_Manager::SWITCHER,
+            'label' => __('IQVIA geprüft', 'tk-sso'),
+            'description' => __('', 'tk-sso'),
+            'label_off' => 'egal',
+            'separator' => 'before',
+            'condition' => [
+                'tk_enable_restriction' => 'yes',
+            ],
+        ]
+    );
     $element->end_controls_section();
 }
 
 
 function tkBasicRestrictionShouldRender($should_render, $object) {
     $settings = $object->get_settings_for_display();
+
     if (isset($settings['tk_enable_restriction']) && $settings['tk_enable_restriction'] == 'yes') {
         global $tkSsoUser;
         $whitelistRoles = $settings['tk_show_content_to_roles'] ?? [];
         if (
             !$tkSsoUser->hasRole($whitelistRoles)
         ) {
+            $should_render = false;
+        }
+
+        if ($settings['tk_show_content_to_iqvia'] && $tkSsoUser->getData('status') !== 'Finished') {
             $should_render = false;
         }
     }

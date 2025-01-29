@@ -59,7 +59,7 @@ class TkSsoBroker
             if ($userVar == "role") {
                 $roleProcesses = $decodedAccessToken['roleApplicationProcesses'] ?? [];
                 foreach ($roleProcesses as $role) {
-                    if ($role['status'] == "Finished" && $role['userStatus'] == "Active") {
+                    if ($role['userStatus'] == "Active") {
                         $userVal = $role['targetRole'];
                     }
                 }

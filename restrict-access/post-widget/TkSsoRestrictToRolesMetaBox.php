@@ -4,10 +4,12 @@ class TkSsoRestrictToRolesMetaBox {
 
     public static string $META_KEY_WHITELIST = "tk-sso-restrict-to-roles";
     public static string $META_KEY_REDIRECT = "tk-sso-restrict-to-roles-redirect";
+    public static string $META_KEY_IQVIA_CHECK = "tk-sso-restrict-to-iqvia-check";
     public static string $STRING_REPLACE_URL = "{{url}}";
 
     private static string $META_BOX_ID = "tkSsoRestrictAccessMetaBox";
     private static string $POST_PARAM_NAME_WHITELIST = "tkSsoRestrictToRolesWhitelist";
+    private static string $POST_PARAM_NAME_IQVIA_CHECK = "tkSsoRestrictToIqviaCheck";
     private static string $POST_PARAM_NAME_REDIRECT = "tkSsoRestrictToRolesRedirect";
 
     public function init() {
@@ -19,6 +21,7 @@ class TkSsoRestrictToRolesMetaBox {
         $roleManager = new TkSsoRoleManager();
         $roles = $roleManager->getRolesForRestriction();
         $whitelistValues = is_array($temp = get_post_meta($post->ID, $this::$META_KEY_WHITELIST, true)) ? $temp : array();
+        $iqviaCheck = get_post_meta($post->ID, $this::$META_KEY_IQVIA_CHECK, true) ?? false;
         $redirect = get_post_meta($post->ID, $this::$META_KEY_REDIRECT)[0] ?? "";
         if (is_array($redirect)) {
             $redirect = $redirect[0] ?? "";
@@ -36,6 +39,13 @@ class TkSsoRestrictToRolesMetaBox {
                     } ?>
                 </ul>
                 <input type="hidden" name="<?php echo "{$this::$POST_PARAM_NAME_WHITELIST}[]" ?>" value=""/>
+            </div>
+            <strong>IQVIA geprüft:</strong>
+            <div class="tk-meta-box" style="border: 1px solid #e5e5e5; padding: 10px; border-radius: 5px; background-color: #f9f9f9; margin-bottom: 20px; margin-top: 6px">
+                <label class='selectit'>
+                    <input type="hidden" name="<?php echo "{$this::$POST_PARAM_NAME_IQVIA_CHECK}" ?>" value="0"/>
+                    <input type="checkbox" style='margin-right: 10px;'  <?php echo ($iqviaCheck ? "checked=checked" : "") ?> name="<?php echo "{$this::$POST_PARAM_NAME_IQVIA_CHECK}" ?>" value="1"/> IQVIA geprüft
+                </label>
             </div>
 
             <span style="color: #d9534f; font-size: 14px; display: block; padding: 10px 15px; border: 1px solid #d9534f; border-radius: 5px; background-color: #fdf2f2; margin-bottom: 20px;">Hinweis: Bei Auswahl von "Aus Deutschland" oder "Aus Österreich" ist ein Login erforderlich, um Zugang zu dieser Seite zu erhalten. Bitte stellen Sie sicher, dass Sie auch eine Anmeldeoption aktivieren.</span>
@@ -87,6 +97,8 @@ class TkSsoRestrictToRolesMetaBox {
 
             update_post_meta($postId, $this::$META_KEY_WHITELIST, $filteredWhitelistValues);
         }
+
+        update_post_meta($postId, $this::$META_KEY_IQVIA_CHECK, intval($_POST[$this::$POST_PARAM_NAME_IQVIA_CHECK]) === 1);
 
 
         $redirect = $_POST[$this::$POST_PARAM_NAME_REDIRECT] ?? false;

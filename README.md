@@ -24,6 +24,19 @@
 
 - **External Server Operations:** The plugin delegates login, registration, and logout processes to an external server Identity Provider: [https://identity.infectopharm.com/](https://identity.infectopharm.com/).
 
+## Version 92.0.0
+
+**Release Notes:**
+### Changes in this Version:
+
+- user status is not required to be "Finished"
+- added option to restrict user without status "Finished"
+
+
+### Breaking Changes:
+
+- user status is not required to be "Finished"
+
 ## Version 91.0.4
 
 **Release Notes:**
