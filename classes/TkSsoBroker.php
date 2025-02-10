@@ -59,9 +59,7 @@ class TkSsoBroker
             if ($userVar == "role") {
                 $roleProcesses = $decodedAccessToken['roleApplicationProcesses'] ?? [];
                 foreach ($roleProcesses as $role) {
-                    if ($role['userStatus'] == "Active") {
-                        $userVal = $role['targetRole'];
-                    }
+                    $userVal = $role['targetRole'];
                 }
             } else {
                 $userVal = $this->tkSearchArray($userVar, $decodedAccessToken);

@@ -15,8 +15,14 @@ add_action("template_redirect", function () {
                 wp_redirect($loginUrl);
                 exit;
             }
-            if ($tkSsoUser->getData('status') !== 'Finished') {
-                wp_redirect(get_home_url() . '/404', 301);
+            if ($tkSsoUser->getData('status') !== 'Finished' || $tkSsoUser->getData('userStatus') !== 'Active') {
+                $cookieManager = new TkSsoCookieManager();
+                if ($tkSsoUser->getUserCountry() !== 'Deutschland') {
+                    $cookieManager->setCookie("showAccessDeniedATPopUp", true);
+                } else {
+                    $cookieManager->setCookie("showAccessDeniedPopUp", true);
+                }
+                wp_redirect(get_home_url());
                 exit;
             }
         }
@@ -26,8 +32,15 @@ add_action("template_redirect", function () {
         if (
             (!$tkSsoUser->hasRole($whitelistRoles))
         ) {
+
             if ($tkSsoUser->isLoggedIn()) {
-                wp_redirect(get_home_url() . '/404', 301);
+                $cookieManager = new TkSsoCookieManager();
+                if ($tkSsoUser->getUserCountry() !== 'Deutschland') {
+                    $cookieManager->setCookie("showAccessDeniedATPopUp", true);
+                } else {
+                    $cookieManager->setCookie("showAccessDeniedPopUp", true);
+                }
+                wp_redirect(get_home_url());
                 exit;
             }
             global $tkSsoBroker;

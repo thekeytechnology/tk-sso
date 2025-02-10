@@ -68,7 +68,7 @@ function tkBasicRestrictionShouldRender($should_render, $object) {
             $should_render = false;
         }
 
-        if ($settings['tk_show_content_to_iqvia'] && $tkSsoUser->getData('status') !== 'Finished') {
+        if ($settings['tk_show_content_to_iqvia'] && ($tkSsoUser->getData('status') !== 'Finished' || $tkSsoUser->getData('userStatus') !== 'Active' )) {
             $should_render = false;
         }
     }
